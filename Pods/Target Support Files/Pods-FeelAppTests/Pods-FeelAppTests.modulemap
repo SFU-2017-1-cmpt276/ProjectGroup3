@@ -1,0 +1,6 @@
+framework module Pods_FeelAppTests {
+  umbrella header "Pods-FeelAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

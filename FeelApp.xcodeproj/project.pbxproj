@@ -1,0 +1,773 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D1462571E67966600BB74AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462561E67966600BB74AA /* AppDelegate.swift */; };
+		3D1462591E67966600BB74AA /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462581E67966600BB74AA /* HomeVC.swift */; };
+		3D14625C1E67966600BB74AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D14625A1E67966600BB74AA /* Main.storyboard */; };
+		3D14625E1E67966600BB74AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D14625D1E67966600BB74AA /* Assets.xcassets */; };
+		3D1462611E67966600BB74AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */; };
+		3D14626C1E67966600BB74AA /* FeelAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14626B1E67966600BB74AA /* FeelAppTests.swift */; };
+		3D1462771E67966600BB74AA /* FeelAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462761E67966600BB74AA /* FeelAppUITests.swift */; };
+		3D1462851E6796CC00BB74AA /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462841E6796CC00BB74AA /* Font.swift */; };
+		3D1462871E6796EF00BB74AA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462861E6796EF00BB74AA /* Extensions.swift */; };
+		3D1462891E67971D00BB74AA /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462881E67971D00BB74AA /* GlobalData.swift */; };
+		3D14628B1E67976900BB74AA /* SelectFeelingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14628A1E67976900BB74AA /* SelectFeelingView.swift */; };
+		3D14628D1E67979200BB74AA /* FirebaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14628C1E67979200BB74AA /* FirebaseClasses.swift */; };
+		3D14628F1E67996000BB74AA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D14628E1E67996000BB74AA /* LoginVC.swift */; };
+		3D1462931E679DA400BB74AA /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462921E679DA400BB74AA /* Draw.swift */; };
+		3D1462971E679F0600BB74AA /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462961E679F0600BB74AA /* SignupVC.swift */; };
+		3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */; };
+		3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */; };
+		3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */; };
+		3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */; };
+		60120E3F8002C76F159EC1FC /* Pods_FeelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */; };
+		B1C77C32EECFFBAFD735A6E9 /* Pods_FeelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */; };
+		E4949D098B063DCBA645DE5A /* Pods_FeelAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3D1462681E67966600BB74AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D14624B1E67966500BB74AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D1462521E67966600BB74AA;
+			remoteInfo = FeelApp;
+		};
+		3D1462731E67966600BB74AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3D14624B1E67966500BB74AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D1462521E67966600BB74AA;
+			remoteInfo = FeelApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2961D4DCB2585FB8F5515156 /* Pods-FeelAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D1462531E67966600BB74AA /* FeelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D1462561E67966600BB74AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3D1462581E67966600BB74AA /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		3D14625B1E67966600BB74AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3D14625D1E67966600BB74AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3D1462601E67966600BB74AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3D1462621E67966600BB74AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1462671E67966600BB74AA /* FeelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D14626B1E67966600BB74AA /* FeelAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelAppTests.swift; sourceTree = "<group>"; };
+		3D14626D1E67966600BB74AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1462721E67966600BB74AA /* FeelAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeelAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D1462761E67966600BB74AA /* FeelAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelAppUITests.swift; sourceTree = "<group>"; };
+		3D1462781E67966600BB74AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1462841E6796CC00BB74AA /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		3D1462861E6796EF00BB74AA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3D1462881E67971D00BB74AA /* GlobalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		3D14628A1E67976900BB74AA /* SelectFeelingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFeelingView.swift; sourceTree = "<group>"; };
+		3D14628C1E67979200BB74AA /* FirebaseClasses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClasses.swift; sourceTree = "<group>"; };
+		3D14628E1E67996000BB74AA /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		3D1462921E679DA400BB74AA /* Draw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
+		3D1462961E679F0600BB74AA /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitEmotionVC.swift; sourceTree = "<group>"; };
+		3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.release.xcconfig"; sourceTree = "<group>"; };
+		9FC631A6B1C97C96B2F7C020 /* Pods-FeelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		A2AE1682CF523C174E370435 /* Pods-FeelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D1462501E67966600BB74AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60120E3F8002C76F159EC1FC /* Pods_FeelApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D1462641E67966600BB74AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4949D098B063DCBA645DE5A /* Pods_FeelAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D14626F1E67966600BB74AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1C77C32EECFFBAFD735A6E9 /* Pods_FeelAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D14624A1E67966500BB74AA = {
+			isa = PBXGroup;
+			children = (
+				3D1462551E67966600BB74AA /* FeelApp */,
+				3D14626A1E67966600BB74AA /* FeelAppTests */,
+				3D1462751E67966600BB74AA /* FeelAppUITests */,
+				3D1462541E67966600BB74AA /* Products */,
+				54EAB7C072C462D3442B6DAE /* Pods */,
+				B997EEB9DA7433623C45C7A7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3D1462541E67966600BB74AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D1462531E67966600BB74AA /* FeelApp.app */,
+				3D1462671E67966600BB74AA /* FeelAppTests.xctest */,
+				3D1462721E67966600BB74AA /* FeelAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D1462551E67966600BB74AA /* FeelApp */ = {
+			isa = PBXGroup;
+			children = (
+				3D1462961E679F0600BB74AA /* SignupVC.swift */,
+				3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */,
+				3D1462581E67966600BB74AA /* HomeVC.swift */,
+				3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */,
+				3D14628E1E67996000BB74AA /* LoginVC.swift */,
+				3D8806381E6E2FBE008D106B /* Views */,
+				3D8806371E6E2FA6008D106B /* General Classes */,
+				3D14625A1E67966600BB74AA /* Main.storyboard */,
+				3D14625D1E67966600BB74AA /* Assets.xcassets */,
+				3D1462561E67966600BB74AA /* AppDelegate.swift */,
+				3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */,
+				3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */,
+				3D1462621E67966600BB74AA /* Info.plist */,
+			);
+			path = FeelApp;
+			sourceTree = "<group>";
+		};
+		3D14626A1E67966600BB74AA /* FeelAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D14626B1E67966600BB74AA /* FeelAppTests.swift */,
+				3D14626D1E67966600BB74AA /* Info.plist */,
+			);
+			path = FeelAppTests;
+			sourceTree = "<group>";
+		};
+		3D1462751E67966600BB74AA /* FeelAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3D1462761E67966600BB74AA /* FeelAppUITests.swift */,
+				3D1462781E67966600BB74AA /* Info.plist */,
+			);
+			path = FeelAppUITests;
+			sourceTree = "<group>";
+		};
+		3D8806371E6E2FA6008D106B /* General Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3D1462921E679DA400BB74AA /* Draw.swift */,
+				3D14628C1E67979200BB74AA /* FirebaseClasses.swift */,
+				3D1462841E6796CC00BB74AA /* Font.swift */,
+				3D1462861E6796EF00BB74AA /* Extensions.swift */,
+				3D1462881E67971D00BB74AA /* GlobalData.swift */,
+			);
+			name = "General Classes";
+			sourceTree = "<group>";
+		};
+		3D8806381E6E2FBE008D106B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */,
+				3D14628A1E67976900BB74AA /* SelectFeelingView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		54EAB7C072C462D3442B6DAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */,
+				8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */,
+				8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */,
+				9FC631A6B1C97C96B2F7C020 /* Pods-FeelAppTests.release.xcconfig */,
+				2961D4DCB2585FB8F5515156 /* Pods-FeelAppUITests.debug.xcconfig */,
+				A2AE1682CF523C174E370435 /* Pods-FeelAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B997EEB9DA7433623C45C7A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */,
+				CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */,
+				DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D1462521E67966600BB74AA /* FeelApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D14627B1E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelApp" */;
+			buildPhases = (
+				C56EA2E2D2CD212DE559EB42 /* [CP] Check Pods Manifest.lock */,
+				3D14624F1E67966600BB74AA /* Sources */,
+				3D1462501E67966600BB74AA /* Frameworks */,
+				3D1462511E67966600BB74AA /* Resources */,
+				5AD15D573D911A9028F87F7E /* [CP] Embed Pods Frameworks */,
+				E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FeelApp;
+			productName = FeelApp;
+			productReference = 3D1462531E67966600BB74AA /* FeelApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3D1462661E67966600BB74AA /* FeelAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D14627E1E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelAppTests" */;
+			buildPhases = (
+				8E173862F540ED4076561C30 /* [CP] Check Pods Manifest.lock */,
+				3D1462631E67966600BB74AA /* Sources */,
+				3D1462641E67966600BB74AA /* Frameworks */,
+				3D1462651E67966600BB74AA /* Resources */,
+				7CA26EE9BD66FC635DD8E81E /* [CP] Embed Pods Frameworks */,
+				94C029FD84E209671611EEE3 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D1462691E67966600BB74AA /* PBXTargetDependency */,
+			);
+			name = FeelAppTests;
+			productName = FeelAppTests;
+			productReference = 3D1462671E67966600BB74AA /* FeelAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3D1462711E67966600BB74AA /* FeelAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D1462811E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelAppUITests" */;
+			buildPhases = (
+				2E3D80AE5A729E15443B4654 /* [CP] Check Pods Manifest.lock */,
+				3D14626E1E67966600BB74AA /* Sources */,
+				3D14626F1E67966600BB74AA /* Frameworks */,
+				3D1462701E67966600BB74AA /* Resources */,
+				955DF258C41BB0987310CB87 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D1462741E67966600BB74AA /* PBXTargetDependency */,
+			);
+			name = FeelAppUITests;
+			productName = FeelAppUITests;
+			productReference = 3D1462721E67966600BB74AA /* FeelAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D14624B1E67966500BB74AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = CMPT276;
+				TargetAttributes = {
+					3D1462521E67966600BB74AA = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					3D1462661E67966600BB74AA = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3D1462521E67966600BB74AA;
+					};
+					3D1462711E67966600BB74AA = {
+						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3D1462521E67966600BB74AA;
+					};
+				};
+			};
+			buildConfigurationList = 3D14624E1E67966500BB74AA /* Build configuration list for PBXProject "FeelApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D14624A1E67966500BB74AA;
+			productRefGroup = 3D1462541E67966600BB74AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D1462521E67966600BB74AA /* FeelApp */,
+				3D1462661E67966600BB74AA /* FeelAppTests */,
+				3D1462711E67966600BB74AA /* FeelAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D1462511E67966600BB74AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D1462611E67966600BB74AA /* LaunchScreen.storyboard in Resources */,
+				3D14625E1E67966600BB74AA /* Assets.xcassets in Resources */,
+				3D14625C1E67966600BB74AA /* Main.storyboard in Resources */,
+				3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D1462651E67966600BB74AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D1462701E67966600BB74AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E3D80AE5A729E15443B4654 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5AD15D573D911A9028F87F7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CA26EE9BD66FC635DD8E81E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E173862F540ED4076561C30 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		94C029FD84E209671611EEE3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		955DF258C41BB0987310CB87 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C56EA2E2D2CD212DE559EB42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D14624F1E67966600BB74AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D1462591E67966600BB74AA /* HomeVC.swift in Sources */,
+				3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */,
+				3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */,
+				3D14628D1E67979200BB74AA /* FirebaseClasses.swift in Sources */,
+				3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */,
+				3D14628F1E67996000BB74AA /* LoginVC.swift in Sources */,
+				3D1462931E679DA400BB74AA /* Draw.swift in Sources */,
+				3D1462891E67971D00BB74AA /* GlobalData.swift in Sources */,
+				3D1462571E67966600BB74AA /* AppDelegate.swift in Sources */,
+				3D1462971E679F0600BB74AA /* SignupVC.swift in Sources */,
+				3D14628B1E67976900BB74AA /* SelectFeelingView.swift in Sources */,
+				3D1462851E6796CC00BB74AA /* Font.swift in Sources */,
+				3D1462871E6796EF00BB74AA /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D1462631E67966600BB74AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D14626C1E67966600BB74AA /* FeelAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D14626E1E67966600BB74AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D1462771E67966600BB74AA /* FeelAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3D1462691E67966600BB74AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D1462521E67966600BB74AA /* FeelApp */;
+			targetProxy = 3D1462681E67966600BB74AA /* PBXContainerItemProxy */;
+		};
+		3D1462741E67966600BB74AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D1462521E67966600BB74AA /* FeelApp */;
+			targetProxy = 3D1462731E67966600BB74AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D14625A1E67966600BB74AA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D14625B1E67966600BB74AA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D1462601E67966600BB74AA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D1462791E67966600BB74AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3D14627A1E67966600BB74AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D14627C1E67966600BB74AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FeelApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		3D14627D1E67966600BB74AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FeelApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		3D14627F1E67966600BB74AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FeelAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelApp.app/FeelApp";
+			};
+			name = Debug;
+		};
+		3D1462801E67966600BB74AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FC631A6B1C97C96B2F7C020 /* Pods-FeelAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FeelAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FeelApp.app/FeelApp";
+			};
+			name = Release;
+		};
+		3D1462821E67966600BB74AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2961D4DCB2585FB8F5515156 /* Pods-FeelAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = FeelAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FeelApp;
+			};
+			name = Debug;
+		};
+		3D1462831E67966600BB74AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2AE1682CF523C174E370435 /* Pods-FeelAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = FeelAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FeelApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D14624E1E67966500BB74AA /* Build configuration list for PBXProject "FeelApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D1462791E67966600BB74AA /* Debug */,
+				3D14627A1E67966600BB74AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D14627B1E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D14627C1E67966600BB74AA /* Debug */,
+				3D14627D1E67966600BB74AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D14627E1E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D14627F1E67966600BB74AA /* Debug */,
+				3D1462801E67966600BB74AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D1462811E67966600BB74AA /* Build configuration list for PBXNativeTarget "FeelAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D1462821E67966600BB74AA /* Debug */,
+				3D1462831E67966600BB74AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D14624B1E67966500BB74AA /* Project object */;
+}
