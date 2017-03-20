@@ -24,6 +24,9 @@ class SubmitEmotionVC: UIViewController {
     var textView = KMPlaceholderTextView()
     
     var submitButton = UIButton()
+    var postButton = UIButton()
+    var bottomButtonHeight:CGFloat = 50
+    var bottomButtonOffset:CGFloat = 10
     
     var emotion:Emotion!
     
@@ -35,8 +38,10 @@ class SubmitEmotionVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.white
+        NotificationCenter.default.addObserver(self, selector: #selector(SubmitEmotionVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setUpTopView()
         setUpTextView()
+        setUpBottomButtons()
     }
 
     func setUpTopView(){
@@ -57,15 +62,6 @@ class SubmitEmotionVC: UIViewController {
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
         backButton.addTarget(self, action: #selector(SubmitEmotionVC.backAction), for: .touchUpInside)
-    
-        submitButton.frame.size = size
-        submitButton.setImage(#imageLiteral(resourceName: "rightArrow2.png"), for: .normal)
-        submitButton.contentEdgeInsets = inset
-        topView.addSubview(submitButton)
-        submitButton.changeToColor(UIColor.white)
-        submitButton.frame.origin.y = topView.frame.height - submitButton.frame.height
-        submitButton.frame.origin.x = topView.frame.width - submitButton.frame.width
-        submitButton.addTarget(self, action: #selector(SubmitEmotionVC.submitEmotion), for: .touchUpInside)
         
         titleLabel.font = emotion.font
         titleLabel.text = emotion.name
@@ -85,12 +81,30 @@ class SubmitEmotionVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func postAndSubmit(){
+        
+        FIRDatabase.database().reference().child("Posts").childByAutoId().setValue([
+            "Emotion":[
+                "Type":emotion.name,
+                "Text":textView.text,
+                "Time":FIRServerValue.timestamp()
+            ],
+            "Sender ID":userUID,
+            "Sender Alias":GlobalData.You.alias
+            
+            ])
+        
+        submitEmotion()
+    }
+    
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
     
     func setUpTextView(){
-        textView.frame.size = CGSize(width: view.frame.width, height: 100)
+        textView.frame.origin.y = topView.frame.height + 5
+        textView.frame.size = CGSize(width: view.frame.width - 20, height: 100)
+        textView.center.x = view.frame.width/2
         view.addSubview(textView)
         textView.backgroundColor = UIColor.white
         textView.placeholder = "Why do you feel \(emotion.name.lowercased())?"
@@ -98,10 +112,45 @@ class SubmitEmotionVC: UIViewController {
         textView.placeholderFont = Font.PageBody()
         textView.textColor = emotion.color
         textView.font = Font.PageHeaderSmall()
-        textView.frame.origin.y = topView.frame.height + 5
-        
+        textView.tintColor = emotion.color
+       
         textView.becomeFirstResponder()
-        //Draw.createLineUnderView(textView, color: globalGreyColor)
+    }
+    
+    func setUpBottomButtons(){
+        for button in [submitButton,postButton]{
+            view.addSubview(button)
+            button.frame.size.height = bottomButtonHeight
+            button.frame.size.width = view.frame.width/2 - 2*bottomButtonOffset
+            button.backgroundColor = UIColor.white
+            button.setTitle("Record", for: .normal)
+            button.titleLabel?.font = Font.PageBodyBold()
+            button.layer.cornerRadius = bottomButtonHeight/2
+            button.clipsToBounds = true
+            button.layer.borderWidth = 3
+            button.layer.borderColor = emotion.color.cgColor
+            button.setTitleColor(emotion.color, for: .normal)
+        }
+        submitButton.addTarget(self, action: #selector(SubmitEmotionVC.submitEmotion), for: .touchUpInside)
+        postButton.addTarget(self, action: #selector(SubmitEmotionVC.postAndSubmit), for: .touchUpInside)
+
+        postButton.backgroundColor = emotion.color
+        postButton.setTitleColor(UIColor.white, for: .normal)
+        
+        postButton.setTitle("Record and Post", for: .normal)
+        submitButton.frame.origin.x = bottomButtonOffset
+        postButton.frame.origin.x = view.frame.width/2 + bottomButtonOffset
+        
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        textView.frame.size.height = view.frame.height - keyboardSize!.height - textView.frame.origin.y - bottomButtonHeight
+        for button in [submitButton,postButton]{
+            button.frame.origin.y = textView.frame.maxY - bottomButtonOffset
+        }
+        
+        
         
     }
 

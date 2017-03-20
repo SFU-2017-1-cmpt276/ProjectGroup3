@@ -11,6 +11,22 @@
 
 import UIKit
 
+class Post{
+    var emotion = Emotion()
+    var sender = Person()
+    var likeCount = 0
+    var commentCount = 0
+    
+    init(){}
+    
+}
+
+class Person{
+    var alias = ""
+    var id = ""
+    init(){}
+}
+
 class Emotion{
     
     var name = ""
@@ -27,11 +43,13 @@ class Emotion{
         self.font = font
     }
     
+    init(){}
+    
     static func Happy()->Emotion{
         return Emotion(name: "Happy", color: UIColor.orange, font: UIFont(name: "Chalkduster", size: 35)!)
     }
     static func Angry()->Emotion{
-        return Emotion(name: "Angry", color: subscribeColor, font: UIFont(name: "Futura-CondensedExtraBold", size: 35)!)
+        return Emotion(name: "Angry", color: UIColor.red, font: UIFont(name: "Futura-CondensedExtraBold", size: 35)!)
     }
     static func Sad()->Emotion{
         return Emotion(name: "Sad", color: UIColor(red: 61/255, green: 132/255, blue: 225/255, alpha: 1), font: UIFont(name: "Cochin-Italic", size: 35)!)

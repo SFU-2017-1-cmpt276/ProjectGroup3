@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         let vc = LoginVC()//storyboard.instantiateViewController(withIdentifier: "selectScreen")
+         let vc = HomeVC()//storyboard.instantiateViewController(withIdentifier: "selectScreen")
          self.window?.rootViewController = vc
          self.window?.makeKeyAndVisible()
 

@@ -94,7 +94,7 @@ class SignupVC: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: usernameTF.text!, password: passwordTF.text!) { (user, error) in
             if error == nil && user != nil{
                 FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(self.aliasTF.text!)
-                let vc = ViewController()
+                let vc = HomeVC()
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
             }

@@ -22,6 +22,7 @@ class HistoryVC: UIViewController {
     var topView = UIView()
     var titleLabel = UILabel()
     var submitButton = UIButton()
+    var chartButton = UIButton()
     
     let offset:CGFloat = 0
     
@@ -69,6 +70,20 @@ class HistoryVC: UIViewController {
         titleLabel.center.y = backButton.center.y
         topView.addSubview(titleLabel)
         
+        chartButton.frame.size = size
+        chartButton.setImage(#imageLiteral(resourceName: "pieChartIcon.png"), for: .normal)
+        chartButton.contentEdgeInsets = inset
+        topView.addSubview(chartButton)
+        chartButton.changeToColor(UIColor.black)
+        chartButton.frame.origin.y = topView.frame.height - chartButton.frame.height
+        chartButton.frame.origin.x = view.frame.width - chartButton.frame.width
+        chartButton.addTarget(self, action: #selector(HistoryVC.toChart), for: .touchUpInside)
+    }
+    
+    func toChart(){
+        let vc = ChartVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
     
     func backAction(){
