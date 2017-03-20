@@ -147,9 +147,13 @@ class LoginVC: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: usernameTF.text!, password: passwordTF.text!) { (user, error) in
             
             if error == nil && user != nil{
-                let vc = ViewController()
-                vc.modalTransitionStyle = .crossDissolve
-                self.present(vc, animated: true, completion: nil)
+                FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
+                    GlobalData.You.alias = snapshot.value! as? String ?? ""
+                    let vc = HomeVC()
+                    vc.modalTransitionStyle = .crossDissolve
+                    self.present(vc, animated: true, completion: nil)
+                })
+                
 
             }
         }
@@ -171,7 +175,5 @@ class LoginVC: UIViewController {
         forgotPassword.center.x = view.frame.width/2
         forgotPassword.frame.origin.y = signupButton.frame.maxY + 15
     }
-    
-    
 
 }

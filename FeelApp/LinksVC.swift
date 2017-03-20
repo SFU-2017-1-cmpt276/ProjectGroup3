@@ -9,7 +9,7 @@
 import UIKit
 
 class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     var backButton = UIButton()
     var topView = UIView()
     var titleLabel = UILabel()
@@ -23,7 +23,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpTopView()
         setUpView()
         setUpTableView()
@@ -38,6 +38,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.addSubview(topView)
         topView.backgroundColor = nowColor
         
+        
         backButton.frame.size = size
         backButton.setImage(#imageLiteral(resourceName: "leftArrowIcon"), for: .normal)
         backButton.contentEdgeInsets = inset
@@ -47,7 +48,6 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.changeToColor(UIColor.white)
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
-        
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "Links"
         titleLabel.textColor = UIColor.white
@@ -55,6 +55,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
         topView.addSubview(titleLabel)
+        
     }
     
     func backAction(){
@@ -89,7 +90,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-        return linkTitles.count
+            return linkTitles.count
         }
         else{
             return phoneTitles.count
@@ -101,9 +102,11 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         
         if indexPath.section == 0{
+            //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = linkTitles[indexPath.item]
         }
         else{
+            //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = phoneTitles[indexPath.item]
         }
         
@@ -114,7 +117,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let imageView = UIImageView()
         if indexPath.section == 0{
-        imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
+            imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
         }
         else{
             imageView.image = #imageLiteral(resourceName: "phone.png")
@@ -123,9 +126,10 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         imageView.changeToColor(globalGreyColor)
         cell.accessoryView = imageView
         cell.accessoryView?.frame = CGRect(x:0, y:0, width:20, height:20)
+        //cell.backgroundColor = nowColor //Make background color UIColor
         
         return cell
-
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -137,7 +141,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         //set these values as necessary
         returnedView.backgroundColor = UIColor.white
         let label = UILabel()
-        if section == 0{label.text = "Links"}
+        if section == 0{label.text = "Information"}
         else{label.text = "Call SFU Clinic"}
         
         let smallFont = Font.PageBodyBold()//UIFont(name: Font.PageBodyBold().fontName, size: Font.PageSmallBold().pointSize - 2)
@@ -155,34 +159,34 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0{
-        switch indexPath.item{
-            
-        case 0:toWebsite(url:"http://www.sfu.ca/students/health/")
-        case 1:toWebsite(url:"http://www.sfu.ca/students/health/services.html")
-        case 2:toWebsite(url:"http://www.sfu.ca/students/health/contact-us.html")
-        case 3: toWebsite(url:"http://www.sfu.ca/students/health/resources.html")
-        case 4:toWebsite(url:"http://www.sfu.ca/healthycampuscommunity.html")
-        case 5:toWebsite(url:"http://www.sfu.ca/students/health/events/Events-Calendar.html")
-        case 6:toWebsite(url:"http://www.sfu.ca/students/health/volunteer.html")
-        case 7: toWebsite(url:"http://www.sfu.ca/students/health/resources/media/your-health--audio-video.html")
-        default:break
-        }
+            switch indexPath.item{
+                
+            case 0:toWebsite(url:"http://www.sfu.ca/students/health/")
+            case 1:toWebsite(url:"http://www.sfu.ca/students/health/services.html")
+            case 2:toWebsite(url:"http://www.sfu.ca/students/health/contact-us.html")
+            case 3: toWebsite(url:"http://www.sfu.ca/students/health/resources.html")
+            case 4:toWebsite(url:"http://www.sfu.ca/healthycampuscommunity.html")
+            case 5:toWebsite(url:"http://www.sfu.ca/students/health/events/Events-Calendar.html")
+            case 6:toWebsite(url:"http://www.sfu.ca/students/health/volunteer.html")
+            case 7: toWebsite(url:"http://www.sfu.ca/students/health/resources/media/your-health--audio-video.html")
+            default:break
+            }
         }
         else{
             switch indexPath.item{
             case 0:makeCall(phoneNumber: "778-782-4615")
             case 1:makeCall(phoneNumber: "778-782-5200")
             case 2:makeCall(phoneNumber: "778-782-5200")
-                default:break
+            default:break
             }
-
+            
         }
     }
     
     func toWebsite(url:String){
         UIApplication.shared.openURL(URL(string: url)!)
     }
-
+    
     func makeCall(phoneNumber:String) {
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
@@ -192,5 +196,5 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
     }
     
-
+    
 }

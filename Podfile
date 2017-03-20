@@ -10,6 +10,7 @@ pod ‘Firebase’
 pod 'Firebase/Auth'
 pod ‘Firebase/Database’
 pod 'KMPlaceholderTextView'
+pod ‘Charts’
 
   target 'FeelAppTests' do
     inherit! :search_paths

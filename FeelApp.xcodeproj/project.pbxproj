@@ -28,10 +28,17 @@
 		3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */; };
 		3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */; };
 		3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */; };
+		3DDD8AD11E7A0DD300857211 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD01E7A0DD300857211 /* ChartVC.swift */; };
+		3DDD8AD41E7A23EB00857211 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD21E7A23EB00857211 /* PostCell.swift */; };
+		3DDD8AD51E7A23EB00857211 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD31E7A23EB00857211 /* PostCell.xib */; };
+		3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD61E7A25E700857211 /* FeedVC.swift */; };
+		3DDD8ADD1E7A844A00857211 /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8ADC1E7A844A00857211 /* heartIcon.png */; };
+		3DDD8ADF1E7A844D00857211 /* commentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8ADE1E7A844D00857211 /* commentIcon.png */; };
+		3DDD8AE11E7A8B0A00857211 /* pieChartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */; };
+		3DDD8AE31E7A8BB400857211 /* linksIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AE21E7A8BB400857211 /* linksIcon.png */; };
 		60120E3F8002C76F159EC1FC /* Pods_FeelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */; };
 		B1C77C32EECFFBAFD735A6E9 /* Pods_FeelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */; };
-		B5497FC31E7A8295004DEBE7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5497FC21E7A8295004DEBE7 /* Images.xcassets */; };
-		B5B7E8F91E7B0CB7006FE206 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B5B7E8F81E7B0CB7006FE206 /* AppIcon.appiconset */; };
+		B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */; };
 		E4949D098B063DCBA645DE5A /* Pods_FeelAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,13 +88,20 @@
 		3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitEmotionVC.swift; sourceTree = "<group>"; };
 		3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		3DDD8AD01E7A0DD300857211 /* ChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
+		3DDD8AD21E7A23EB00857211 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		3DDD8AD31E7A23EB00857211 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		3DDD8AD61E7A25E700857211 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		3DDD8ADC1E7A844A00857211 /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
+		3DDD8ADE1E7A844D00857211 /* commentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentIcon.png; sourceTree = "<group>"; };
+		3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieChartIcon.png; sourceTree = "<group>"; };
+		3DDD8AE21E7A8BB400857211 /* linksIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linksIcon.png; sourceTree = "<group>"; };
 		608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.release.xcconfig"; sourceTree = "<group>"; };
 		9FC631A6B1C97C96B2F7C020 /* Pods-FeelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A2AE1682CF523C174E370435 /* Pods-FeelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		B5497FC21E7A8295004DEBE7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B5B7E8F81E7B0CB7006FE206 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
+		B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +162,15 @@
 			children = (
 				3D1462961E679F0600BB74AA /* SignupVC.swift */,
 				3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */,
+				3DDD8AD01E7A0DD300857211 /* ChartVC.swift */,
 				3D1462581E67966600BB74AA /* HomeVC.swift */,
+				3DDD8AE21E7A8BB400857211 /* linksIcon.png */,
+				3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */,
+				3DDD8AD21E7A23EB00857211 /* PostCell.swift */,
+				3DDD8ADE1E7A844D00857211 /* commentIcon.png */,
+				3DDD8ADC1E7A844A00857211 /* heartIcon.png */,
+				3DDD8AD31E7A23EB00857211 /* PostCell.xib */,
+				3DDD8AD61E7A25E700857211 /* FeedVC.swift */,
 				3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */,
 				3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */,
 				3D62D2EA1E7A053000BE7A6C /* phone.png */,
@@ -157,12 +179,11 @@
 				3D8806371E6E2FA6008D106B /* General Classes */,
 				3D14625A1E67966600BB74AA /* Main.storyboard */,
 				3D14625D1E67966600BB74AA /* Assets.xcassets */,
-				B5B7E8F81E7B0CB7006FE206 /* AppIcon.appiconset */,
+				B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */,
 				3D1462561E67966600BB74AA /* AppDelegate.swift */,
 				3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */,
 				3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */,
 				3D1462621E67966600BB74AA /* Info.plist */,
-				B5497FC21E7A8295004DEBE7 /* Images.xcassets */,
 			);
 			path = FeelApp;
 			sourceTree = "<group>";
@@ -282,7 +303,7 @@
 				3D14626F1E67966600BB74AA /* Frameworks */,
 				3D1462701E67966600BB74AA /* Resources */,
 				955DF258C41BB0987310CB87 /* [CP] Copy Pods Resources */,
-				7E19D7F5BBF3379051475ACD /* [CP] Embed Pods Frameworks */,
+				5658AF5F5E81960D9AE89068 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,18 +329,16 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9W5UPM8QT7;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					3D1462661E67966600BB74AA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9W5UPM8QT7;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3D1462521E67966600BB74AA;
 					};
 					3D1462711E67966600BB74AA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9W5UPM8QT7;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 3D1462521E67966600BB74AA;
@@ -352,11 +371,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1462611E67966600BB74AA /* LaunchScreen.storyboard in Resources */,
+				3DDD8AD51E7A23EB00857211 /* PostCell.xib in Resources */,
 				3D14625E1E67966600BB74AA /* Assets.xcassets in Resources */,
-				B5497FC31E7A8295004DEBE7 /* Images.xcassets in Resources */,
+				B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */,
 				3D14625C1E67966600BB74AA /* Main.storyboard in Resources */,
-				B5B7E8F91E7B0CB7006FE206 /* AppIcon.appiconset in Resources */,
+				3DDD8ADF1E7A844D00857211 /* commentIcon.png in Resources */,
+				3DDD8ADD1E7A844A00857211 /* heartIcon.png in Resources */,
+				3DDD8AE31E7A8BB400857211 /* linksIcon.png in Resources */,
 				3D62D2EB1E7A053000BE7A6C /* phone.png in Resources */,
+				3DDD8AE11E7A8B0A00857211 /* pieChartIcon.png in Resources */,
 				3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +416,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		5658AF5F5E81960D9AE89068 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5AD15D573D911A9028F87F7E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -421,21 +459,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7E19D7F5BBF3379051475ACD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8E173862F540ED4076561C30 /* [CP] Check Pods Manifest.lock */ = {
@@ -523,17 +546,20 @@
 				3D1462591E67966600BB74AA /* HomeVC.swift in Sources */,
 				3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */,
 				3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */,
+				3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */,
 				3D14628D1E67979200BB74AA /* FirebaseClasses.swift in Sources */,
 				3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */,
 				3D14628F1E67996000BB74AA /* LoginVC.swift in Sources */,
 				3D1462931E679DA400BB74AA /* Draw.swift in Sources */,
 				3D1462891E67971D00BB74AA /* GlobalData.swift in Sources */,
 				3D62D2E51E79FF0C00BE7A6C /* LinksVC.swift in Sources */,
+				3DDD8AD11E7A0DD300857211 /* ChartVC.swift in Sources */,
 				3D1462571E67966600BB74AA /* AppDelegate.swift in Sources */,
 				3D1462971E679F0600BB74AA /* SignupVC.swift in Sources */,
 				3D14628B1E67976900BB74AA /* SelectFeelingView.swift in Sources */,
 				3D1462851E6796CC00BB74AA /* Font.swift in Sources */,
 				3D1462871E6796EF00BB74AA /* Extensions.swift in Sources */,
+				3DDD8AD41E7A23EB00857211 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,11 +635,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -633,7 +657,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "bc2dc0be-3a17-4db1-b1f7-c52bf7783a41";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -661,11 +684,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -678,7 +699,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "bc2dc0be-3a17-4db1-b1f7-c52bf7783a41";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -689,17 +709,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: carsonlai123@gmail.com (36Z29SYXFS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				INFOPLIST_FILE = FeelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -709,17 +724,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: carsonlai123@gmail.com (36Z29SYXFS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				INFOPLIST_FILE = FeelApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

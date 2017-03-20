@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,SelectFeelingDelegate {
+class HomeVC: UIViewController,SelectFeelingDelegate {
 
     
     var topView = UIView()
@@ -20,6 +20,9 @@ class ViewController: UIViewController,SelectFeelingDelegate {
     
     var historyButton = UIButton()
     var linkButton = UIButton()
+    var feedButton = UIButton()
+    var feedButtonHeight:CGFloat = 50
+    var feedButtonOffset:CGFloat = 10
     
     var selectFeelingView:SelectFeelingView!
     
@@ -29,9 +32,26 @@ class ViewController: UIViewController,SelectFeelingDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpView()
         setUpTopView()
         setUpSelectFeelingView()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func setUpView(){
+        view.backgroundColor = UIColor.white
+        feedButton.frame.size = CGSize(width: view.frame.width - 2*feedButtonOffset, height: feedButtonHeight)
+        feedButton.frame.origin.y = view.frame.height - feedButton.frame.height - feedButtonOffset
+        feedButton.center.x = view.frame.width/2
+        view.addSubview(feedButton)
+        feedButton.setTitle("Newsfeed", for: .normal)
+        feedButton.setTitleColor(UIColor.white, for: .normal)
+        feedButton.backgroundColor = nowColor
+        feedButton.titleLabel?.font = Font.PageHeaderSmall()
+        feedButton.addTarget(self, action: #selector(HomeVC.toFeed), for: .touchUpInside)
+        feedButton.layer.cornerRadius = feedButtonHeight/2
+
+        
     }
 
     func setUpTopView(){
@@ -49,17 +69,18 @@ class ViewController: UIViewController,SelectFeelingDelegate {
         historyButton.changeToColor(UIColor.white)
         historyButton.frame.origin.y = topView.frame.height - historyButton.frame.height
         historyButton.frame.origin.x = topView.frame.width - historyButton.frame.width
-        historyButton.addTarget(self, action: #selector(ViewController.toHistory), for: .touchUpInside)
+        historyButton.addTarget(self, action: #selector(HomeVC.toHistory), for: .touchUpInside)
         
         linkButton.frame.size = size
-        linkButton.setImage(#imageLiteral(resourceName: "calendarIcon"), for: .normal)
+        linkButton.setImage(#imageLiteral(resourceName: "linksIcon.png"), for: .normal)
         linkButton.contentEdgeInsets = inset
         topView.addSubview(linkButton)
         linkButton.changeToColor(UIColor.white)
         linkButton.frame.origin.y = topView.frame.height - historyButton.frame.height
         linkButton.frame.origin.x = 0
-        linkButton.addTarget(self, action: #selector(ViewController.toLinks), for: .touchUpInside)
+        linkButton.addTarget(self, action: #selector(HomeVC.toLinks), for: .touchUpInside)
         
+
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "FeelApp"
         titleLabel.textColor = UIColor.white
@@ -67,7 +88,14 @@ class ViewController: UIViewController,SelectFeelingDelegate {
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = linkButton.center.y
         topView.addSubview(titleLabel)
+        
 
+    }
+    
+    func toFeed(){
+        let vc = FeedVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
     
     func toLinks(){
@@ -84,7 +112,7 @@ class ViewController: UIViewController,SelectFeelingDelegate {
     }
     
     func setUpSelectFeelingView(){
-        selectFeelingView = SelectFeelingView(size: CGSize(width:view.frame.width,height:view.frame.height - topView.frame.height))
+        selectFeelingView = SelectFeelingView(size: CGSize(width:view.frame.width,height:view.frame.height - topView.frame.height - feedButtonHeight - 2*feedButtonOffset - 6))
         selectFeelingView.someDelegate = self
         view.addSubview(selectFeelingView)
         selectFeelingView.frame.origin.y = topView.frame.height
