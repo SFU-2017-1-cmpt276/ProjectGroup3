@@ -15,11 +15,11 @@ import UIKit
 class ViewController: UIViewController,SelectFeelingDelegate {
 
     
-    var backButton = UIButton()
     var topView = UIView()
     var titleLabel = UILabel()
     
     var historyButton = UIButton()
+    var linkButton = UIButton()
     
     var selectFeelingView:SelectFeelingView!
     
@@ -42,23 +42,6 @@ class ViewController: UIViewController,SelectFeelingDelegate {
         view.addSubview(topView)
         topView.backgroundColor = nowColor
         
-        backButton.frame.size = size
-        //backButton.setImage(, for: .normal)
-        backButton.contentEdgeInsets = inset
-        
-        topView.addSubview(backButton)
-        backButton.changeToColor(UIColor.white)
-        backButton.frame.origin.y = topView.frame.height - backButton.frame.height
-        backButton.frame.origin.x = 0
-               
-        titleLabel.font = Font.PageHeaderSmall()
-        titleLabel.text = "FeelApp"
-        titleLabel.textColor = UIColor.white
-        titleLabel.sizeToFit()
-        titleLabel.center.x = topView.frame.width/2
-        titleLabel.center.y = backButton.center.y
-        topView.addSubview(titleLabel)
-        
         historyButton.frame.size = size
         historyButton.setImage(#imageLiteral(resourceName: "calendarIcon"), for: .normal)
         historyButton.contentEdgeInsets = inset
@@ -67,6 +50,30 @@ class ViewController: UIViewController,SelectFeelingDelegate {
         historyButton.frame.origin.y = topView.frame.height - historyButton.frame.height
         historyButton.frame.origin.x = topView.frame.width - historyButton.frame.width
         historyButton.addTarget(self, action: #selector(ViewController.toHistory), for: .touchUpInside)
+        
+        linkButton.frame.size = size
+        linkButton.setImage(#imageLiteral(resourceName: "calendarIcon"), for: .normal)
+        linkButton.contentEdgeInsets = inset
+        topView.addSubview(linkButton)
+        linkButton.changeToColor(UIColor.white)
+        linkButton.frame.origin.y = topView.frame.height - historyButton.frame.height
+        linkButton.frame.origin.x = 0
+        linkButton.addTarget(self, action: #selector(ViewController.toLinks), for: .touchUpInside)
+        
+        titleLabel.font = Font.PageHeaderSmall()
+        titleLabel.text = "FeelApp"
+        titleLabel.textColor = UIColor.white
+        titleLabel.sizeToFit()
+        titleLabel.center.x = topView.frame.width/2
+        titleLabel.center.y = linkButton.center.y
+        topView.addSubview(titleLabel)
+
+    }
+    
+    func toLinks(){
+        let vc = LinksVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
     
     func toHistory(){

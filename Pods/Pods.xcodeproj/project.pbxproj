@@ -7,36 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07FA0D0DE227339C961C59C4E19C669D /* Pods-FeelAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BB9480075FCE0897D3C3DFFCAF58B836 /* Pods-FeelAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2600A9D7A507D395912F06A3FADF7E32 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		552FF2568273DD6B3A3CB6BCCE4D5FB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		68DC830D5A05E007957B6F6EBF70A5B2 /* Pods-FeelApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BFFB986D807768BB215A25C55836FD /* Pods-FeelApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70A166A4A5003CB96564128D0C9030D3 /* KMPlaceholderTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9357B5DBCADA9914BCF62B466ACA1537 /* KMPlaceholderTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7676B0E3AD50297C3C89FD6B74F11F53 /* Pods-FeelAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D291BAAF3859B203F139A3C3265B58F9 /* Pods-FeelAppTests-dummy.m */; };
-		77B07CE3091CBBCD2890A05A6D2664CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		7B76373D74186B42AADB7DA9C933C8AA /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443062CD299E5A11590A6EC28BA512 /* KMPlaceholderTextView.swift */; };
-		8B1D5F95A76E6330C0F6FCE05488ADF6 /* Pods-FeelApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E9E9083721B45167D5892EEC31DBCB /* Pods-FeelApp-dummy.m */; };
-		9272B5E077A9948320B47AE18BBB7328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */; };
-		A837EBEAD4AB108AA202961A087000C6 /* Pods-FeelAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F10EF2A73FF0EBA66A6037DA3A8FB949 /* Pods-FeelAppUITests-dummy.m */; };
-		C3BBF58775157B7573908EE72C0AEE64 /* Pods-FeelAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA40468B8696DCEA182C9ECEC406CDA6 /* Pods-FeelAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8403117E860129D6057E9165203C29B /* KMPlaceholderTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B22BF311A46B6D34054988785EBD6AE /* KMPlaceholderTextView-dummy.m */; };
-		F642529FF2940252569C30857AE4068B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */; };
+		2E896F0F66190A3B01E18C5CD61B4EB5 /* KMPlaceholderTextView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9357B5DBCADA9914BCF62B466ACA1537 /* KMPlaceholderTextView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3E8E35BE5DE22A4881D2A8A32BB912F7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		6906DD94548E7D03665BC6807EA59FD0 /* Pods-FeelAppTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BB9480075FCE0897D3C3DFFCAF58B836 /* Pods-FeelAppTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		80BFF64204EEF3BFED28E4A6993784A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		84E0FA454C7466CC9BC9DF229EE41D95 /* Pods-FeelAppUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA40468B8696DCEA182C9ECEC406CDA6 /* Pods-FeelAppUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87B0C2BB606B7935239DA50B09B26448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		8F887FA2A0A708B7D7937E1F768E2628 /* KMPlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2443062CD299E5A11590A6EC28BA512 /* KMPlaceholderTextView.swift */; };
+		B1C05D2FD7A7E8EB17B2A1A90160E959 /* Pods-FeelApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E9E9083721B45167D5892EEC31DBCB /* Pods-FeelApp-dummy.m */; };
+		C5EC6ABF7E77A985708293EF7BFEEB64 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		C8D93015CF1D621ABBA98D205001709B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		DFE4469BAA0538A42FC1EC470A91D488 /* Pods-FeelAppUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F10EF2A73FF0EBA66A6037DA3A8FB949 /* Pods-FeelAppUITests-dummy.m */; };
+		E746DDA336AD4D23320A5B6977470196 /* Pods-FeelAppTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D291BAAF3859B203F139A3C3265B58F9 /* Pods-FeelAppTests-dummy.m */; };
+		E923FD08F48C5A121968CED6323DA534 /* Pods-FeelApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BFFB986D807768BB215A25C55836FD /* Pods-FeelApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E959A8D3A0DDAE65456D324B7CC894B0 /* KMPlaceholderTextView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B22BF311A46B6D34054988785EBD6AE /* KMPlaceholderTextView-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DAADD6195A3742B2AB5ACCF31120F5C8 /* PBXContainerItemProxy */ = {
+		AA9EEF5DAD2CBA678204E96549AB7F47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EC25B770E2E786F47106EE8F013163EA;
+			remoteGlobalIDString = D53804E34279A83A61915C6ACA3C0D06;
 			remoteInfo = KMPlaceholderTextView;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		005D6A95205402D60C515E5B0D5A01BE /* KMPlaceholderTextView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KMPlaceholderTextView.xcconfig; sourceTree = "<group>"; };
-		0361578B5BD1B6BD4C05E47AA16F0E1E /* Pods-FeelAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FeelAppUITests.modulemap"; sourceTree = "<group>"; };
-		0373FDE5D56841A54EC9ADFAF0FE2BFB /* Pods_FeelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0361578B5BD1B6BD4C05E47AA16F0E1E /* Pods-FeelAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FeelAppUITests.modulemap"; sourceTree = "<group>"; };
+		0373FDE5D56841A54EC9ADFAF0FE2BFB /* Pods_FeelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FeelAppTests.framework; path = "Pods-FeelAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B93676DF9BDB8C4E9D56C944D59C09 /* Pods-FeelAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FeelAppTests-resources.sh"; sourceTree = "<group>"; };
 		20FBB0E8FA080C2CE2C365A44CF004B3 /* Pods-FeelApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FeelApp-resources.sh"; sourceTree = "<group>"; };
 		218E8C46F811A418D4534E5E66BDD101 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,29 +47,30 @@
 		34392971B0DDE1770AA7338601672945 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B55E816EAA00E1E5CB36AB7D9B6E54D /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
 		3E78D8AB56CDC2AD1C2027944A2BD4FE /* Pods-FeelAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FeelAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		4CD7C4D69981F6DD7ECE8DB11927F5F2 /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CD7C4D69981F6DD7ECE8DB11927F5F2 /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FeelApp.framework; path = "Pods-FeelApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BD68390DD2795487AB8C1CB8CDDF49 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
 		53245CA7455CC9FC016F1C96B9890AFD /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		57B278CB63CCDF05876DE478ED76EBDE /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		5908CAC4D6A61710270806DABAB87FD5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		624448F1FE91688C752004F3755908BB /* KMPlaceholderTextView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KMPlaceholderTextView-prefix.pch"; sourceTree = "<group>"; };
 		665A7F69DE8E01BF254C0D262693668B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		66A6250497F9DA50988BFF058B5C0387 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68F4E6BD4D36D3F6784097753031F597 /* Pods-FeelApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FeelApp.modulemap"; sourceTree = "<group>"; };
+		68F4E6BD4D36D3F6784097753031F597 /* Pods-FeelApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FeelApp.modulemap"; sourceTree = "<group>"; };
 		69B0BAFE0664AC1F475F046AF53D35A6 /* Pods-FeelApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FeelApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		6B753C17658C31E85B026A171526056C /* Pods-FeelAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FeelAppUITests-frameworks.sh"; sourceTree = "<group>"; };
 		77900D8B33C9C49A925143562887FD67 /* Pods-FeelAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FeelAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		88886F2B80317F58D532F92AAE742986 /* Pods-FeelAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FeelAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9357B5DBCADA9914BCF62B466ACA1537 /* KMPlaceholderTextView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "KMPlaceholderTextView-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96E9E9083721B45167D5892EEC31DBCB /* Pods-FeelApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FeelApp-dummy.m"; sourceTree = "<group>"; };
-		9A0BF33BF5A21A795629226673DC5A9F /* Pods-FeelAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-FeelAppTests.modulemap"; sourceTree = "<group>"; };
-		9B389174263D45CF879EDFF9FFD202B5 /* Pods_FeelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A0BF33BF5A21A795629226673DC5A9F /* Pods-FeelAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-FeelAppTests.modulemap"; sourceTree = "<group>"; };
+		9B389174263D45CF879EDFF9FFD202B5 /* Pods_FeelAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FeelAppUITests.framework; path = "Pods-FeelAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6D568EBB4955F76B155BA75A7C71B1 /* Pods-FeelApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FeelApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A17DC264C7BA102D3D9A4A0696E33D54 /* FirebaseDatabase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseDatabase.framework; path = Frameworks/FirebaseDatabase.framework; sourceTree = "<group>"; };
-		A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A86E4B17D3BCD3CC83C0F746C5FC803B /* Pods-FeelAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FeelAppTests-frameworks.sh"; sourceTree = "<group>"; };
-		AAD73FFB72B25A65CC02BC6F7F56B142 /* KMPlaceholderTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMPlaceholderTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAD73FFB72B25A65CC02BC6F7F56B142 /* KMPlaceholderTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = KMPlaceholderTextView.framework; path = KMPlaceholderTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE0C3D85A5754A8E41FD594310C198B /* Pods-FeelAppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FeelAppUITests-resources.sh"; sourceTree = "<group>"; };
 		AEA6280F59A77760A42B9834C5F5969A /* Pods-FeelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FeelApp.release.xcconfig"; sourceTree = "<group>"; };
 		B3090C24520D0FD0AF5E0093C727C985 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
@@ -84,44 +85,43 @@
 		DD39F03F4AFCC897D0398314D8D10711 /* Pods-FeelAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FeelAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DEA32232C600AD66D818DE29948015DA /* GoogleParsingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleParsingUtilities.framework; path = Frameworks/GoogleParsingUtilities.framework; sourceTree = "<group>"; };
 		E3641F607B871488DCC2F0B9DD348073 /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleNetworkingUtilities.framework; path = Frameworks/GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
-		E3B2E71CF12A73C56BAC7173CB27999B /* KMPlaceholderTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = KMPlaceholderTextView.modulemap; sourceTree = "<group>"; };
-		E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E3B2E71CF12A73C56BAC7173CB27999B /* KMPlaceholderTextView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = KMPlaceholderTextView.modulemap; sourceTree = "<group>"; };
 		EA40468B8696DCEA182C9ECEC406CDA6 /* Pods-FeelAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FeelAppUITests-umbrella.h"; sourceTree = "<group>"; };
 		F10EF2A73FF0EBA66A6037DA3A8FB949 /* Pods-FeelAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FeelAppUITests-dummy.m"; sourceTree = "<group>"; };
 		FE039652C94374EF3093B96506DAF8EE /* Pods-FeelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FeelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28F2216806E3E0D44CFD41945048D02A /* Frameworks */ = {
+		0CFC508794FEA2035D8C4CA7F3F7054A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				552FF2568273DD6B3A3CB6BCCE4D5FB9 /* Foundation.framework in Frameworks */,
+				C5EC6ABF7E77A985708293EF7BFEEB64 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CFDBC65A816F9D477EFAE671B7B8122 /* Frameworks */ = {
+		6BE4E2BF1BD77D84A2A29975FE337801 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2600A9D7A507D395912F06A3FADF7E32 /* Foundation.framework in Frameworks */,
+				80BFF64204EEF3BFED28E4A6993784A8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80A78D1037C10973B963D0D190B96A65 /* Frameworks */ = {
+		B0A0260A18E86F352333E4D7773BA84F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B07CE3091CBBCD2890A05A6D2664CD /* Foundation.framework in Frameworks */,
+				C8D93015CF1D621ABBA98D205001709B /* Foundation.framework in Frameworks */,
+				3E8E35BE5DE22A4881D2A8A32BB912F7 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8AB209869FFFA7C3A7B69432CFA4361E /* Frameworks */ = {
+		F63A4997E156304EDB1EE76E8BDF39FE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9272B5E077A9948320B47AE18BBB7328 /* Foundation.framework in Frameworks */,
-				F642529FF2940252569C30857AE4068B /* UIKit.framework in Frameworks */,
+				87B0C2BB606B7935239DA50B09B26448 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +144,7 @@
 			children = (
 				8A4C9F7ABE3DABE9100EA26C4EFD33FA /* Frameworks */,
 			);
+			name = GoogleNetworkingUtilities;
 			path = GoogleNetworkingUtilities;
 			sourceTree = "<group>";
 		};
@@ -153,6 +154,7 @@
 				53245CA7455CC9FC016F1C96B9890AFD /* FIRInstanceID.h */,
 				26BD3FD8D915CF548A0EE1175D0278DC /* Frameworks */,
 			);
+			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -193,7 +195,7 @@
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */,
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -203,6 +205,7 @@
 			children = (
 				ABF1FB6E87D2E540043F120526449673 /* Frameworks */,
 			);
+			name = FirebaseAuth;
 			path = FirebaseAuth;
 			sourceTree = "<group>";
 		};
@@ -239,6 +242,7 @@
 			children = (
 				923CAF66529EA44D720F7629259B11BF /* Frameworks */,
 			);
+			name = GoogleSymbolUtilities;
 			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
@@ -248,6 +252,7 @@
 				C2443062CD299E5A11590A6EC28BA512 /* KMPlaceholderTextView.swift */,
 				95B8B0D3A3D4A40413CA3F767693975D /* Support Files */,
 			);
+			name = KMPlaceholderTextView;
 			path = KMPlaceholderTextView;
 			sourceTree = "<group>";
 		};
@@ -305,6 +310,7 @@
 			children = (
 				E5B6B18D9F222FDEDADB0EE237572BE9 /* Frameworks */,
 			);
+			name = FirebaseDatabase;
 			path = FirebaseDatabase;
 			sourceTree = "<group>";
 		};
@@ -321,6 +327,7 @@
 			children = (
 				8A77FADCAE82DE9128A1429F1310EAF2 /* Analytics */,
 			);
+			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -329,6 +336,7 @@
 			children = (
 				E710AC50FD1764BD95231CB80BB3D19C /* Frameworks */,
 			);
+			name = GoogleUtilities;
 			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
@@ -337,6 +345,7 @@
 			children = (
 				E5AA8FCEB13E3D2E3F7B6189B01AB1E6 /* Frameworks */,
 			);
+			name = GoogleInterchangeUtilities;
 			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
@@ -353,6 +362,7 @@
 			children = (
 				395FDDD2B031A1787ADAF9D3411C05B0 /* Frameworks */,
 			);
+			name = GoogleParsingUtilities;
 			path = GoogleParsingUtilities;
 			sourceTree = "<group>";
 		};
@@ -361,6 +371,7 @@
 			children = (
 				BDB8FE1D7ACA78B8CA54AA11778A9F44 /* Frameworks */,
 			);
+			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -398,21 +409,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		E710AC50FD1764BD95231CB80BB3D19C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				B3090C24520D0FD0AF5E0093C727C985 /* GoogleUtilities.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F302CD3B306AF1ED96B9AF31FCDBC26C /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				A2A6FF208CEC4C2861F1E9D42D651453 /* Foundation.framework */,
-				E86668F20F252C440D1015B816BE59C5 /* UIKit.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		FD20DA262B2E115127E13BB04EBADF7F /* Pods-FeelAppTests */ = {
@@ -436,83 +447,66 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		268FAE373845134AE076C1DCDD2AAFDD /* Headers */ = {
+		49B7DB2EE513C8FD1B5467BBFA420E0C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3BBF58775157B7573908EE72C0AEE64 /* Pods-FeelAppUITests-umbrella.h in Headers */,
+				E923FD08F48C5A121968CED6323DA534 /* Pods-FeelApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C7DFA37C93B472ECB29A94958A1FD3F8 /* Headers */ = {
+		A545064FA4C047F8F5BD94EA2C8D0820 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FA0D0DE227339C961C59C4E19C669D /* Pods-FeelAppTests-umbrella.h in Headers */,
+				84E0FA454C7466CC9BC9DF229EE41D95 /* Pods-FeelAppUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEE0CDDB967A4C5627A5FF3A209F70C4 /* Headers */ = {
+		C3F8AF9F4275AC299F004582860DE331 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68DC830D5A05E007957B6F6EBF70A5B2 /* Pods-FeelApp-umbrella.h in Headers */,
+				6906DD94548E7D03665BC6807EA59FD0 /* Pods-FeelAppTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F8B2A25EE204A373FDCF342684523071 /* Headers */ = {
+		E1670857A3C496A3945B6C4CA7762E1A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70A166A4A5003CB96564128D0C9030D3 /* KMPlaceholderTextView-umbrella.h in Headers */,
+				2E896F0F66190A3B01E18C5CD61B4EB5 /* KMPlaceholderTextView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		54C65073E391CE9C0C780EFFD4A8E562 /* Pods-FeelAppUITests */ = {
+		25EB8944B17DED6ED945DE4808DC1274 /* Pods-FeelApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0025CE67A09DD379E998D1B945BD7FE /* Build configuration list for PBXNativeTarget "Pods-FeelAppUITests" */;
+			buildConfigurationList = C728E1318E1F20F815CC33EB00A0F6C8 /* Build configuration list for PBXNativeTarget "Pods-FeelApp" */;
 			buildPhases = (
-				AC7E9F0DA53F6DEDB9C35A816897D868 /* Sources */,
-				5CFDBC65A816F9D477EFAE671B7B8122 /* Frameworks */,
-				268FAE373845134AE076C1DCDD2AAFDD /* Headers */,
+				370D7A6409787581E82A12CAB76FB805 /* Sources */,
+				F63A4997E156304EDB1EE76E8BDF39FE /* Frameworks */,
+				49B7DB2EE513C8FD1B5467BBFA420E0C /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Pods-FeelAppUITests";
-			productName = "Pods-FeelAppUITests";
-			productReference = 9B389174263D45CF879EDFF9FFD202B5 /* Pods_FeelAppUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		968B267616FBE34C03D8B86553DCD69E /* Pods-FeelApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4CF19ACBCF1333E0D82BAD845B028544 /* Build configuration list for PBXNativeTarget "Pods-FeelApp" */;
-			buildPhases = (
-				30F1DDB4C5B686E59F86E28B1E134B14 /* Sources */,
-				28F2216806E3E0D44CFD41945048D02A /* Frameworks */,
-				CEE0CDDB967A4C5627A5FF3A209F70C4 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				544AC016DF9ABD1564E289C14BD5239A /* PBXTargetDependency */,
+				896B8B2E0A83557B99AC1AA1480DDEE9 /* PBXTargetDependency */,
 			);
 			name = "Pods-FeelApp";
 			productName = "Pods-FeelApp";
 			productReference = 4CD7C4D69981F6DD7ECE8DB11927F5F2 /* Pods_FeelApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B66340AE9C9F0A4AF06B8CDBBB7A0B42 /* Pods-FeelAppTests */ = {
+		2D39925E32B0881A6F425A5A82B095ED /* Pods-FeelAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E16F95F00253815791602FB149AD20C /* Build configuration list for PBXNativeTarget "Pods-FeelAppTests" */;
+			buildConfigurationList = F6B0E0EB2CADB180A7F6C2218DA5E611 /* Build configuration list for PBXNativeTarget "Pods-FeelAppTests" */;
 			buildPhases = (
-				2C7A15487242645B1E66391133984FEB /* Sources */,
-				80A78D1037C10973B963D0D190B96A65 /* Frameworks */,
-				C7DFA37C93B472ECB29A94958A1FD3F8 /* Headers */,
+				9D8E45B83F9B4FA73CFF6D63A41F5255 /* Sources */,
+				0CFC508794FEA2035D8C4CA7F3F7054A /* Frameworks */,
+				C3F8AF9F4275AC299F004582860DE331 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -523,13 +517,30 @@
 			productReference = 0373FDE5D56841A54EC9ADFAF0FE2BFB /* Pods_FeelAppTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EC25B770E2E786F47106EE8F013163EA /* KMPlaceholderTextView */ = {
+		9C1526DD1C9D4B2F106A1F98AE9F923F /* Pods-FeelAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C8A1B0C3FEE5DB40EBFDEBA25FFF223 /* Build configuration list for PBXNativeTarget "KMPlaceholderTextView" */;
+			buildConfigurationList = 5AA0DFDF3B025EABA4843021CD2E4CA2 /* Build configuration list for PBXNativeTarget "Pods-FeelAppUITests" */;
 			buildPhases = (
-				0D58B18F455F40A67AAE5F6444575295 /* Sources */,
-				8AB209869FFFA7C3A7B69432CFA4361E /* Frameworks */,
-				F8B2A25EE204A373FDCF342684523071 /* Headers */,
+				6532CE3117FF53F0B6543466942E9AA6 /* Sources */,
+				6BE4E2BF1BD77D84A2A29975FE337801 /* Frameworks */,
+				A545064FA4C047F8F5BD94EA2C8D0820 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-FeelAppUITests";
+			productName = "Pods-FeelAppUITests";
+			productReference = 9B389174263D45CF879EDFF9FFD202B5 /* Pods_FeelAppUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D53804E34279A83A61915C6ACA3C0D06 /* KMPlaceholderTextView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 067781AD62F19538A7B4C2223D362013 /* Build configuration list for PBXNativeTarget "KMPlaceholderTextView" */;
+			buildPhases = (
+				286AFF2EAEE4EDB82052954482C97772 /* Sources */,
+				B0A0260A18E86F352333E4D7773BA84F /* Frameworks */,
+				E1670857A3C496A3945B6C4CA7762E1A /* Headers */,
 			);
 			buildRules = (
 			);
@@ -547,7 +558,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -561,98 +572,67 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EC25B770E2E786F47106EE8F013163EA /* KMPlaceholderTextView */,
-				968B267616FBE34C03D8B86553DCD69E /* Pods-FeelApp */,
-				B66340AE9C9F0A4AF06B8CDBBB7A0B42 /* Pods-FeelAppTests */,
-				54C65073E391CE9C0C780EFFD4A8E562 /* Pods-FeelAppUITests */,
+				D53804E34279A83A61915C6ACA3C0D06 /* KMPlaceholderTextView */,
+				25EB8944B17DED6ED945DE4808DC1274 /* Pods-FeelApp */,
+				2D39925E32B0881A6F425A5A82B095ED /* Pods-FeelAppTests */,
+				9C1526DD1C9D4B2F106A1F98AE9F923F /* Pods-FeelAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0D58B18F455F40A67AAE5F6444575295 /* Sources */ = {
+		286AFF2EAEE4EDB82052954482C97772 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8403117E860129D6057E9165203C29B /* KMPlaceholderTextView-dummy.m in Sources */,
-				7B76373D74186B42AADB7DA9C933C8AA /* KMPlaceholderTextView.swift in Sources */,
+				E959A8D3A0DDAE65456D324B7CC894B0 /* KMPlaceholderTextView-dummy.m in Sources */,
+				8F887FA2A0A708B7D7937E1F768E2628 /* KMPlaceholderTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C7A15487242645B1E66391133984FEB /* Sources */ = {
+		370D7A6409787581E82A12CAB76FB805 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7676B0E3AD50297C3C89FD6B74F11F53 /* Pods-FeelAppTests-dummy.m in Sources */,
+				B1C05D2FD7A7E8EB17B2A1A90160E959 /* Pods-FeelApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30F1DDB4C5B686E59F86E28B1E134B14 /* Sources */ = {
+		6532CE3117FF53F0B6543466942E9AA6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1D5F95A76E6330C0F6FCE05488ADF6 /* Pods-FeelApp-dummy.m in Sources */,
+				DFE4469BAA0538A42FC1EC470A91D488 /* Pods-FeelAppUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC7E9F0DA53F6DEDB9C35A816897D868 /* Sources */ = {
+		9D8E45B83F9B4FA73CFF6D63A41F5255 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A837EBEAD4AB108AA202961A087000C6 /* Pods-FeelAppUITests-dummy.m in Sources */,
+				E746DDA336AD4D23320A5B6977470196 /* Pods-FeelAppTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		544AC016DF9ABD1564E289C14BD5239A /* PBXTargetDependency */ = {
+		896B8B2E0A83557B99AC1AA1480DDEE9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = KMPlaceholderTextView;
-			target = EC25B770E2E786F47106EE8F013163EA /* KMPlaceholderTextView */;
-			targetProxy = DAADD6195A3742B2AB5ACCF31120F5C8 /* PBXContainerItemProxy */;
+			target = D53804E34279A83A61915C6ACA3C0D06 /* KMPlaceholderTextView */;
+			targetProxy = AA9EEF5DAD2CBA678204E96549AB7F47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0349B6ED5469D19990B920F0D462FC49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA176A4BEEA23C1E13B9461756620810 /* Pods-FeelAppUITests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FeelAppUITests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FeelAppUITests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		074481B18625A4321FA0D255EF389744 /* Debug */ = {
+		0C1B5019642E789162786AA6FDDB9BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 28A4633F9770E06C0CA86DAF6B775FF7 /* Pods-FeelAppUITests.debug.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -681,12 +661,13 @@
 			};
 			name = Debug;
 		};
-		1110E69CCA960BD36CFA842877DED03A /* Release */ = {
+		10B8F80EC4DF23A2A35961431B44AD93 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEA6280F59A77760A42B9834C5F5969A /* Pods-FeelApp.release.xcconfig */;
+			baseConfigurationReference = BA176A4BEEA23C1E13B9461756620810 /* Pods-FeelAppUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -695,18 +676,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FeelApp/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-FeelAppUITests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FeelApp/Pods-FeelApp.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-FeelAppUITests/Pods-FeelAppUITests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FeelApp;
+				PRODUCT_NAME = Pods_FeelAppUITests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -715,12 +696,81 @@
 			};
 			name = Release;
 		};
-		16222527E00C21E052FFA185060E297B /* Debug */ = {
+		1B4841A47AE9FC9334B05F6B8B3102FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 005D6A95205402D60C515E5B0D5A01BE /* KMPlaceholderTextView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/KMPlaceholderTextView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = KMPlaceholderTextView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		28E0206CCE09284F17F0EE88BC981794 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE039652C94374EF3093B96506DAF8EE /* Pods-FeelAppTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FeelAppTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FeelAppTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2D9ED6F80A76A7A3F008B7D628FE8B06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9F6D568EBB4955F76B155BA75A7C71B1 /* Pods-FeelApp.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -750,7 +800,7 @@
 			};
 			name = Debug;
 		};
-		1C908C9E23B0214C9B9B55CCB6C90A02 /* Release */ = {
+		673254EEAF0B5BF4596080C749645884 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -764,17 +814,14 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
@@ -786,81 +833,20 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		6A11D32AD01494751A840901210316D0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 005D6A95205402D60C515E5B0D5A01BE /* KMPlaceholderTextView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/KMPlaceholderTextView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = KMPlaceholderTextView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6B9FAF34E0765A1D8AC092493742C150 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE039652C94374EF3093B96506DAF8EE /* Pods-FeelAppTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-FeelAppTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_FeelAppTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A68E1ADD364916E59986157044510660 /* Release */ = {
+		6FD8D66E3E49D5B556CD1227F2BB1FE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 77900D8B33C9C49A925143562887FD67 /* Pods-FeelAppTests.release.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -889,7 +875,42 @@
 			};
 			name = Release;
 		};
-		A9E8533E615EA7FD02D27524E68EE149 /* Debug */ = {
+		D755C00FBABAC0AA13B247E6A0D740D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEA6280F59A77760A42B9834C5F5969A /* Pods-FeelApp.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-FeelApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-FeelApp/Pods-FeelApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_FeelApp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -903,18 +924,15 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_DEBUG=1",
@@ -930,18 +948,21 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		D658A4163189B3D0920AD2CCA987FF4E /* Debug */ = {
+		F7E39B6DA099E73935D9780FF0C4B931 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 005D6A95205402D60C515E5B0D5A01BE /* KMPlaceholderTextView.xcconfig */;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -954,26 +975,25 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/KMPlaceholderTextView/KMPlaceholderTextView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = KMPlaceholderTextView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0C8A1B0C3FEE5DB40EBFDEBA25FFF223 /* Build configuration list for PBXNativeTarget "KMPlaceholderTextView" */ = {
+		067781AD62F19538A7B4C2223D362013 /* Build configuration list for PBXNativeTarget "KMPlaceholderTextView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D658A4163189B3D0920AD2CCA987FF4E /* Debug */,
-				6A11D32AD01494751A840901210316D0 /* Release */,
+				1B4841A47AE9FC9334B05F6B8B3102FC /* Debug */,
+				F7E39B6DA099E73935D9780FF0C4B931 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -981,35 +1001,35 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9E8533E615EA7FD02D27524E68EE149 /* Debug */,
-				1C908C9E23B0214C9B9B55CCB6C90A02 /* Release */,
+				E4F26E6EB105713A6A7E7E2E283AC2DF /* Debug */,
+				673254EEAF0B5BF4596080C749645884 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4CF19ACBCF1333E0D82BAD845B028544 /* Build configuration list for PBXNativeTarget "Pods-FeelApp" */ = {
+		5AA0DFDF3B025EABA4843021CD2E4CA2 /* Build configuration list for PBXNativeTarget "Pods-FeelAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16222527E00C21E052FFA185060E297B /* Debug */,
-				1110E69CCA960BD36CFA842877DED03A /* Release */,
+				0C1B5019642E789162786AA6FDDB9BFD /* Debug */,
+				10B8F80EC4DF23A2A35961431B44AD93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E16F95F00253815791602FB149AD20C /* Build configuration list for PBXNativeTarget "Pods-FeelAppTests" */ = {
+		C728E1318E1F20F815CC33EB00A0F6C8 /* Build configuration list for PBXNativeTarget "Pods-FeelApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6B9FAF34E0765A1D8AC092493742C150 /* Debug */,
-				A68E1ADD364916E59986157044510660 /* Release */,
+				2D9ED6F80A76A7A3F008B7D628FE8B06 /* Debug */,
+				D755C00FBABAC0AA13B247E6A0D740D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0025CE67A09DD379E998D1B945BD7FE /* Build configuration list for PBXNativeTarget "Pods-FeelAppUITests" */ = {
+		F6B0E0EB2CADB180A7F6C2218DA5E611 /* Build configuration list for PBXNativeTarget "Pods-FeelAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				074481B18625A4321FA0D255EF389744 /* Debug */,
-				0349B6ED5469D19990B920F0D462FC49 /* Release */,
+				28E0206CCE09284F17F0EE88BC981794 /* Debug */,
+				6FD8D66E3E49D5B556CD1227F2BB1FE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

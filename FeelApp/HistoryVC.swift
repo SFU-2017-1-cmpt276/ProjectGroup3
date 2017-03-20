@@ -99,7 +99,7 @@ class HistoryVC: UIViewController {
                 self.historyView.emotions.append(emotion)
                 
             }
-            self.historyView.emotions.sort(by: {$0.time < $1.time})
+            self.historyView.emotions.sort(by: {$1.time < $0.time})
             self.historyView.reloadData()
             
         })

@@ -12,6 +12,28 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import UIKit
+
+extension UITextField {
+    func roundedTopText(){
+        let maskPath1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.topLeft , .topRight],
+                                     cornerRadii:CGSize(width:8.0, height:8.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPath1.cgPath
+        self.layer.mask = maskLayer1
+    }
+    func roundedBottomText(){
+        let maskPath1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.bottomLeft , .bottomRight],
+                                     cornerRadii:CGSize(width:8.0, height:8.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPath1.cgPath
+        self.layer.mask = maskLayer1
+    }
+}
 
 class LoginVC: UIViewController {
 
@@ -40,8 +62,8 @@ class LoginVC: UIViewController {
         setUpSignupButton()
         setUpForgotPassword()
         
-        usernameTF.text = "dvenkate@sfu.ca"
-        passwordTF.text = "deepak"
+        usernameTF.text = "ckl41@sfu.ca"
+        passwordTF.text = "123456"
     }
 
     
@@ -68,6 +90,8 @@ class LoginVC: UIViewController {
             tf.leftView = someView
             tf.leftViewMode = .always
         }
+        usernameTF.roundedTopText()
+        passwordTF.roundedBottomText()
         
          usernameTF.attributedPlaceholder = NSMutableAttributedString(string: "EMAIL", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
          passwordTF.attributedPlaceholder = NSMutableAttributedString(string: "PASSWORD", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
@@ -147,5 +171,7 @@ class LoginVC: UIViewController {
         forgotPassword.center.x = view.frame.width/2
         forgotPassword.frame.origin.y = signupButton.frame.maxY + 15
     }
+    
+    
 
 }

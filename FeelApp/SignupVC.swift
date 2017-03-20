@@ -14,10 +14,6 @@
 import UIKit
 import Firebase
 
-
-
-
-
 class SignupVC: UIViewController {
     
     
@@ -121,6 +117,9 @@ class SignupVC: UIViewController {
             tf.leftView = someView
             tf.leftViewMode = .always
         }
+        
+        usernameTF.roundedTopText()
+        aliasTF.roundedBottomText()
         
         usernameTF.attributedPlaceholder = NSMutableAttributedString(string: "EMAIL", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
         passwordTF.attributedPlaceholder = NSMutableAttributedString(string: "PASSWORD", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])

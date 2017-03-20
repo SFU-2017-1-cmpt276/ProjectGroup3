@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B66340AE9C9F0A4AF06B8CDBBB7A0B42"
+               BlueprintIdentifier = "2D39925E32B0881A6F425A5A82B095ED"
                BuildableName = "Pods_FeelAppTests.framework"
                BlueprintName = "Pods-FeelAppTests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B66340AE9C9F0A4AF06B8CDBBB7A0B42"
+            BlueprintIdentifier = "2D39925E32B0881A6F425A5A82B095ED"
             BuildableName = "Pods_FeelAppTests.framework"
             BlueprintName = "Pods-FeelAppTests"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B66340AE9C9F0A4AF06B8CDBBB7A0B42"
-            BuildableName = "Pods_FeelAppTests.framework"
-            BlueprintName = "Pods-FeelAppTests"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
