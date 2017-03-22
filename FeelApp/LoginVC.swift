@@ -60,8 +60,8 @@ class LoginVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         //set the starting value for the username and password with an account thats already been created. Not for finished version but easy to log in.
-        usernameTF.text = "ckl41@sfu.ca"
-        passwordTF.text = "123456"
+        usernameTF.text = ""
+        passwordTF.text = ""
     }
     
     //when the view is tapped and the keyboard is up, end editing for all text fields and disable the gesture recognzer

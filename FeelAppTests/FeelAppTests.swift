@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import FeelApp
+//@testable import FeelApp
 
 class FeelAppTests: XCTestCase {
     
