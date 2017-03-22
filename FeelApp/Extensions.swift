@@ -1,6 +1,7 @@
 //FeelApp
 //The Extension class. Functions based on iOS objects that are used throughout the app.
 //Version 1: Created the extension class. Added changeToColor and minutes fron
+//Version 2: added extension for rounding the top and bottom of a text field seperately 
 
 ///Programmers: Deepak
 
@@ -14,6 +15,28 @@
 
 
 import UIKit
+
+extension UITextField {
+    func roundedTopText(){
+        let maskPath1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.topLeft , .topRight],
+                                     cornerRadii:CGSize(width:8.0, height:8.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPath1.cgPath
+        self.layer.mask = maskLayer1
+    }
+    func roundedBottomText(){
+        let maskPath1 = UIBezierPath(roundedRect: self.bounds,
+                                     byRoundingCorners: [.bottomLeft , .bottomRight],
+                                     cornerRadii:CGSize(width:8.0, height:8.0))
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.frame = self.bounds
+        maskLayer1.path = maskPath1.cgPath
+        self.layer.mask = maskLayer1
+    }
+}
+
 
 extension UIButton{
     

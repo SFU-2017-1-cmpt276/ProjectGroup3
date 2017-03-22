@@ -1,10 +1,15 @@
-//
-//  FeedVC.swift
-//  FeelApp
-//
-//  Created by Deepak Venkatesh on 2017-03-15.
-//  Copyright © 2017 CMPT276. All rights reserved.
-//
+//FeelApp
+//This is the Feed view controller. For the user to view posts from other users in a newsfeed format. Anyonmous posts, identified only by the user's alias.
+///Programmers: Deepak and Carson
+//Version 1: Created tableview with PostCell and test data.
+//Version 2: Connected to database.
+//Version 3: Improved UI. Set fonts and colors for each story. Created title bar.
+//Version 4: Fixed bug where long text was overflowing to the right, instead of increasing the height of the cell.
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
+
 
 import UIKit
 import FirebaseDatabase
@@ -19,6 +24,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
     
+    // set up table view and top bar. Get data from firebase.
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +33,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         getPosts()
     }
     
+    //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
         tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height - originY)
@@ -47,6 +54,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.showsVerticalScrollIndicator = false
     }
     
+    //Set up the top bar. The view, back button, and title label.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
         let inset = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
@@ -74,10 +82,12 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         topView.addSubview(titleLabel)
     }
     
+    //function called by the back button. Dismiss the view controller
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
     
+    //Get the data from firebase. Add it to the posts array. then reload the tableview
     func getPosts(){
         
         FIRDatabase.database().reference().child("Posts").observeSingleEvent(of: .value, with: {allSnap in
@@ -107,13 +117,17 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         })
     }
     
+    
+    //tableview data source method. say the number of rows that will appear
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
+    //tableview data source method. set and format the cell. 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! PostCell
         cell.setUp(post: posts[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
 

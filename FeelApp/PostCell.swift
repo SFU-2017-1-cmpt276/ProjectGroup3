@@ -1,12 +1,17 @@
-//
-//  PostCell.swift
-//  FeelApp
-//
-//  Created by Deepak Venkatesh on 2017-03-15.
-//  Copyright © 2017 CMPT276. All rights reserved.
-//
+//FeelApp
+//This is the Post Cell. It is a table view cell that displays a post from a user. The FeedVC uses this class. Connected to PostCell.xib
+///Programmers: Deepak and Carson
+//Version 1: Created UI.
+//Version 2: Improved UI.
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
+
 
 import UIKit
+
+
 
 class PostCell: UITableViewCell {
 
@@ -29,7 +34,8 @@ class PostCell: UITableViewCell {
     let formatter = DateFormatter()
     
     @IBOutlet var line: UILabel!
-    @IBOutlet var background: UILabel!
+    
+    //when the cell is first awakeneed from nib. Do general formatting. Set up the date formatter.
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -54,6 +60,8 @@ class PostCell: UITableViewCell {
         formatter.dateStyle = .short
     }
     
+    
+    //Input is the post object. Using this, set the specifics for the cell. Including but not limited to text and colors. 
     func setUp(post:Post){
         self.post = post
         mainText.textColor = UIColor.white
@@ -68,7 +76,6 @@ class PostCell: UITableViewCell {
         timeLabel.text = GlobalData.FirebaseTimeStampToString(post.emotion.time)
         line.backgroundColor = UIColor.white
         backgroundView?.backgroundColor = post.emotion.color
-
     }
     
 }

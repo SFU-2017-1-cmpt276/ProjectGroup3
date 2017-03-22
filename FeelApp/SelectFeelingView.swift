@@ -11,6 +11,7 @@
 
 import UIKit
 
+//delegate method. The homeVC implements this. 
 protocol SelectFeelingDelegate{
     func emotionSelected(_ emotion:Emotion)->Void
 }
@@ -23,6 +24,7 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
     
     var cellSize:CGSize
     
+    //initializer. take in size and sets that to be the size of the view. call setUp()
     init(size:CGSize){
         let layout = UICollectionViewFlowLayout()
         
@@ -33,19 +35,14 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
         super.init(frame: CGRect(origin:CGPoint.zero,size: CGSize(width:size.width,height:size.height)), collectionViewLayout: layout)
         
         setUp()
-        
-        let numberOfRows = CGFloat(ceil(Float(emotions.count)/2))
-        
-        let cellTotalHeight = numberOfRows * height
-        let totalGaps = (numberOfRows-1)*gap
-        let edgeGaps = gap*2
-        
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //sets up the SelectFeelingView. give the cell that will be used, the delegate/data source, and other characteristics
     func setUp(){
         delegate = self
         dataSource = self
@@ -56,10 +53,13 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
         register(EmotionCell.self, forCellWithReuseIdentifier: "cell")
     }
     
+    //collection view data source method. Set the number of items to be the count of the emotions array
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return emotions.count
     }
     
+    //collection view data source method. Set up the cell.
+    //add a gesture recognizer to the label
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EmotionCell
         cell.someLabel.addTarget(self, action: #selector(SelectFeelingView.buttonClicked(_:)), for: .touchUpInside)
@@ -67,6 +67,7 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
         return cell
     }
     
+    //function called when a cell label is clicked. Figure out the cell that the label was in, get the emotion from that, and pass that emotion to the delegate
     func buttonClicked(_ sender:UIButton){
         
         var someView = sender.superview!
@@ -81,17 +82,14 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
         
     }
     
+    //collection view delegate method. for the insets.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: gap, left: gap, bottom: 0, right: gap)
     }
     
     
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        someDelegate?.emotionSelected(emotions[indexPath.item])
-    }
-    
-    
+
+    //cell that will be used by this class
     class EmotionCell:UICollectionViewCell{
         
         let someLabel = UIButton()
@@ -105,10 +103,7 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
             fatalError("init(coder:) has not been implemented")
         }
         
-        func test(){
-            
-        }
-        
+        //set up the cell based on the inputted emotion and size.
         func setUp(_ emotion:Emotion,size:CGSize){
             
             backgroundColor = emotion.color

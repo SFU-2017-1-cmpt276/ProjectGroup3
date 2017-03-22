@@ -4,6 +4,7 @@
 //Version 1: Created UI with no actions
 //Version 2: Add Sign Up action
 //Version 3: Improved UI. Added background colors and changed placeholder colors.
+//Version 4: fixed keyboard bug (keyboard wasnt closing once opened)
 
 //Coding standard: 
     //all view controller files have a descriptor followed by "VC."
@@ -14,10 +15,6 @@
 import UIKit
 import Firebase
 
-
-
-
-
 class SignupVC: UIViewController {
     
     
@@ -25,9 +22,6 @@ class SignupVC: UIViewController {
     var submitButton = UIButton()
     var topView = UIView()
     var titleLabel = UILabel()
-    
-    
-    
     
     let usernameTF = UITextField()
     let passwordTF = UITextField()
@@ -39,18 +33,20 @@ class SignupVC: UIViewController {
     override var prefersStatusBarHidden: Bool{
         return true
     }
+    
+    //set up the top bar and the text fields and the general view. set the username text field to be in editing mode when the VC first opens. 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = color
-        NotificationCenter.default.addObserver(self, selector: #selector(SignupVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
+
         setUpTopView()
         setUpTFs()
         
         usernameTF.becomeFirstResponder()
     }
     
+    //Set up the top bar. The view, title label, and the history/link button on the top right/left.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
         let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -86,14 +82,20 @@ class SignupVC: UIViewController {
         topView.addSubview(titleLabel)
     }
     
+    //action when the submit button is pressed. If any text field is empty, dont do anything. If there is an error, dont do anything. Otherwise, create an account with the information provided, and transition to HomeVC
     func submitAction(){
         
         if usernameTF.text == "" || passwordTF.text == "" || aliasTF.text == ""{return}
-        print(usernameTF.text!)
-        print(passwordTF.text!)
         FIRAuth.auth()?.createUser(withEmail: usernameTF.text!, password: passwordTF.text!) { (user, error) in
             if error == nil && user != nil{
+                
+                //set the alias the user has inputted to firebase.
                 FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(self.aliasTF.text!)
+                
+                //add this information to the global you variable.
+                GlobalData.You.alias = self.aliasTF.text!
+                
+                GlobalData.You.id = user!.uid
                 let vc = HomeVC()
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
@@ -101,10 +103,13 @@ class SignupVC: UIViewController {
         }
     }
     
+    //action called when back button is clicked. dismiss view controller.
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
 
+    //set up the text fields. Their formatitng, position, placeholders, and other attributes
+    //Round the top the the username text field and the bottom of the alias text field.
     func setUpTFs(){
         
         for tf in [usernameTF,passwordTF,password2TF, aliasTF]{
@@ -143,10 +148,5 @@ class SignupVC: UIViewController {
         Draw.createLineUnderView(passwordTF, color: globalLightGrey)
         Draw.createLineUnderView(password2TF, color: globalLightGrey)
         
-    }
-    
-    func keyboardWillShow(_ notification: Notification) {
-        let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-
     }
 }

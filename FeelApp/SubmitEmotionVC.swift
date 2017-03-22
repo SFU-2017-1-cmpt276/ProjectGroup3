@@ -5,6 +5,7 @@
 //Version 1: Created UI with no actions
 //Version 2: Added submit action
 //Version 3: Improved UI. Title bar font and color is depending on emotion.
+//Version 4: Made the squares into rounded rectangles (added corner radius)
 
 //Coding standard:
 //all view controller files have a descriptor followed by "VC."
@@ -34,16 +35,20 @@ class SubmitEmotionVC: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
+    // set up the top bar, text view, and bottom buttons
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.white
+        
+        //get notification for when keyboard is shown
         NotificationCenter.default.addObserver(self, selector: #selector(SubmitEmotionVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setUpTopView()
         setUpTextView()
         setUpBottomButtons()
     }
 
+    //Set up the top bar. The view, title label, and the history/link button on the top right/left.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
         let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -72,6 +77,7 @@ class SubmitEmotionVC: UIViewController {
         topView.addSubview(titleLabel)
     }
     
+    //action when the submit button is clicked. Add the data to your own emotion data in firebase and dismiss the view controller.
     func submitEmotion(){
         FIRDatabase.database().reference().child("Emotions").child(userUID).childByAutoId().setValue([
             "Type":emotion.name,
@@ -81,6 +87,7 @@ class SubmitEmotionVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    //action when the post button is clicked. Add data to the newsfeed data in firebase. Then call submitEmotion() to add it to your own emotion list.
     func postAndSubmit(){
         
         FIRDatabase.database().reference().child("Posts").childByAutoId().setValue([
@@ -97,10 +104,12 @@ class SubmitEmotionVC: UIViewController {
         submitEmotion()
     }
     
+    //action when back button is clicked. dismiss the view controller/
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
     
+    //set up the text view. set the placeholder, formatting, frame. Then put it in editing mode when the view controller is first opened
     func setUpTextView(){
         textView.frame.origin.y = topView.frame.height + 5
         textView.frame.size = CGSize(width: view.frame.width - 20, height: 100)
@@ -117,6 +126,7 @@ class SubmitEmotionVC: UIViewController {
         textView.becomeFirstResponder()
     }
     
+    //set up the bottom buttons. frame, title, actions, formatting
     func setUpBottomButtons(){
         for button in [submitButton,postButton]{
             view.addSubview(button)
@@ -143,6 +153,7 @@ class SubmitEmotionVC: UIViewController {
         
     }
     
+    //when the keyboard is shown, position the bottom buttons so that they are just above the keyboard. The resize the text view accordingly. 
     func keyboardWillShow(_ notification: Notification) {
         let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         textView.frame.size.height = view.frame.height - keyboardSize!.height - textView.frame.origin.y - bottomButtonHeight

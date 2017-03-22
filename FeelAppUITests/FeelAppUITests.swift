@@ -31,6 +31,29 @@ class FeelAppUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+    }
+    
+    //Test to see login works correctly
+    func loginTest() {
+        
+    }
+    
+    //Test to see that user is able to select and post emotion
+    func emotionSelect() {
+        
+        
+    }
+    
+    //Test that user can view history view
+    func historyView() {
+        
+        
+    }
+    
+    //Stress test - Random UI interaction
+    func stressTest(){
+        
     }
     
 }

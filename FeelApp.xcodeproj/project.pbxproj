@@ -24,7 +24,6 @@
 		3D1462971E679F0600BB74AA /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1462961E679F0600BB74AA /* SignupVC.swift */; };
 		3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */; };
 		3D62D2E51E79FF0C00BE7A6C /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */; };
-		3D62D2EB1E7A053000BE7A6C /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D62D2EA1E7A053000BE7A6C /* phone.png */; };
 		3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */; };
 		3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */; };
 		3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */; };
@@ -32,10 +31,6 @@
 		3DDD8AD41E7A23EB00857211 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD21E7A23EB00857211 /* PostCell.swift */; };
 		3DDD8AD51E7A23EB00857211 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD31E7A23EB00857211 /* PostCell.xib */; };
 		3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD61E7A25E700857211 /* FeedVC.swift */; };
-		3DDD8ADD1E7A844A00857211 /* heartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8ADC1E7A844A00857211 /* heartIcon.png */; };
-		3DDD8ADF1E7A844D00857211 /* commentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8ADE1E7A844D00857211 /* commentIcon.png */; };
-		3DDD8AE11E7A8B0A00857211 /* pieChartIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */; };
-		3DDD8AE31E7A8BB400857211 /* linksIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AE21E7A8BB400857211 /* linksIcon.png */; };
 		60120E3F8002C76F159EC1FC /* Pods_FeelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */; };
 		B1C77C32EECFFBAFD735A6E9 /* Pods_FeelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */; };
 		B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */; };
@@ -84,7 +79,6 @@
 		3D1462961E679F0600BB74AA /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
 		3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
-		3D62D2EA1E7A053000BE7A6C /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
 		3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitEmotionVC.swift; sourceTree = "<group>"; };
 		3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -92,10 +86,6 @@
 		3DDD8AD21E7A23EB00857211 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		3DDD8AD31E7A23EB00857211 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		3DDD8AD61E7A25E700857211 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
-		3DDD8ADC1E7A844A00857211 /* heartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heartIcon.png; sourceTree = "<group>"; };
-		3DDD8ADE1E7A844D00857211 /* commentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentIcon.png; sourceTree = "<group>"; };
-		3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pieChartIcon.png; sourceTree = "<group>"; };
-		3DDD8AE21E7A8BB400857211 /* linksIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linksIcon.png; sourceTree = "<group>"; };
 		608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,21 +150,14 @@
 		3D1462551E67966600BB74AA /* FeelApp */ = {
 			isa = PBXGroup;
 			children = (
-				3D1462961E679F0600BB74AA /* SignupVC.swift */,
-				3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */,
 				3DDD8AD01E7A0DD300857211 /* ChartVC.swift */,
-				3D1462581E67966600BB74AA /* HomeVC.swift */,
-				3DDD8AE21E7A8BB400857211 /* linksIcon.png */,
-				3DDD8AE01E7A8B0A00857211 /* pieChartIcon.png */,
-				3DDD8AD21E7A23EB00857211 /* PostCell.swift */,
-				3DDD8ADE1E7A844D00857211 /* commentIcon.png */,
-				3DDD8ADC1E7A844A00857211 /* heartIcon.png */,
-				3DDD8AD31E7A23EB00857211 /* PostCell.xib */,
 				3DDD8AD61E7A25E700857211 /* FeedVC.swift */,
+				3D14628E1E67996000BB74AA /* LoginVC.swift */,
 				3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */,
 				3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */,
-				3D62D2EA1E7A053000BE7A6C /* phone.png */,
-				3D14628E1E67996000BB74AA /* LoginVC.swift */,
+				3D1462581E67966600BB74AA /* HomeVC.swift */,
+				3D1462961E679F0600BB74AA /* SignupVC.swift */,
+				3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */,
 				3D8806381E6E2FBE008D106B /* Views */,
 				3D8806371E6E2FA6008D106B /* General Classes */,
 				3D14625A1E67966600BB74AA /* Main.storyboard */,
@@ -221,6 +204,8 @@
 		3D8806381E6E2FBE008D106B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3DDD8AD21E7A23EB00857211 /* PostCell.swift */,
+				3DDD8AD31E7A23EB00857211 /* PostCell.xib */,
 				3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */,
 				3D14628A1E67976900BB74AA /* SelectFeelingView.swift */,
 			);
@@ -375,11 +360,6 @@
 				3D14625E1E67966600BB74AA /* Assets.xcassets in Resources */,
 				B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */,
 				3D14625C1E67966600BB74AA /* Main.storyboard in Resources */,
-				3DDD8ADF1E7A844D00857211 /* commentIcon.png in Resources */,
-				3DDD8ADD1E7A844A00857211 /* heartIcon.png in Resources */,
-				3DDD8AE31E7A8BB400857211 /* linksIcon.png in Resources */,
-				3D62D2EB1E7A053000BE7A6C /* phone.png in Resources */,
-				3DDD8AE11E7A8B0A00857211 /* pieChartIcon.png in Resources */,
 				3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +393,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5658AF5F5E81960D9AE89068 /* [CP] Embed Pods Frameworks */ = {
@@ -473,7 +453,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		94C029FD84E209671611EEE3 /* [CP] Copy Pods Resources */ = {
@@ -518,7 +498,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */ = {
@@ -712,6 +692,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				INFOPLIST_FILE = FeelApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,6 +708,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9W5UPM8QT7;
 				INFOPLIST_FILE = FeelApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = CMPT276.FeelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

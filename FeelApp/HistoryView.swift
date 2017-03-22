@@ -15,6 +15,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
     var emotions:[Emotion] = []
     var expandedIndexes:[Int] = []
     
+    //the initializer. Input a size. Sets this to be the size of the HistoryView. then calls setup()
     init(size:CGSize){
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -26,6 +27,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         fatalError("init(coder:) has not been implemented")
     }
     
+    //set the cell it will use, and other characteristics.
     fileprivate func setUp(){
         
         register(HistoryCell.self, forCellWithReuseIdentifier: "cell")
@@ -37,10 +39,12 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         
     }
     
+    //collection view data source method. set the number of items to be the count of the emotions array
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return emotions.count
     }
     
+    //collection view data source method. Set up the cell to be used.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HistoryCell
         if expandedIndexes.contains(indexPath.item){cell.expanded = true}
@@ -49,6 +53,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         return cell
     }
     
+    //collection view delegate method. Set the size of each cell.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cell = HistoryCell(frame: CGRect())
         if expandedIndexes.contains(indexPath.item){cell.expanded = true}
@@ -57,6 +62,8 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         return CGSize(width:frame.width,height:cell.frame.height)
     }
     
+    //collection view delegate method. WHen the cell is clicked, expand if currently contracted, and vice versa.
+    //The purpose of this is to show/hide the description text that appears for each emotion.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if expandedIndexes.contains(indexPath.item){
@@ -73,6 +80,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
 }
 
 
+//the cell to be used by this class/
 class HistoryCell:UICollectionViewCell{
     
     var emotion:Emotion!
@@ -96,6 +104,7 @@ class HistoryCell:UICollectionViewCell{
         fatalError("init(coder:) has not been implemented")
     }
     
+    //when cell is first created. general formatting.
     func initialStuff(){
         addSubview(button)
         button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
@@ -115,6 +124,7 @@ class HistoryCell:UICollectionViewCell{
         
     }
     
+    //outputs the attributed string that says the time posted for the emotion. In the format "8:48 pm."
     func createTimeString()->NSMutableAttributedString{
         
         let formatter = DateFormatter()
@@ -136,6 +146,7 @@ class HistoryCell:UICollectionViewCell{
         return string3
     }
     
+    //outputs the attributed string that says the day posted for the emotion. In the format "20 Mar". Use this if the post is more than a day old
     func createDayString()->NSMutableAttributedString{
         
         let formatter = DateFormatter()
@@ -155,6 +166,7 @@ class HistoryCell:UICollectionViewCell{
         return string3
     }
     
+    //use the inputted emotion object to set up the cell with specific characteristics. Size and rearrange the elements based on the inputted width of the cell. 
     func setUp(emotion:Emotion,width:CGFloat){
         
         self.emotion = emotion

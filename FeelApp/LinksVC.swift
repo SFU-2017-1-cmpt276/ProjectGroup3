@@ -1,10 +1,17 @@
-//
-//  LinksVC.swift
-//  FeelApp
-//
-//  Created by Deepak Venkatesh on 2017-03-15.
-//  Copyright © 2017 CMPT276. All rights reserved.
-//
+//FeelApp
+//This is the Links view controller. For the user to view links to different SFU areas (counselling services, counselling homepage, etc.). Also includes phone numbers for the clinic for each SFU campus.
+
+///Programmers: Deepak and Carson
+//Version 1: Created tableview containing the links and phone numebrs.
+//Version 2: COnnected each cell to the action. So, clicking on a cell will actually take you to the appropriate webpage or dial the number
+//Version 3: Improved UI. Set fonts and colors for each table cell. Created title bar.
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
+
+
+
 
 import UIKit
 
@@ -16,11 +23,15 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var tableView = UITableView()
     
+    //titles of each item in the table
     var linkTitles = ["SFU Health & Conselling Center Homepage","SFU Health & Conselling services","SFU Health & Counselling Contacting Guide","SFU Health & Conselling Resources","SFU Healthy Campus Community","SFU Events & Programs Calendar","SFU Health & Conselling Volunteer","SFU Media Library"]
     var phoneTitles = ["Burnaby Campus","Vancouver Campus","Surrey Campus"]
     
     override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
     
+    var headerHeight:CGFloat = 45
+    
+    // set up table view and top bar and general view
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +41,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
+    //Set up the top bar. The view, back button, and title label.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
         let inset = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
@@ -58,6 +70,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    //action called by back button. dismiss view controller
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
@@ -66,6 +79,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.backgroundColor = UIColor.white
     }
     
+    ///create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
         tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height - originY)
@@ -84,10 +98,12 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.showsVerticalScrollIndicator = false
     }
     
+    //tableview data source method for number of sections. we will have 2: for links and for phone numbers.
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
+    //tableview data source method for number of rows in section. Return the counts of the link titles and phone titles arrays initialized earlier.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return linkTitles.count
@@ -97,10 +113,12 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
     }
     
+    //tableivew data source method for formatting cell.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         
+        //set the title of the cell, based on the section (differnet array) and row
         if indexPath.section == 0{
             //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = linkTitles[indexPath.item]
@@ -115,6 +133,8 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         cell.textLabel?.font = Font.PageBody()
         
+        
+        //set the button the appears on the right on the cell. if its a link, the button is the right arrow. otherwise, its the phone icon
         let imageView = UIImageView()
         if indexPath.section == 0{
             imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
@@ -126,25 +146,25 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         imageView.changeToColor(globalGreyColor)
         cell.accessoryView = imageView
         cell.accessoryView?.frame = CGRect(x:0, y:0, width:20, height:20)
-        //cell.backgroundColor = nowColor //Make background color UIColor
-        
+
         return cell
         
     }
     
+    //tableview delegate method for header height.
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return headerHeight
     }
     
+    //tableview delegate method for the actual header view. Create a view with height of headerHeight. put a label in it with approriate text. format and position the label.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let returnedView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:45))
-        //set these values as necessary
+        let returnedView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:headerHeight))
         returnedView.backgroundColor = UIColor.white
         let label = UILabel()
         if section == 0{label.text = "Information"}
         else{label.text = "Call SFU Clinic"}
         
-        let smallFont = Font.PageBodyBold()//UIFont(name: Font.PageBodyBold().fontName, size: Font.PageSmallBold().pointSize - 2)
+        let smallFont = Font.PageBodyBold()
         label.font = smallFont
         label.sizeToFit()
         label.textColor = UIColor.black
@@ -154,6 +174,8 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return returnedView
     }
     
+    
+    //tableview delegate method for when you click on the cell. Use switch case to set the action for each cell.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -183,10 +205,12 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
     }
     
+    //input is a url. Open up the website in Safari corresponding to the url
     func toWebsite(url:String){
         UIApplication.shared.openURL(URL(string: url)!)
     }
     
+    //input is a phone number. Call the phone number. Only works on real device, not simulator.
     func makeCall(phoneNumber:String) {
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
@@ -195,6 +219,5 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
         }
     }
-    
     
 }

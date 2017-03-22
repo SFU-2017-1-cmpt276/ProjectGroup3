@@ -5,6 +5,7 @@
 //Version 1: Created UI with no actions. Cells do not expand when clicked.
 //Version 2: Connected to Firebase. Table cell now populates with values from the database.
 //Version 3: Improved UI. Table cell font and color change with emotion. Cells expand to show text.
+//Version 4: Reversed the order of the posts: newest appears on top now. 
 
 //Coding standard:
 //all view controller files have a descriptor followed by "VC."
@@ -32,6 +33,7 @@ class HistoryVC: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
+     // set up table view and top bar and general view. get data from firebase. 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,6 +45,7 @@ class HistoryVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //Set up the top bar. The view, back button, and title label.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
         let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -80,16 +83,19 @@ class HistoryVC: UIViewController {
         chartButton.addTarget(self, action: #selector(HistoryVC.toChart), for: .touchUpInside)
     }
     
+    //top right button action for opening the chartVC.
     func toChart(){
         let vc = ChartVC()
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
     
+    //action called by back button. dismiss view controller
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
     
+    //setup the general view. In this case, its the HistoryView. set its size and position.
     func setUpView(){
         historyView = HistoryView(size:CGSize(width:view.frame.width - 2*offset,height:view.frame.height - topView.frame.height - offset))
         historyView.frame.origin.y = topView.frame.height + offset
@@ -97,6 +103,7 @@ class HistoryVC: UIViewController {
         view.addSubview(historyView)
     }
     
+    //get emotion data from firebase. add it to the emotions array of the history view. then reload the history view so that it displays all this data. 
     func getEmotions(){
         
         FIRDatabase.database().reference().child("Emotions").child(userUID).observeSingleEvent(of: .value, with: {allSnap in
