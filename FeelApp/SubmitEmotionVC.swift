@@ -89,8 +89,8 @@ class SubmitEmotionVC: UIViewController {
     
     //action when the post button is clicked. Add data to the newsfeed data in firebase. Then call submitEmotion() to add it to your own emotion list.
     func postAndSubmit(){
-        
-        FIRDatabase.database().reference().child("Posts").childByAutoId().setValue([
+        let key = FIRDatabase.database().reference().child("Posts").childByAutoId().key
+        FIRDatabase.database().reference().child("Posts").child(key).setValue([
             "Emotion":[
                 "Type":emotion.name,
                 "Text":textView.text,
@@ -100,6 +100,8 @@ class SubmitEmotionVC: UIViewController {
             "Sender Alias":GlobalData.You.alias
             
             ])
+        
+
         
         submitEmotion()
     }

@@ -11,12 +11,19 @@
 
 import UIKit
 
+class Comment{
+    var text = ""
+    var sender = Person()
+    var ID = ""
+    var time = TimeInterval()
+}
 class Post{
     var emotion = Emotion()
     var sender = Person()
-    var likeCount = 0
-    var commentCount = 0
-    
+    var likes:[String] = []
+    var comments:[Comment] = []
+    var ID = ""
+
     init(){}
     
 }

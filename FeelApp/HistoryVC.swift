@@ -24,6 +24,7 @@ class HistoryVC: UIViewController {
     var titleLabel = UILabel()
     var submitButton = UIButton()
     var chartButton = UIButton()
+    var calendarButton = UIButton()
     
     let offset:CGFloat = 0
     
@@ -81,8 +82,22 @@ class HistoryVC: UIViewController {
         chartButton.frame.origin.y = topView.frame.height - chartButton.frame.height
         chartButton.frame.origin.x = view.frame.width - chartButton.frame.width
         chartButton.addTarget(self, action: #selector(HistoryVC.toChart), for: .touchUpInside)
+        
+        calendarButton.frame.size = size
+        calendarButton.setImage(#imageLiteral(resourceName: "calendarIcon"), for: .normal)
+        calendarButton.contentEdgeInsets = inset
+        topView.addSubview(calendarButton)
+        calendarButton.changeToColor(UIColor.black)
+        calendarButton.frame.origin.y = topView.frame.height - chartButton.frame.height
+        calendarButton.frame.origin.x = chartButton.frame.origin.x - calendarButton.frame.width
+        calendarButton.addTarget(self, action: #selector(HistoryVC.toCalendar), for: .touchUpInside)
     }
     
+    func toCalendar(){
+        let vc = CalendarVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
     //top right button action for opening the chartVC.
     func toChart(){
         let vc = ChartVC()

@@ -14,8 +14,9 @@
 import UIKit
 import FirebaseDatabase
 
-class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
+    var post:Post!
     var ref:FIRDatabaseReference!
     
     var tableView = UITableView()
@@ -23,19 +24,90 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var topView = UIView()
     var titleLabel = UILabel()
     var posts:[Post] = []
-    var notificationButton = UIButton()
+    var typingBar:TypingBar!
+    var commentsView: CommentsView!
+    let commentsViewOriginY:CGFloat = 200
+    
+    
+    var dismissKeyboardRec:UITapGestureRecognizer!
     
     override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
     
     // set up table view and top bar. Get data from firebase.
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         ref = FIRDatabase.database().reference()
+        
+        dismissKeyboardRec = UITapGestureRecognizer(target: self, action: #selector(CommentsVC.dismissKeyboard(_:)))
+        view.addGestureRecognizer(dismissKeyboardRec)
+        dismissKeyboardRec.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentsVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentsVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         setUpTopView()
         setUpTableView()
-        getPosts()
+        setUpView()
+        setUpTypingBar()
+        posts.append(post)
+        tableView.reloadData()
+        for comment in post.comments{
+        commentsView.addComment(comment)
+        }
+        commentsView.sortAndReload()
+    }
+    
+    func setUpView(){
+        commentsView = CommentsView(size: CGSize(width: view.frame.width, height: view.frame.height - commentsViewOriginY))
+       // commentsView.someDelegate = self
+        commentsView.frame.origin.y = commentsViewOriginY
+        commentsView.center.x = view.frame.width/2
+        view.addSubview(commentsView)
+        commentsView.backgroundColor = UIColor.white
+
+    }
+    
+    func setUpTypingBar(){
+        
+        typingBar = TypingBar(width: view.frame.width, placeholder: "Add comment...", color: nowColor,buttonText:"Send")
+        typingBar.frame.origin.y = view.frame.height - typingBar.frame.height
+        view.addSubview(typingBar)
+        view.bringSubview(toFront: typingBar)
+        typingBar.sendButton.addTarget(self, action: #selector(CommentsVC.postButtonAction), for: .touchUpInside)
+        typingBar.textView.tintColor = UIColor.black
+    }
+    
+    func postButtonAction(){
+        let commentText = typingBar.textView.text
+        if (commentText?.isEmpty)!{return}
+        if commentText == typingBar.placeholder{return}
+        let someString = NSString(string: commentText!)
+        let ref = FIRDatabase.database().reference()
+        let key = ref.childByAutoId().key
+        
+        let comment = Comment()
+        comment.sender = GlobalData.You
+        comment.text = someString as String
+        comment.time = Date().timeIntervalSince1970*1000
+        
+        self.typingBar.sendButtonAction()
+        self.dismissKeyboard()
+        typingBar.resetToPlaceholder()
+
+            ref.child("Posts").child(post.ID).child("Comments").child(key).setValue([
+                "Sender Alias":GlobalData.You.alias,
+                "Sender ID":userUID,
+                "Time":FIRServerValue.timestamp(),
+                "Text":someString,
+
+                ])
+
+        
+        //change your update object
+        post.comments.append(comment)
+        
+        commentsView.addComment(comment)
+        commentsView.sortAndReload()
     }
     
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
@@ -71,7 +143,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.frame.size = size
         backButton.setImage(#imageLiteral(resourceName: "leftArrowIcon"), for: .normal)
         backButton.contentEdgeInsets = inset
-        backButton.addTarget(self, action: #selector(FeedVC.backAction), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(CommentsVC.backAction), for: .touchUpInside)
         
         topView.addSubview(backButton)
         backButton.changeToColor(UIColor.white)
@@ -79,28 +151,12 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.frame.origin.x = 0
         
         titleLabel.font = Font.PageHeaderSmall()
-        titleLabel.text = "Feed"
+        titleLabel.text = "Post"
         titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
         topView.addSubview(titleLabel)
-        
-        notificationButton.frame.size = size
-        notificationButton.setImage(#imageLiteral(resourceName: "notificationIcon.png"), for: .normal)
-        notificationButton.contentEdgeInsets = inset
-        topView.addSubview(notificationButton)
-        notificationButton.changeToColor(UIColor.white)
-        notificationButton.frame.origin.y = topView.frame.height - notificationButton.frame.height
-        notificationButton.frame.origin.x = view.frame.width - notificationButton.frame.width
-        notificationButton.addTarget(self, action: #selector(FeedVC.toNotifications), for: .touchUpInside)
-        
-    }
-    
-    func toNotifications(){
-        let vc = NotificationsVC()
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true, completion: nil)
     }
     
     //function called by the back button. Dismiss the view controller
@@ -108,56 +164,6 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         dismiss(animated: true, completion: nil)
     }
     
-    //Get the data from firebase. Add it to the posts array. then reload the tableview
-    func getPosts(){
-        
-        ref.child("Posts").observeSingleEvent(of: .value, with: {allSnap in
-            let hello = userUID
-            let dict = allSnap.value as? [String:AnyObject] ?? [:]
-            
-            for (id,postDict) in dict{
-                
-                let post = Post()
-                
-                let emotionDict = postDict["Emotion"] as? [String:AnyObject] ?? [:]
-                let type = emotionDict["Type"] as? String ?? ""
-                post.emotion = Emotion.fromString(type)
-                post.emotion.text = emotionDict["Text"] as? String ?? ""
-                post.emotion.time = emotionDict["Time"] as? TimeInterval ?? TimeInterval()
-                post.ID = id
-                post.sender.id = postDict["Sender ID"] as? String ?? ""
-                post.sender.alias = postDict["Sender Alias"] as? String ?? ""
-                
-                let likeDict = postDict["Likes"] as? [String:Bool] ?? [:]
-                for (someID,_) in likeDict{
-                    post.likes.append(someID)
-                }
-                
-                let allCommentDict = postDict["Comments"] as? [String:AnyObject] ?? [:]
-                if allCommentDict.count > 0{
-                    
-                    
-                    
-                    
-                }
-                for (someID,commentDict) in allCommentDict{
-                    let comment = Comment()
-                    let person = Person()
-                    person.alias = commentDict["Sender Alias"] as? String ?? ""
-                    person.id = commentDict["Sender ID"] as? String ?? ""
-                    comment.sender = person
-                    comment.text = commentDict["Text"] as? String ?? ""
-                    comment.time = commentDict["Time"] as? TimeInterval ?? TimeInterval()
-                    post.comments.append(comment)
-                }
-                
-                self.posts.append(post)
-
-            }
-            self.posts.sort(by: {$0.emotion.time > $1.emotion.time})
-            self.tableView.reloadData()
-        })
-    }
     
     
     //tableview data source method. say the number of rows that will appear
@@ -165,7 +171,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         return posts.count
     }
     
-    //tableview data source method. set and format the cell. 
+    //tableview data source method. set and format the cell.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! PostCell
         cell.setUp(post: posts[indexPath.row])
@@ -174,12 +180,6 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.likeView.addGestureRecognizer(rec)
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = CommentsVC()
-        vc.post = posts[indexPath.item]
-        present(vc, animated: true, completion: nil)
     }
     
     func likeViewClicked(sender:UITapGestureRecognizer){
@@ -196,6 +196,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else{
             post.likes.append(userUID)
         }
+        print(userUID)
         
         ref.child("Posts").child(post.ID).child("Likes").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
             if snapshot.exists(){
@@ -205,9 +206,43 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(true)
             }
         })
-        
         tableView.reloadData()
-    
-    
+        
+        
     }
 }
+
+extension CommentsVC{
+    func keyboardWillShow(_ notification: Notification) {
+        let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        
+        //move the bar up
+        typingBar.frame.origin.y = view.frame.height - keyboardSize!.height - typingBar.frame.height
+        dismissKeyboardRec.isEnabled = true
+        commentsView.frame.size.height = view.frame.height - commentsViewOriginY - keyboardSize!.height - typingBar.frame.height
+    }
+    
+    
+    func keyboardWillHide(_ notification: Notification) {
+        
+        typingBar.frame.origin.y = view.frame.height - typingBar.frame.height
+        commentsView.frame.size.height = view.frame.height - commentsViewOriginY - typingBar.frame.height
+    }
+    
+    func dismissKeyboard(_ rec:UITapGestureRecognizer){
+        if !typingBar.frame.contains(rec.location(in: view)){
+            
+            dismissKeyboard()
+        }
+    }
+    
+    func dismissKeyboard(){
+        typingBar.textView.endEditing(true)
+        typingBar.frame.origin.y = view.frame.height
+        dismissKeyboardRec.isEnabled = false
+        
+    }
+}
+
+
+

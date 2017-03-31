@@ -68,14 +68,26 @@ class PostCell: UITableViewCell {
         mainText.text = post.emotion.text
         mainText.font = Font.PageBodyBold()
         nameLabel.text = post.sender.alias
-        likeText.text = String(post.likeCount)
-        commentText.text = String(post.commentCount)
+        likeText.text = String(post.likes.count)
+        commentText.text = String(post.comments.count)
         emotionText.text = post.emotion.name
         emotionText.font = UIFont(name:post.emotion.font.fontName,size: post.emotion.font.pointSize-3)
         emotionText.textColor = UIColor.white
         timeLabel.text = GlobalData.FirebaseTimeStampToString(post.emotion.time)
         line.backgroundColor = UIColor.white
         backgroundView?.backgroundColor = post.emotion.color
+        
+        
+        if post.likes.contains(userUID){
+            likeImage.image = #imageLiteral(resourceName: "heartIconFilled")
+            likeText.font = Font.PageSmallBold()
+            likeImage.changeToColor(UIColor.white)
+        }
+        else{
+            likeImage.image = #imageLiteral(resourceName: "heartIcon")
+            likeText.font = Font.PageSmall()
+            likeImage.changeToColor(UIColor.white)
+        }
     }
     
 }

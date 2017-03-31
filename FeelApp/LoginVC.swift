@@ -43,6 +43,20 @@ class LoginVC: UIViewController {
         
         view.backgroundColor = color
         setUpLogo()
+        
+        
+        
+        
+        
+        if FIRAuth.auth()?.currentUser != nil{
+            FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
+                GlobalData.You.alias = snapshot.value! as? String ?? ""
+                let vc = HomeVC()
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
+            })
+        }
+        else{
         setUpTFs()
         setUpLoginButton()
         setUpSignupButton()
@@ -60,8 +74,10 @@ class LoginVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         //set the starting value for the username and password with an account thats already been created. Not for finished version but easy to log in.
-        usernameTF.text = ""
-        passwordTF.text = ""
+        usernameTF.text = "ckl41@sfu.ca"
+        passwordTF.text = "123456"
+        
+        }
     }
     
     //when the view is tapped and the keyboard is up, end editing for all text fields and disable the gesture recognzer
@@ -116,6 +132,8 @@ class LoginVC: UIViewController {
         usernameTF.frame.origin.y = view.frame.height/2 - usernameTF.frame.height
         passwordTF.frame.origin.y = view.frame.height/2
         
+        
+        
         Draw.createLineUnderView(usernameTF, color: globalLightGrey)
         
     }
@@ -165,7 +183,7 @@ class LoginVC: UIViewController {
             if error == nil && user != nil{
                 FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
                     GlobalData.You.alias = snapshot.value! as? String ?? ""
-                    let vc = HomeVC()
+                    let vc = CalendarVC()//HomeVC()
                     vc.modalTransitionStyle = .crossDissolve
                     self.present(vc, animated: true, completion: nil)
                 })
