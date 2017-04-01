@@ -35,6 +35,9 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.backgroundColor = UIColor.white
         setUpTopView()
         setUpTableView()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getPosts()
     }
     
@@ -113,7 +116,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //Get the data from firebase. Add it to the posts array. then reload the tableview
     func getPosts(){
-        
+        posts = []
         ref.child("Posts").observeSingleEvent(of: .value, with: {allSnap in
             let hello = userUID
             let dict = allSnap.value as? [String:AnyObject] ?? [:]
@@ -152,6 +155,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     person.alias = commentDict["Sender Alias"] as? String ?? ""
                     person.id = commentDict["Sender ID"] as? String ?? ""
                     comment.sender = person
+                    comment.ID = someID
                     comment.text = commentDict["Text"] as? String ?? ""
                     comment.time = commentDict["Time"] as? TimeInterval ?? TimeInterval()
                     post.comments.append(comment)

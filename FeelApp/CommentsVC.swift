@@ -61,7 +61,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func setUpView(){
         commentsView = CommentsView(size: CGSize(width: view.frame.width - 20, height: view.frame.height - commentsViewOriginY - TypingBar.Height))
-       // commentsView.someDelegate = self
+        commentsView.someDelegate = self
         commentsView.frame.origin.y = commentsViewOriginY
         commentsView.center.x = view.frame.width/2
         view.addSubview(commentsView)
@@ -109,6 +109,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         commentsView.addComment(comment)
         commentsView.sortAndReload()
+        tableView.reloadData()
     }
     
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
@@ -201,7 +202,6 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else{
             post.likes.append(userUID)
         }
-        print(userUID)
         
         ref.child("Posts").child(post.ID).child("Likes").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
             if snapshot.exists(){
@@ -217,7 +217,19 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-extension CommentsVC{
+extension CommentsVC:CommentsViewDelegate{
+    
+    func commentDeleted(comment: Comment) {
+        ref.child("Posts").child(post.ID).child("Comments").child(comment.ID).setValue(nil)
+        if let index = post.comments.index(where: {$0.ID == comment.ID}){
+            post.comments.remove(at: index)
+        }
+        if let index2 = commentsView.comments.index(where: {$0.ID == comment.ID}){
+            commentsView.comments.remove(at: index2)
+        }
+        commentsView.reloadData()
+        tableView.reloadData()
+    }
     func keyboardWillShow(_ notification: Notification) {
         let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         

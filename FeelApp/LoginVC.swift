@@ -148,10 +148,10 @@ class LoginVC: UIViewController {
         loginButton.setTitle("LOG IN", for: .normal)
         loginButton.titleLabel?.font = Font.PageHeaderSmall()
         view.addSubview(loginButton)
-        loginButton.backgroundColor = UIColor(white: 1, alpha: 0)
+        loginButton.backgroundColor = UIColor(white: 1, alpha: 0.2)
         loginButton.center.x = view.frame.width/2
         loginButton.frame.origin.y = passwordTF.frame.maxY + 40
-        loginButton.layer.borderWidth = 2
+        //loginButton.layer.borderWidth = 2
         loginButton.layer.borderColor = UIColor.white.cgColor
         loginButton.addTarget(self, action: #selector(LoginVC.loginAction), for: .touchUpInside)
     }
@@ -165,10 +165,10 @@ class LoginVC: UIViewController {
         signupButton.setTitle("SIGN UP", for: .normal)
         signupButton.titleLabel?.font = Font.PageHeaderSmall()
         view.addSubview(signupButton)
-        signupButton.backgroundColor = UIColor(white: 1, alpha: 0)
+        signupButton.backgroundColor = UIColor(white: 1, alpha: 0.2)
         signupButton.center.x = view.frame.width/2
         signupButton.frame.origin.y = passwordTF.frame.maxY + 40
-        signupButton.layer.borderWidth = 2
+       // signupButton.layer.borderWidth = 2
         signupButton.layer.borderColor = UIColor.white.cgColor
         signupButton.addTarget(self, action: #selector(LoginVC.toSignUp), for: .touchUpInside)
         signupButton.frame.origin.y = loginButton.frame.maxY + 15
@@ -203,6 +203,12 @@ class LoginVC: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    func toForgotPassword(){
+        let vc = ForgotPasswordVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+    
     //set up forgot password button format. No action yet. 
     func setUpForgotPassword(){
         forgotPassword.setTitle("Forgot password?", for: .normal)
@@ -211,6 +217,7 @@ class LoginVC: UIViewController {
         forgotPassword.sizeToFit()
         forgotPassword.center.x = view.frame.width/2
         forgotPassword.frame.origin.y = signupButton.frame.maxY + 15
+        forgotPassword.addTarget(self, action: #selector(LoginVC.toForgotPassword), for: .touchUpInside)
     }
 
 }

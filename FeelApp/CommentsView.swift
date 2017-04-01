@@ -9,8 +9,7 @@
 import UIKit
 
 protocol CommentsViewDelegate{
-    func commentSelected(_ person:Person)->Void
-    func refreshData()->Void
+    func commentDeleted(comment:Comment)->Void
 }
 class CommentsView: UITableView {
     var someDelegate:CommentsViewDelegate? = nil
@@ -19,8 +18,7 @@ class CommentsView: UITableView {
     fileprivate var cellWidth:CGFloat{
         return frame.width
     }
-    var refresher = UIRefreshControl()
-    
+
     var noCommentsLabel = UILabel()
     
     
@@ -29,17 +27,13 @@ class CommentsView: UITableView {
         setUp()
     }
     
-    func refreshData(){
-        someDelegate?.refreshData()
-    }
     
     func sortAndReload(){
         comments.sort(by: {$0.time < $1.time})
         reloadData()
-        refresher.endRefreshing()
         
         if comments.count == 0{
-            noCommentsLabel.isHidden = true
+            noCommentsLabel.isHidden = false
         }
         else{
             noCommentsLabel.isHidden = true
@@ -58,6 +52,7 @@ class CommentsView: UITableView {
         noCommentsLabel.center.x = frame.width/2
         addSubview(noCommentsLabel)
         noCommentsLabel.isHidden = true
+        noCommentsLabel.center.y = frame.height/2
         
         register(CommentCell.self, forCellReuseIdentifier: "cell")
         delegate = self
@@ -67,20 +62,6 @@ class CommentsView: UITableView {
         tableFooterView = UIView()
         separatorStyle = .none
         alwaysBounceVertical = true
-        refresher.addTarget(self, action: #selector(CommentsView.refreshData), for: .valueChanged)
-        addSubview(refresher)
-        refresher.tintColor = globalGreyColor
-        refresher.isHidden = true
-        var someFrame = bounds
-        someFrame.origin.y = -someFrame.size.height
-        let backgroundView = UIView(frame: someFrame)
-        
-        backgroundView.autoresizingMask = .flexibleWidth
-        backgroundView.backgroundColor = globalLightGrey
-        
-        // Adding the view below the refresh control
-        insertSubview(backgroundView, at: 0) // This has to be after refreshControl = refresh
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -147,25 +128,24 @@ extension CommentsView:UITableViewDataSource,UITableViewDelegate{
         let comment = comments[indexPath.row]
         cell.setUp(comment,width:cellWidth)
         //cell.deleteButton.addTarget(self, action: #selector(CommentsView.deleteComment(sender:)), for: .touchUpInside)
+        cell.selectionStyle = .none
         return cell
     }
     
-    /*func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
      
      let comment = comments[(indexPath as NSIndexPath).item]
-     if comment.sender != GlobalData.You{return nil}
+     if comment.sender.id != userUID{return nil}
      
      
      let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { action, index in
      self.deleteComment(comment:comment)
      }
-     deleteAction.backgroundColor = firstActionColor
+     deleteAction.backgroundColor = UIColor(white: 0.6, alpha: 1)
      return [deleteAction]
-     }*/
+     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        someDelegate?.commentSelected(comments[(indexPath as NSIndexPath).item].sender)
-        
+    func deleteComment(comment:Comment){
+        someDelegate?.commentDeleted(comment: comment)
     }
 }

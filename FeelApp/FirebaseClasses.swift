@@ -56,7 +56,7 @@ class Emotion{
         return Emotion(name: "Happy", color: UIColor.orange, font: UIFont(name: "Chalkduster", size: 35)!)
     }
     static func Angry()->Emotion{
-        return Emotion(name: "Angry", color: UIColor.red, font: UIFont(name: "Futura-CondensedExtraBold", size: 35)!)
+        return Emotion(name: "Angry", color: UIColor(red:1,green:0.3,blue:0.3,alpha:1), font: UIFont(name: "Futura-CondensedExtraBold", size: 35)!)
     }
     static func Sad()->Emotion{
         return Emotion(name: "Sad", color: UIColor(red: 61/255, green: 132/255, blue: 225/255, alpha: 1), font: UIFont(name: "Cochin-Italic", size: 35)!)
@@ -65,7 +65,7 @@ class Emotion{
         return Emotion(name: "Tired", color: UIColor.darkGray, font: UIFont(name: "AvenirNextCondensed-UltraLight", size: 35)!)
     }
     static func Excited()->Emotion{
-        return Emotion(name: "Excited", color: UIColor(red: 60/255, green: 243/255, blue: 100/255, alpha: 1), font: UIFont(name: "ChalkboardSE-Bold", size: 35)!)
+        return Emotion(name: "Excited", color: UIColor(red: 60/255, green: 215/255, blue: 100/255, alpha: 1), font: UIFont(name: "ChalkboardSE-Bold", size: 35)!)
     }
     static func Relaxed()->Emotion{
         return Emotion(name: "Relaxed", color: UIColor(red: 153/255, green: 153/255, blue: 255/255, alpha: 1), font: UIFont(name: "Helvetica-LightOblique", size: 30)!)
