@@ -26,7 +26,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var posts:[Post] = []
     var typingBar:TypingBar!
     var commentsView: CommentsView!
-    let commentsViewOriginY:CGFloat = 200
+    let commentsViewOriginY:CGFloat = 250
     
     
     var dismissKeyboardRec:UITapGestureRecognizer!
@@ -60,10 +60,11 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func setUpView(){
         commentsView = CommentsView(size: CGSize(width: view.frame.width, height: view.frame.height - commentsViewOriginY))
        // commentsView.someDelegate = self
-        commentsView.frame.origin.y = commentsViewOriginY
+        commentsView.frame.origin.y = 450
         commentsView.center.x = view.frame.width/2
         view.addSubview(commentsView)
-        commentsView.backgroundColor = UIColor.white
+        commentsView.backgroundColor = UIColor.gray
+        tableView.backgroundColor = UIColor.black
 
     }
     
@@ -113,13 +114,17 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
-        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height - originY)
+        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height )
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
         
         view.addSubview(tableView)
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.rowHeight = tableView.contentSize.height
+        //tableView.frame.size.height = tableView.contentSize.height
+        //tableView.estimatedRowHeight = 600
+        //tableView.sizeToFit()
         
         tableView.delegate = self
         tableView.dataSource = self

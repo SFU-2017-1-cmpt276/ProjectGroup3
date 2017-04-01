@@ -31,7 +31,7 @@
 		3D22F27E1E8C7EF3003E12E6 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D22F27D1E8C7EF3003E12E6 /* CalendarVC.swift */; };
 		3D22F2801E8C941A003E12E6 /* leftArrow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D22F27F1E8C941A003E12E6 /* leftArrow2.png */; };
 		3D62D2E51E79FF0C00BE7A6C /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */; };
-		3D64552B1E8E2B5C00727BB0 /* notificationIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D64552A1E8E2B5C00727BB0 /* notificationIcon.png */; };
+		3D64552B1E8E2B5C00727BB0 /* notificationIcon in Resources */ = {isa = PBXBuildFile; fileRef = 3D64552A1E8E2B5C00727BB0 /* notificationIcon */; };
 		3D64552D1E8E2BB200727BB0 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64552C1E8E2BB200727BB0 /* NotificationsVC.swift */; };
 		3D64552F1E8E316500727BB0 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64552E1E8E316500727BB0 /* NotificationCell.swift */; };
 		3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */; };
@@ -46,6 +46,18 @@
 		B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */; };
 		E4949D098B063DCBA645DE5A /* Pods_FeelAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF50304707DB958A189ADCF1 /* Pods_FeelAppTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		B5B6D4F01E8E3CCC002BDA96 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = image.png;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# copypng\n";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
 		3D1462681E67966600BB74AA /* PBXContainerItemProxy */ = {
@@ -96,7 +108,7 @@
 		3D22F27D1E8C7EF3003E12E6 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		3D22F27F1E8C941A003E12E6 /* leftArrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow2.png; path = Assets.xcassets/rightArrow2.imageset/leftArrow2.png; sourceTree = "<group>"; };
 		3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
-		3D64552A1E8E2B5C00727BB0 /* notificationIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notificationIcon.png; sourceTree = "<group>"; };
+		3D64552A1E8E2B5C00727BB0 /* notificationIcon */ = {isa = PBXFileReference; lastKnownFileType = file; path = notificationIcon; sourceTree = "<group>"; };
 		3D64552C1E8E2BB200727BB0 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		3D64552E1E8E316500727BB0 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitEmotionVC.swift; sourceTree = "<group>"; };
@@ -187,7 +199,7 @@
 				3D14625D1E67966600BB74AA /* Assets.xcassets */,
 				B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */,
 				3D1462561E67966600BB74AA /* AppDelegate.swift */,
-				3D64552A1E8E2B5C00727BB0 /* notificationIcon.png */,
+				3D64552A1E8E2B5C00727BB0 /* notificationIcon */,
 				3D22F27F1E8C941A003E12E6 /* leftArrow2.png */,
 				3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */,
 				3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */,
@@ -280,6 +292,7 @@
 				E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
+				B5B6D4F01E8E3CCC002BDA96 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -391,7 +404,7 @@
 				B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */,
 				3D22F2741E8C7288003E12E6 /* heartIconFilled.png in Resources */,
 				3D22F2801E8C941A003E12E6 /* leftArrow2.png in Resources */,
-				3D64552B1E8E2B5C00727BB0 /* notificationIcon.png in Resources */,
+				3D64552B1E8E2B5C00727BB0 /* notificationIcon in Resources */,
 				3D14625C1E67966600BB74AA /* Main.storyboard in Resources */,
 				3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */,
 			);
@@ -426,7 +439,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5658AF5F5E81960D9AE89068 /* [CP] Embed Pods Frameworks */ = {
@@ -486,7 +499,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		94C029FD84E209671611EEE3 /* [CP] Copy Pods Resources */ = {
@@ -531,7 +544,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */ = {

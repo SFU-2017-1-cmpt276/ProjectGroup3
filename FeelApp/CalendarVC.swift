@@ -85,11 +85,28 @@ class CalendarVC: UIViewController {
         
         
         let offset:CGFloat = 0
+        //collectionView.frame.size.height = 250
         historyView = HistoryView(size:CGSize(width:view.frame.width - 2*offset,height:view.frame.height - topView.frame.height - offset))
-        historyView.frame.origin.y = topView.frame.height + offset
+        historyView.frame.origin.y =  collectionView.frame.maxY - 300//dayLabels[0].frame.maxY + 300//label.frame.maxY //collectionView.frame.height - 165//topView.frame.height + offset
         historyView.center.x = view.frame.width/2
         view.addSubview(historyView)
-        historyView.frame.size.height = monthLabel.frame.origin.y - historyView.frame.origin.y - 10
+        //historyView.frame.size.height = monthLabel.frame.origin.y - historyView.frame.origin.y - 10
+        //topView.estimatedRowHeight = 100
+        historyView.frame.size.height = 300
+        historyView.backgroundColor = UIColor.white
+        
+        
+        //collectionView.frame.origin.y = 600
+        //monthLabel.frame.origin.y = topView.frame.origin.y + 80
+        //nextButton.frame.origin.y = topView.frame.origin.y + 80
+        //previousButton.frame.origin.y = topView.frame.origin.y + 80
+        
+        //historyView.frame.origin.y = 300
+        //collectionView.frame.size.height = collectionView.sizeToFit()
+        
+        //collectionview.frame.
+        
+        
         
         getEmotions()
         
@@ -193,7 +210,8 @@ class CalendarVC: UIViewController {
         monthLabel.sizeToFit()
         view.addSubview(monthLabel)
         monthLabel.center.x = view.frame.width/2
-        monthLabel.frame.origin.y = topView.frame.height + 20
+        //monthLabel.frame.origin.y = topView.frame.height + 20
+        monthLabel.frame.origin.y =  titleLabel.frame.maxY + 50
         
         nextButton.frame.size = CGSize(width: 35, height: 35)
         nextButton.setImage(#imageLiteral(resourceName: "rightArrowIcon"), for: .normal)
@@ -218,7 +236,10 @@ class CalendarVC: UIViewController {
         previousButton.addTarget(self, action: #selector(CalendarVC.changeMonthAction(sender:)), for: .touchUpInside)
         
         nextButton.frame.origin.x = view.frame.width - previousButton.frame.width - 15
+        //nextButton.frame.origin.y = topView.frame.origin.y + 80
         previousButton.frame.origin.x = 15
+        //previousButton.frame.origin.y = titleLabel.frame.origin.y + 80
+        
     }
 
 
@@ -257,11 +278,13 @@ class CalendarVC: UIViewController {
         
         getEmotionCounts()
         collectionView.reloadData()
-        collectionView.frame.origin.y = view.frame.height - width*6
+        collectionView.frame.origin.y = 150
+        
         for label in dayLabels{
             label.frame.origin.y = collectionView.frame.origin.y - label.frame.height - 15
         }
-        monthLabel.frame.origin.y = dayLabels[0].frame.origin.y - monthLabel.frame.height - 20
+        //monthLabel.frame.origin.y = dayLabels[0].frame.origin.y - monthLabel.frame.height - 20
+        monthLabel.frame.origin.y = titleLabel.frame.origin.y + 50
         previousButton.center.y = monthLabel.center.y
         nextButton.center.y = monthLabel.center.y
     }
@@ -280,6 +303,9 @@ class CalendarVC: UIViewController {
         collectionView.dataSource = self
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.backgroundColor = UIColor.white
+        //collectionView.sizeToFit()
+        //collectionView.frame.origin.y = 200;
+        //collectionView.
     }
     
     func setUpDayLabels(){
@@ -295,7 +321,8 @@ class CalendarVC: UIViewController {
             label.textAlignment = .center
             label.frame.size.width = width
             dayLabels.append(label)
-            label.frame.origin.y = monthLabel.frame.maxY + 30
+            //label.frame.origin.y = monthLabel.frame.maxY + 30
+            label.frame.origin.y =  100
             label.frame.origin.x = 15 + CGFloat(i) * width
         }
     }
@@ -324,6 +351,7 @@ extension CalendarVC:UICollectionViewDelegate,UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         cell.layer.cornerRadius = width/2
         cell.clipsToBounds = false
+        //cell.frame.size.height = 200
         
         var label:UILabel!
         var numberLabel:UILabel!

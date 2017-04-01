@@ -42,6 +42,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func setUpTableView(){
         let originY = topView.frame.maxY
         tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height - originY)
+        //tableView.frame.origin.y = getPosts().frame.maxY + 40
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
         
