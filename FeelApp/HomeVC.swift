@@ -24,8 +24,8 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
     var historyButton = UIButton()
     var linkButton = UIButton()
     var feedButton = UIButton()
-    var feedButtonHeight:CGFloat = 50
-    var feedButtonOffset:CGFloat = 20
+    var feedButtonHeight:CGFloat = 60
+    var feedButtonOffset:CGFloat = 10
     
     var selectFeelingView:SelectFeelingView!
     
@@ -64,7 +64,7 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         pageControl.pageIndicatorTintColor = globalGreyColor
         
         scrollView.frame.size.width = view.frame.width
-        scrollView.frame.size.height = pageControl.frame.origin.y - topView.frame.height
+        scrollView.frame.size.height = view.frame.height - topView.frame.height
         view.addSubview(scrollView)
         scrollView.frame.origin.y = topView.frame.height
         scrollView.contentSize.width = view.frame.width*2
@@ -81,9 +81,10 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         feedButton.backgroundColor = nowColor
         feedButton.titleLabel?.font = Font.PageHeaderSmall()
         feedButton.addTarget(self, action: #selector(HomeVC.toFeed), for: .touchUpInside)
-        feedButton.layer.cornerRadius = feedButtonHeight/2
+        feedButton.layer.cornerRadius = 8
         
         setUpChildViewController(vc: ChartVC())
+        view.bringSubview(toFront: pageControl)
     }
     
     func setUpChildViewController(vc:UIViewController){

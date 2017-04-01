@@ -28,14 +28,12 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var typingBar:TypingBar!
     var commentsView: CommentsView!
     var commentsViewOriginY:CGFloat{
-        return tableView.frame.maxY
+        return tableView.frame.maxY + 5
     }
     
     
     var dismissKeyboardRec:UITapGestureRecognizer!
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
-    
+
     // set up table view and top bar. Get data from firebase.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +60,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func setUpView(){
-        commentsView = CommentsView(size: CGSize(width: view.frame.width, height: view.frame.height - commentsViewOriginY - TypingBar.Height))
+        commentsView = CommentsView(size: CGSize(width: view.frame.width - 20, height: view.frame.height - commentsViewOriginY - TypingBar.Height))
        // commentsView.someDelegate = self
         commentsView.frame.origin.y = commentsViewOriginY
         commentsView.center.x = view.frame.width/2
@@ -72,7 +70,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func setUpTypingBar(){
         
-        typingBar = TypingBar(width: view.frame.width, placeholder: "Add comment...", color: nowColor,buttonText:"Send")
+        typingBar = TypingBar(width: view.frame.width, placeholder: "Add comment...", color: post.emotion.color,buttonText:"Send")
         typingBar.frame.origin.y = view.frame.height - typingBar.frame.height
         view.addSubview(typingBar)
         view.bringSubview(toFront: typingBar)
@@ -116,9 +114,10 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
-        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: postHeight)
+        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width - 20, height: postHeight)
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
+        tableView.center.x = view.frame.width/2
         
         view.addSubview(tableView)
         tableView.estimatedRowHeight = 20
@@ -142,7 +141,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         topView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width, height: 70))
         view.addSubview(topView)
-        topView.backgroundColor = nowColor
+        topView.backgroundColor = UIColor(white: 0.94, alpha: 1)
         
         backButton.frame.size = size
         backButton.setImage(#imageLiteral(resourceName: "leftArrowIcon"), for: .normal)
@@ -150,17 +149,19 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.addTarget(self, action: #selector(CommentsVC.backAction), for: .touchUpInside)
         
         topView.addSubview(backButton)
-        backButton.changeToColor(UIColor.white)
+        backButton.changeToColor(UIColor.black)
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
         
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "Post"
-        titleLabel.textColor = UIColor.white
+        titleLabel.textColor = UIColor.black
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
         topView.addSubview(titleLabel)
+        
+        Draw.createLineUnderView(topView, color: UIColor.black,width:0.3)
     }
     
     //function called by the back button. Dismiss the view controller
@@ -182,7 +183,6 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .none
         let rec = UITapGestureRecognizer(target: self, action: #selector(FeedVC.likeViewClicked(sender:)))
         cell.likeView.addGestureRecognizer(rec)
-        cell.lineHeight.constant = 0
         
         return cell
     }

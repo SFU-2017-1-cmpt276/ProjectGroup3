@@ -22,7 +22,7 @@ class CommentCell: UITableViewCell {
     var leftEdgeOffset:CGFloat = 30
     
     var textOriginX:CGFloat{
-        return 10
+        return 7
     }
     
     

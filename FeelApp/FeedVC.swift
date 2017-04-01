@@ -32,7 +32,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
 
         ref = FIRDatabase.database().reference()
-        
+        view.backgroundColor = UIColor.white
         setUpTopView()
         setUpTableView()
         getPosts()
@@ -41,9 +41,10 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
-        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height - originY)
+        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width - 20, height: view.frame.size.height - originY)
         //tableView.frame.origin.y = getPosts().frame.maxY + 40
         tableView.tableFooterView = UIView()
+        tableView.center.x = view.frame.width/2
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
         
         view.addSubview(tableView)
