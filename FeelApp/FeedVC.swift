@@ -58,6 +58,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.bounces = true
         tableView.alwaysBounceVertical = true
         tableView.showsVerticalScrollIndicator = false
+        
     }
     
     //Set up the top bar. The view, back button, and title label.
@@ -135,12 +136,15 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 }
                 
                 let allCommentDict = postDict["Comments"] as? [String:AnyObject] ?? [:]
-                if allCommentDict.count > 0{
-                    
-                    
-                    
+
+                for (id,_) in postDict["Reports"] as? [String:AnyObject] ?? [:]{
+                    post.reports.append(id)
+                    break
                     
                 }
+
+                
+                
                 for (someID,commentDict) in allCommentDict{
                     let comment = Comment()
                     let person = Person()
@@ -152,7 +156,17 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                     post.comments.append(comment)
                 }
                 
+                var cantSee = false
+                for (id,_) in postDict["Cant See"] as? [String:AnyObject] ?? [:]{
+                    if id == userUID{
+                        cantSee = true
+                        break
+                    }
+                }
+                
+                if !cantSee{
                 self.posts.append(post)
+                }
 
             }
             self.posts.sort(by: {$0.emotion.time > $1.emotion.time})
@@ -180,7 +194,76 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CommentsVC()
         vc.post = posts[indexPath.item]
+        vc.postHeight = tableView.rectForRow(at: indexPath).height
         present(vc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let post = posts[indexPath.item]
+        
+        var reportAction = UITableViewRowAction(style: .normal, title: "Report") { action, index in self.reportPost(post:post)}
+        reportAction.backgroundColor = UIColor(white: 0.7, alpha: 1)
+        var deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { action, index in self.deletePost(post:post,yours:true)}
+        var hideAction = UITableViewRowAction(style: .normal, title: "Hide") { action, index in self.deletePost(post:post,yours:false)}
+        deleteAction.backgroundColor = UIColor(white: 0.6, alpha: 1)
+        hideAction.backgroundColor = UIColor(white: 0.6, alpha: 1)
+        if post.sender.id == userUID{
+        
+            return [deleteAction]
+        }
+        else{
+            if post.reports.contains(userUID){
+            return [hideAction]
+            }
+            else{
+                return [hideAction,reportAction]
+            }
+        }
+
+    }
+    
+    func reportPost(post:Post){
+
+        ref.child("Posts").child(post.ID).child("Reports").observeSingleEvent(of: .value, with: {snapshot in
+            if snapshot.childrenCount >= 4{
+                 self.ref.child("Posts").child(post.ID).child("Reports").setValue(nil)
+            }
+            else{
+                self.ref.child("Posts").child(post.ID).child("Reports").child(userUID).setValue(true)
+            }
+        })
+        
+        let alert = UIAlertController(title: "Report", message: "Thank you for reporting this post. We are sorry you had this experience.", preferredStyle: .alert) // 7
+        let defaultAction = UIAlertAction(title: "Hide Post", style: .cancel) { (alert: UIAlertAction!) -> Void in
+            
+            self.deletePost(post: post, yours: false)
+        }
+        let closeAction = UIAlertAction(title: "Close", style: .default) { (alerta: UIAlertAction!) -> Void in
+            
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(defaultAction) // 9
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion:nil)  // 11
+
+        
+        post.reports.append(userUID)
+        tableView.reloadData()
+        
+    }
+    
+    func deletePost(post:Post,yours:Bool){
+        if yours{
+            ref.child("Posts").child(post.ID).setValue(nil)
+            
+        }
+        else{
+            ref.child("Posts").child(post.ID).child("Cant See").child(userUID).setValue(true)
+        }
+        let index = posts.index(where: {$0.ID == post.ID})!
+        posts.remove(at: index)
+        tableView.reloadData()
     }
     
     func likeViewClicked(sender:UITapGestureRecognizer){

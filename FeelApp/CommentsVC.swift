@@ -17,6 +17,7 @@ import FirebaseDatabase
 class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var post:Post!
+    var postHeight:CGFloat!
     var ref:FIRDatabaseReference!
     
     var tableView = UITableView()
@@ -26,7 +27,9 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var posts:[Post] = []
     var typingBar:TypingBar!
     var commentsView: CommentsView!
-    let commentsViewOriginY:CGFloat = 250
+    var commentsViewOriginY:CGFloat{
+        return tableView.frame.maxY
+    }
     
     
     var dismissKeyboardRec:UITapGestureRecognizer!
@@ -45,6 +48,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         NotificationCenter.default.addObserver(self, selector: #selector(CommentsVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(CommentsVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        view.backgroundColor = UIColor.white
         setUpTopView()
         setUpTableView()
         setUpView()
@@ -58,13 +62,11 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     func setUpView(){
-        commentsView = CommentsView(size: CGSize(width: view.frame.width, height: view.frame.height - commentsViewOriginY))
+        commentsView = CommentsView(size: CGSize(width: view.frame.width, height: view.frame.height - commentsViewOriginY - TypingBar.Height))
        // commentsView.someDelegate = self
-        commentsView.frame.origin.y = 450
+        commentsView.frame.origin.y = commentsViewOriginY
         commentsView.center.x = view.frame.width/2
         view.addSubview(commentsView)
-        commentsView.backgroundColor = UIColor.gray
-        tableView.backgroundColor = UIColor.black
 
     }
     
@@ -114,18 +116,14 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
-        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: view.frame.size.height )
+        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width, height: postHeight)
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
         
         view.addSubview(tableView)
         tableView.estimatedRowHeight = 20
         tableView.rowHeight = UITableViewAutomaticDimension
-        //tableView.rowHeight = tableView.contentSize.height
-        //tableView.frame.size.height = tableView.contentSize.height
-        //tableView.estimatedRowHeight = 600
-        //tableView.sizeToFit()
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -134,6 +132,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.bounces = true
         tableView.alwaysBounceVertical = true
         tableView.showsVerticalScrollIndicator = false
+        
     }
     
     //Set up the top bar. The view, back button, and title label.
@@ -183,6 +182,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .none
         let rec = UITapGestureRecognizer(target: self, action: #selector(FeedVC.likeViewClicked(sender:)))
         cell.likeView.addGestureRecognizer(rec)
+        cell.lineHeight.constant = 0
         
         return cell
     }
@@ -243,7 +243,6 @@ extension CommentsVC{
     
     func dismissKeyboard(){
         typingBar.textView.endEditing(true)
-        typingBar.frame.origin.y = view.frame.height
         dismissKeyboardRec.isEnabled = false
         
     }

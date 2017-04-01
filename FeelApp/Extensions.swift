@@ -16,6 +16,19 @@
 
 import UIKit
 
+extension UIView{
+    func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval)
+    {
+        let animation = CABasicAnimation(keyPath:"cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        self.layer.add(animation, forKey: "cornerRadius")
+        self.layer.cornerRadius = to
+    }
+}
+
 extension UITextField {
     func roundedTopText(){
         let maskPath1 = UIBezierPath(roundedRect: self.bounds,
@@ -67,7 +80,12 @@ extension Date{
     
     func minutes(from: Date) -> Int {
         let calendar = Calendar.current as NSCalendar
-        return calendar.components(.minute, from: from, to: self, options: []).minute!
+       return calendar.components(.minute, from: from, to: self, options: []).minute!
+    }
+    /// Returns the amount of days from another date
+    func days(from date: Date) -> Int {
+        let calendar = Calendar.current as NSCalendar
+        return calendar.components(.day, from: date, to: self, options: []).day!
     }
 }
 

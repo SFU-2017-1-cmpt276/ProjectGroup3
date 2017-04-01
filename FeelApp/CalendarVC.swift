@@ -9,14 +9,19 @@
 import UIKit
 import FirebaseDatabase
 
+protocol CalendarVCDelegate{
+    func calendarBackButtonClicked()->Void
+}
+
 class CalendarVC: UIViewController {
 
+    var delegate:CalendarVCDelegate?
     //some data stuff
     var startingDay = 0
     var numberOfDaysCurrentMonth = 0
     var numberOfDaysPreviousMonth = 0
     var isCurrentMonth = false
-    var selectedDay = -1
+    var selectedDate = Date()
     var displayDate = Date()
     var calendar = Calendar.current
     var formatter = DateFormatter()
@@ -47,29 +52,6 @@ class CalendarVC: UIViewController {
         return UIStatusBarStyle.lightContent
     }
     
-    func getEmotions(){
-        
-        FIRDatabase.database().reference().child("Emotions").child(userUID).observeSingleEvent(of: .value, with: {allSnap in
-            let hello = userUID
-            let dict = allSnap.value as? [String:AnyObject] ?? [:]
-            
-            for (id,singleEmotionDict) in dict{
-                
-                let type = singleEmotionDict["Type"] as? String ?? ""
-                
-                let emotion = Emotion.fromString(type)
-                emotion.text = singleEmotionDict["Text"] as? String ?? ""
-                emotion.id = id
-                emotion.time = singleEmotionDict["Time"] as? TimeInterval ?? TimeInterval()
-                self.allEmotions.append(emotion)
-                
-            }
-            self.allEmotions.sort(by: {$1.time < $0.time})
-            self.filterHistory(date:Date())
-            self.getEmotionCounts()
-            self.collectionView.reloadData()
-        })
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,31 +66,17 @@ class CalendarVC: UIViewController {
         changeMonthAction(sender: previousButton)
         
         
-        let offset:CGFloat = 0
-        //collectionView.frame.size.height = 250
-        historyView = HistoryView(size:CGSize(width:view.frame.width - 2*offset,height:view.frame.height - topView.frame.height - offset))
-        historyView.frame.origin.y =  collectionView.frame.maxY - 300//dayLabels[0].frame.maxY + 300//label.frame.maxY //collectionView.frame.height - 165//topView.frame.height + offset
+        
+        let originY:CGFloat = collectionView.frame.maxY
+        historyView = HistoryView(size:CGSize(width:view.frame.width,height:view.frame.height - originY))
+        historyView.frame.origin.y =  originY
         historyView.center.x = view.frame.width/2
         view.addSubview(historyView)
-        //historyView.frame.size.height = monthLabel.frame.origin.y - historyView.frame.origin.y - 10
-        //topView.estimatedRowHeight = 100
-        historyView.frame.size.height = 300
         historyView.backgroundColor = UIColor.white
-        
-        
-        //collectionView.frame.origin.y = 600
-        //monthLabel.frame.origin.y = topView.frame.origin.y + 80
-        //nextButton.frame.origin.y = topView.frame.origin.y + 80
-        //previousButton.frame.origin.y = topView.frame.origin.y + 80
-        
-        //historyView.frame.origin.y = 300
-        //collectionView.frame.size.height = collectionView.sizeToFit()
-        
-        //collectionview.frame.
-        
-        
-        
-        getEmotions()
+    
+        self.filterHistory(date:Date())
+        self.getEmotionCounts()
+        self.collectionView.reloadData()
         
     }
     
@@ -197,13 +165,11 @@ class CalendarVC: UIViewController {
     }
     
     func backAction(){
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     func setUpDateStuff(){
 
-        selectedDay = calendar.component(.day, from: Date())
-        
         formatter.dateFormat = "MMMM yyyy"
         monthLabel = UILabel()
         monthLabel.text = "asdfasdf"
@@ -245,7 +211,6 @@ class CalendarVC: UIViewController {
 
     func changeMonthAction(sender:UIButton){
 
-        
         if sender == nextButton{
         
         displayDate = Calendar.current.date(byAdding: .month, value: 1, to: displayDate)!
@@ -295,7 +260,7 @@ class CalendarVC: UIViewController {
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         let originY = dayLabels[0].frame.maxY + 15
-        let frame = CGRect(x: 15, y: originY, width: view.frame.width - 30, height: view.frame.height - originY)
+        let frame = CGRect(x: 15, y: originY, width: view.frame.width - 30, height: width*6)
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         view.addSubview(collectionView)
         
@@ -342,7 +307,7 @@ extension CalendarVC:UICollectionViewDelegate,UICollectionViewDataSource{
         components.year = calendar.component(.year, from: displayDate)
         let date = calendar.date(from: components)!
         filterHistory(date: date)
-        selectedDay = indexPath.item + 1 - startingDay
+        selectedDate = date
         collectionView.reloadData()
         
     }
@@ -402,7 +367,19 @@ extension CalendarVC:UICollectionViewDelegate,UICollectionViewDataSource{
         }
         
         
-        if isCurrentMonth && Int(label.text!) == selectedDay{
+        var components = DateComponents()
+        components.day = indexPath.item + 1 - startingDay
+        components.month = calendar.component(.month, from: displayDate)
+        components.year = calendar.component(.year, from: displayDate)
+        let date = calendar.date(from: components)!
+        
+        
+        let day = calendar.component(.day, from: displayDate)
+        let month = calendar.component(.month, from: displayDate)
+        let year = calendar.component(.year, from: displayDate)
+        
+        if indexPath.item + 1 - startingDay == calendar.component(.day, from: selectedDate) && month == calendar.component(.month, from: selectedDate) && year == calendar.component(.year, from: selectedDate){
+            
             label.backgroundColor = UIColor.red
             label.font = Font.PageBodyBold()
             label.center = CGPoint(x: width/2, y: width/2)

@@ -17,7 +17,7 @@
 import UIKit
 import FirebaseDatabase
 
-class HistoryVC: UIViewController {
+class HistoryVC: UIViewController,CalendarVCDelegate {
 
     var backButton = UIButton()
     var topView = UIView()
@@ -46,12 +46,18 @@ class HistoryVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func calendarBackButtonClicked() {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
+    
     //Set up the top bar. The view, back button, and title label.
     func setUpTopView(){
         let size = CGSize(width: 50, height: 50)
-        let inset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let inset = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
         
-        topView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width, height: 60))
+        topView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width, height: 70))
         view.addSubview(topView)
         topView.backgroundColor = UIColor.white
         
@@ -60,15 +66,17 @@ class HistoryVC: UIViewController {
         backButton.setImage(#imageLiteral(resourceName: "leftArrowIcon.png"), for: .normal)
         backButton.contentEdgeInsets = inset
         
+        topView.backgroundColor = nowColor
+        
         topView.addSubview(backButton)
-        backButton.changeToColor(UIColor.black)
+        backButton.changeToColor(UIColor.white)
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
         backButton.addTarget(self, action: #selector(HistoryVC.backAction), for: .touchUpInside)
         
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "History"
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
@@ -78,25 +86,29 @@ class HistoryVC: UIViewController {
         chartButton.setImage(#imageLiteral(resourceName: "pieChartIcon.png"), for: .normal)
         chartButton.contentEdgeInsets = inset
         topView.addSubview(chartButton)
-        chartButton.changeToColor(UIColor.black)
+        chartButton.changeToColor(UIColor.white)
         chartButton.frame.origin.y = topView.frame.height - chartButton.frame.height
         chartButton.frame.origin.x = view.frame.width - chartButton.frame.width
         chartButton.addTarget(self, action: #selector(HistoryVC.toChart), for: .touchUpInside)
+        chartButton.isHidden = true
         
         calendarButton.frame.size = size
         calendarButton.setImage(#imageLiteral(resourceName: "calendarIcon"), for: .normal)
         calendarButton.contentEdgeInsets = inset
         topView.addSubview(calendarButton)
-        calendarButton.changeToColor(UIColor.black)
+        calendarButton.changeToColor(UIColor.white)
         calendarButton.frame.origin.y = topView.frame.height - chartButton.frame.height
-        calendarButton.frame.origin.x = chartButton.frame.origin.x - calendarButton.frame.width
+        calendarButton.frame.origin.x = view.frame.width - calendarButton.frame.width
         calendarButton.addTarget(self, action: #selector(HistoryVC.toCalendar), for: .touchUpInside)
     }
     
     func toCalendar(){
         let vc = CalendarVC()
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true, completion: nil)
+        vc.delegate = self
+        vc.allEmotions = historyView.emotions
+        //vc.modalTransitionStyle = .crossDissolve
+        
+        present(vc, animated: false, completion: nil)
     }
     //top right button action for opening the chartVC.
     func toChart(){

@@ -14,6 +14,7 @@
 
 
 import UIKit
+import FirebaseAuth
 
 class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -61,7 +62,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
         titleLabel.font = Font.PageHeaderSmall()
-        titleLabel.text = "Links"
+        titleLabel.text = "Links and Settings"
         titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
@@ -100,7 +101,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //tableview data source method for number of sections. we will have 2: for links and for phone numbers.
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     //tableview data source method for number of rows in section. Return the counts of the link titles and phone titles arrays initialized earlier.
@@ -108,9 +109,10 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if section == 0{
             return linkTitles.count
         }
-        else{
+        else if section == 1{
             return phoneTitles.count
         }
+        else{return 1}
     }
     
     //tableivew data source method for formatting cell.
@@ -123,24 +125,30 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = linkTitles[indexPath.item]
         }
-        else{
+        else if indexPath.section == 1{
             //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = phoneTitles[indexPath.item]
+        }
+        else{
+            cell.textLabel?.text = "Logout"
         }
         
         
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         cell.textLabel?.font = Font.PageBody()
-        
+
         
         //set the button the appears on the right on the cell. if its a link, the button is the right arrow. otherwise, its the phone icon
         let imageView = UIImageView()
         if indexPath.section == 0{
             imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
         }
-        else{
+        else if indexPath.section == 1{
             imageView.image = #imageLiteral(resourceName: "phone.png")
+        }
+        else{
+            imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
         }
         
         imageView.changeToColor(globalGreyColor)
@@ -153,16 +161,18 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //tableview delegate method for header height.
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
         return headerHeight
+
     }
-    
     //tableview delegate method for the actual header view. Create a view with height of headerHeight. put a label in it with approriate text. format and position the label.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView(frame: CGRect(x:0, y:0, width:view.frame.width, height:headerHeight))
         returnedView.backgroundColor = UIColor.white
         let label = UILabel()
         if section == 0{label.text = "Information"}
-        else{label.text = "Call SFU Clinic"}
+        else if section == 1{label.text = "Call SFU Clinic"}
+        else{label.text = "Settings"}
         
         let smallFont = Font.PageBodyBold()
         label.font = smallFont
@@ -194,7 +204,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             default:break
             }
         }
-        else{
+        else if indexPath.section == 1{
             switch indexPath.item{
             case 0:makeCall(phoneNumber: "778-782-4615")
             case 1:makeCall(phoneNumber: "778-782-5200")
@@ -203,6 +213,15 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             
         }
+        else{
+            logout()
+        }
+    }
+    
+    func logout(){
+        try! FIRAuth.auth()?.signOut()
+        let vc = LoginVC()
+        present(vc, animated: true, completion: nil)
     }
     
     //input is a url. Open up the website in Safari corresponding to the url

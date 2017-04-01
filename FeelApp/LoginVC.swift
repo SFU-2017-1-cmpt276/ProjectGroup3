@@ -37,6 +37,7 @@ class LoginVC: UIViewController {
     
     var dismissKeyboardRec:UITapGestureRecognizer!
     
+    
     //set up logo, text fields, and buttons.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -183,7 +184,7 @@ class LoginVC: UIViewController {
             if error == nil && user != nil{
                 FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
                     GlobalData.You.alias = snapshot.value! as? String ?? ""
-                    let vc = CalendarVC()//HomeVC()
+                    let vc = HomeVC()
                     vc.modalTransitionStyle = .crossDissolve
                     self.present(vc, animated: true, completion: nil)
                 })

@@ -23,7 +23,7 @@ class Post{
     var likes:[String] = []
     var comments:[Comment] = []
     var ID = ""
-
+    var reports:[String] = []
     init(){}
     
 }
