@@ -32,6 +32,7 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
     }
+    var chartVC = ChartVC()
     
     // set up table view and top bar and general view.
     override func viewDidLoad() {
@@ -49,10 +50,14 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chartVC.getEmotions()
+    }
+    
     //set up the general view. In this case its just the feed button that apepasr on the bottom
     func setUpView(){
         view.backgroundColor = UIColor.white
-        
         
         pageControl.currentPage = 0
         pageControl.numberOfPages = 2
@@ -64,7 +69,7 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         pageControl.pageIndicatorTintColor = globalGreyColor
         
         scrollView.frame.size.width = view.frame.width
-        scrollView.frame.size.height = view.frame.height - topView.frame.height
+        scrollView.frame.size.height = pageControl.frame.origin.y - topView.frame.height
         view.addSubview(scrollView)
         scrollView.frame.origin.y = topView.frame.height
         scrollView.contentSize.width = view.frame.width*2
@@ -83,7 +88,7 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         feedButton.addTarget(self, action: #selector(HomeVC.toFeed), for: .touchUpInside)
         feedButton.layer.cornerRadius = 8
         
-        setUpChildViewController(vc: ChartVC())
+        setUpChildViewController(vc: chartVC)
         view.bringSubview(toFront: pageControl)
     }
     

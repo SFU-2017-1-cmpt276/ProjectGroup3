@@ -33,6 +33,12 @@ class ChartVC: UIViewController {
     var totalButton = UIButton()
     
     var tableView = UITableView()
+    
+    var nothingThereLabel = UILabel()
+    
+    var week = true
+    var month = false
+    var all = false
 
     override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
     
@@ -62,8 +68,6 @@ class ChartVC: UIViewController {
         pieChartView.frame = CGRect(x: 0, y: originY, width: view.frame.width*(3/4), height: view.frame.width*(3/4))
         pieChartView.center.x = view.frame.width/2
         
-        getEmotions()
-        
         // Do any additional setup after loading the view.
     }
     
@@ -71,6 +75,13 @@ class ChartVC: UIViewController {
     //Set up the general view
     func setUpView(){
         view.backgroundColor = UIColor.white
+        nothingThereLabel.text = "No data available"
+        nothingThereLabel.font = Font.NoPostsFont()
+        nothingThereLabel.textColor = globalGreyColor
+        view.addSubview(nothingThereLabel)
+        nothingThereLabel.center.x = view.frame.width/2
+        nothingThereLabel.center.y = view.frame.height/2
+        nothingThereLabel.isHidden = true
     }
     
     
@@ -104,11 +115,26 @@ class ChartVC: UIViewController {
         sender.setTitleColor(UIColor.white, for: .normal)
         
         switch sender{
-        case weekButton:processEmotions(week: true, month: false, all: false)
-            case monthButton:processEmotions(week: false, month: true, all: false)
-            case totalButton:processEmotions(week: false, month: false, all: true)
+        case weekButton:
+            
+            week = true
+            month = false
+            all = false
+            
+        case monthButton:
+            week = false
+            month = true
+            all = false
+            
+        case totalButton:
+            week = false
+            month = false
+            all = true
+            
         default:break
         }
+        
+        processEmotions(week: week, month: month, all: all)
     }
     
     
@@ -228,11 +254,15 @@ class ChartVC: UIViewController {
         tableView.frame.size.height = tableView.rowHeight * CGFloat(emotionCounts.count)
         tableView.isScrollEnabled = false
         scrollView.contentSize.height = tableView.frame.maxY
+        
+        if emotionCounts.count == 0{nothingThereLabel.isHidden = false}
+        else{nothingThereLabel.isHidden = true}
     }
     
     //Get the data from firebase. Add it to the emotionCounts array. then call setUpChart()
     func getEmotions(){
         
+        self.allEmotions = []
         FIRDatabase.database().reference().child("Emotions").child(userUID).observeSingleEvent(of: .value, with: {allSnap in
             let dict = allSnap.value as? [String:AnyObject] ?? [:]
             
@@ -249,7 +279,7 @@ class ChartVC: UIViewController {
                 
             }
             self.setUpTableView()
-            self.processEmotions(week: true, month: false, all: false)
+            self.processEmotions(week: self.week, month: self.month, all: self.all)
             
         })
     }
