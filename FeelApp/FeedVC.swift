@@ -134,9 +134,12 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 post.sender.id = postDict["Sender ID"] as? String ?? ""
                 post.sender.alias = postDict["Sender Alias"] as? String ?? ""
                 
-                let likeDict = postDict["Likes"] as? [String:Bool] ?? [:]
-                for (someID,_) in likeDict{
-                    post.likes.append(someID)
+                let likeDict = postDict["Likes"] as? [String:TimeInterval] ?? [:]
+                for (someID,time) in likeDict{
+                    let like = Like()
+                    like.senderID = someID
+                    like.time = time/1000
+                    post.likes.append(like)
                 }
                 
                 let allCommentDict = postDict["Comments"] as? [String:AnyObject] ?? [:]
@@ -180,15 +183,28 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.backgroundColor = UIColor.white
+    }
+    
+    
     //tableview data source method. say the number of rows that will appear
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
     }
     
     //tableview data source method. set and format the cell. 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! PostCell
-        cell.setUp(post: posts[indexPath.row])
+        cell.setUp(post: posts[indexPath.section])
         cell.selectionStyle = .none
         let rec = UITapGestureRecognizer(target: self, action: #selector(FeedVC.likeViewClicked(sender:)))
         cell.likeView.addGestureRecognizer(rec)
@@ -198,13 +214,12 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CommentsVC()
-        vc.post = posts[indexPath.item]
-        vc.postHeight = tableView.rectForRow(at: indexPath).height
+        vc.post = posts[indexPath.section]
         present(vc, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let post = posts[indexPath.item]
+        let post = posts[indexPath.section]
         
         var reportAction = UITableViewRowAction(style: .normal, title: "Report") { action, index in self.reportPost(post:post)}
         reportAction.backgroundColor = UIColor(white: 0.7, alpha: 1)
@@ -278,12 +293,16 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         let post = (view as! PostCell).post!
         
-        if post.likes.contains(userUID){
-            let index = post.likes.index(of: userUID)!
+        
+        let likeIDs = post.likes.map({$0.senderID})
+        if likeIDs.contains(userUID){
+            let index = likeIDs.index(of: userUID)!
             post.likes.remove(at: index)
         }
         else{
-            post.likes.append(userUID)
+            let like = Like()
+            like.senderID = userUID
+            post.likes.append(like)
         }
         
         ref.child("Posts").child(post.ID).child("Likes").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
@@ -291,7 +310,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(nil)
             }
             else{
-                self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(true)
+                self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(FIRServerValue.timestamp())
             }
         })
         

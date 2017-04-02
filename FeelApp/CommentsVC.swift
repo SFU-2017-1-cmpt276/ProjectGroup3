@@ -1,14 +1,3 @@
-//FeelApp
-//This is the Feed view controller. For the user to view posts from other users in a newsfeed format. Anyonmous posts, identified only by the user's alias.
-///Programmers: Deepak and Carson
-//Version 1: Created tableview with PostCell and test data.
-//Version 2: Connected to database.
-//Version 3: Improved UI. Set fonts and colors for each story. Created title bar.
-//Version 4: Fixed bug where long text was overflowing to the right, instead of increasing the height of the cell.
-
-//Coding standard:
-//all view controller files have a descriptor followed by "VC."
-//all view files have a descriptor folled by "view"
 
 
 import UIKit
@@ -17,7 +6,6 @@ import FirebaseDatabase
 class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var post:Post!
-    var postHeight:CGFloat!
     var ref:FIRDatabaseReference!
     
     var tableView = UITableView()
@@ -29,6 +17,10 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var commentsView: CommentsView!
     var commentsViewOriginY:CGFloat{
         return tableView.frame.maxY + 5
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
     }
     
     
@@ -57,6 +49,20 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         commentsView.addComment(comment)
         }
         commentsView.sortAndReload()
+    }
+
+    
+  
+    
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.layoutIfNeeded()
+        
+        tableView.frame.size.height = tableView.contentSize.height + 10
+        commentsView.frame.origin.y = commentsViewOriginY
+        commentsView.frame.size.height = view.frame.height - commentsViewOriginY - TypingBar.Height
     }
     
     func setUpView(){
@@ -115,7 +121,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
-        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width - 20, height: postHeight)
+        tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width - 20, height: 300)
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
         tableView.center.x = view.frame.width/2
@@ -142,7 +148,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         topView.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: view.frame.width, height: 70))
         view.addSubview(topView)
-        topView.backgroundColor = UIColor(white: 0.94, alpha: 1)
+        topView.backgroundColor = nowColor//UIColor(white: 0.94, alpha: 1)
         
         backButton.frame.size = size
         backButton.setImage(#imageLiteral(resourceName: "leftArrowIcon"), for: .normal)
@@ -150,19 +156,19 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         backButton.addTarget(self, action: #selector(CommentsVC.backAction), for: .touchUpInside)
         
         topView.addSubview(backButton)
-        backButton.changeToColor(UIColor.black)
+        backButton.changeToColor(UIColor.white)
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
         
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "Post"
-        titleLabel.textColor = UIColor.black
+        titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
         topView.addSubview(titleLabel)
         
-        Draw.createLineUnderView(topView, color: UIColor.black,width:0.3)
+        //Draw.createLineUnderView(topView, color: UIColor.black,width:0.3)
     }
     
     //function called by the back button. Dismiss the view controller
@@ -174,13 +180,25 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //tableview data source method. say the number of rows that will appear
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.backgroundColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
     }
     
     //tableview data source method. set and format the cell.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! PostCell
-        cell.setUp(post: posts[indexPath.row])
+        cell.setUp(post: posts[indexPath.section])
         cell.selectionStyle = .none
         let rec = UITapGestureRecognizer(target: self, action: #selector(FeedVC.likeViewClicked(sender:)))
         cell.likeView.addGestureRecognizer(rec)
@@ -195,12 +213,15 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         let post = (view as! PostCell).post!
         
-        if post.likes.contains(userUID){
-            let index = post.likes.index(of: userUID)!
+        let likeIDs = post.likes.map({$0.senderID})
+        if likeIDs.contains(userUID){
+            let index = likeIDs.index(of: userUID)!
             post.likes.remove(at: index)
         }
         else{
-            post.likes.append(userUID)
+            let like = Like()
+            like.senderID = userUID
+            post.likes.append(like)
         }
         
         ref.child("Posts").child(post.ID).child("Likes").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
@@ -208,7 +229,7 @@ class CommentsVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(nil)
             }
             else{
-                self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(true)
+                self.ref.child("Posts").child(post.ID).child("Likes").child(userUID).setValue(FIRServerValue.timestamp())
             }
         })
         tableView.reloadData()

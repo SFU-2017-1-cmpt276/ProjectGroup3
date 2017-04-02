@@ -17,10 +17,14 @@ class Comment{
     var ID = ""
     var time = TimeInterval()
 }
+class Like{
+    var senderID = String()
+    var time = TimeInterval()
+}
 class Post{
     var emotion = Emotion()
     var sender = Person()
-    var likes:[String] = []
+    var likes:[Like] = []
     var comments:[Comment] = []
     var ID = ""
     var reports:[String] = []
