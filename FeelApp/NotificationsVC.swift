@@ -80,10 +80,16 @@ class NotificationsVC: UIViewController {
                 post.sender.id = postDict["Sender ID"] as? String ?? ""
                 post.sender.alias = postDict["Sender Alias"] as? String ?? ""
                 
-                let likeDict = postDict["Likes"] as? [String:Bool] ?? [:]
-                for (someID,_) in likeDict{
-                    post.likes.append(someID)
+                let likeDict = postDict["Likes"] as? [String:TimeInterval] ?? [:]
+                for (someID,time) in likeDict{
+                    let like = Like()
+                    like.senderID = someID
+                    like.time = time
+                    post.likes.append(like)
                 }
+                
+                //newer likes first
+                post.likes.sort(by: {$0.time > $1.time})
                 
                 let allCommentDict = postDict["Comments"] as? [String:AnyObject] ?? [:]
                 if allCommentDict.count > 0{
@@ -102,6 +108,8 @@ class NotificationsVC: UIViewController {
                     comment.time = commentDict["Time"] as? TimeInterval ?? TimeInterval()
                     post.comments.append(comment)
                 }
+                //newer comments first
+                post.comments.sort(by: {$0.time < $1.time})
                 
                 if post.comments.count > 0 || post.likes.count > 0{
                 self.posts.append(post)
@@ -126,7 +134,7 @@ class NotificationsVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.separatorColor = globalLightGrey
         
         tableView.bounces = true
@@ -149,6 +157,7 @@ extension NotificationsVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! NotificationCell
         cell.setUp(post: posts[indexPath.item], width: view.frame.width)
+        
         return cell
     }
     
@@ -156,6 +165,16 @@ extension NotificationsVC:UITableViewDelegate,UITableViewDataSource{
         let cell = NotificationCell(style: .default, reuseIdentifier: "asdf")
         cell.setUp(post: posts[indexPath.item], width: view.frame.width)
         return cell.frame.height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.item]
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = CommentsVC()
+        vc.modalTransitionStyle = .coverVertical
+        vc.post = post
+        present(vc, animated: true, completion: nil)
+        
     }
     
     

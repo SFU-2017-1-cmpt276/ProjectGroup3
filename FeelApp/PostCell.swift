@@ -16,6 +16,7 @@ import UIKit
 class PostCell: UITableViewCell {
 
     var post:Post!
+    @IBOutlet var mainView: UIView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
@@ -33,8 +34,10 @@ class PostCell: UITableViewCell {
     let calendar = Calendar.current
     let formatter = DateFormatter()
     
-    @IBOutlet var line: UILabel!
     
+    @IBOutlet var line: UIView!
+    
+    @IBOutlet var lineHeight: NSLayoutConstraint!
     //when the cell is first awakeneed from nib. Do general formatting. Set up the date formatter.
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,6 +54,7 @@ class PostCell: UITableViewCell {
         timeLabel.textColor = UIColor.white
         nameLabel.font = Font.PageBody()
         nameLabel.textColor = UIColor.white
+        line.backgroundColor = UIColor.white
                 
         
         mainText.font = Font.PageBodyBold()
@@ -74,11 +78,13 @@ class PostCell: UITableViewCell {
         emotionText.font = UIFont(name:post.emotion.font.fontName,size: post.emotion.font.pointSize-3)
         emotionText.textColor = UIColor.white
         timeLabel.text = GlobalData.FirebaseTimeStampToString(post.emotion.time)
-        line.backgroundColor = UIColor.white
-        backgroundView?.backgroundColor = post.emotion.color
+        //line.backgroundColor = UIColor.white
+        mainView.backgroundColor = post.emotion.color
+        mainView.clipsToBounds = true
+        mainView.layer.cornerRadius = 8
         
         
-        if post.likes.contains(userUID){
+        if post.likes.map({$0.senderID}).contains(userUID){
             likeImage.image = #imageLiteral(resourceName: "heartIconFilled")
             likeText.font = Font.PageSmallBold()
             likeImage.changeToColor(UIColor.white)

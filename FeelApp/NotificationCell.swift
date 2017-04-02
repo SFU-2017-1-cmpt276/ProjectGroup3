@@ -58,11 +58,20 @@ class NotificationCell: UITableViewCell {
         someLabel.sizeToFit()
         timeLabel.font = Font.PageSmall()
         timeLabel.textColor = globalGreyColor
-        timeLabel.text = "5:30pm"
+        
+        
+        var newest:TimeInterval!
+        if post.likes.count > 0{newest = post.likes[0].time}
+        if post.comments.count > 0{
+            if newest == nil{newest = post.comments[0].time}
+            else{newest = min(post.comments[0].time,newest)}
+        }
+        
+        timeLabel.text = GlobalData.FirebaseTimeStampToString(newest)
         timeLabel.sizeToFit()
         timeLabel.frame.origin.x = 15
         timeLabel.frame.origin.y = someLabel.frame.maxY + 5
-        frame.size.height = timeLabel.frame.maxY
+        frame.size.height = timeLabel.frame.maxY + 10
         
     }
     

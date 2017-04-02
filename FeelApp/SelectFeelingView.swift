@@ -18,7 +18,7 @@ protocol SelectFeelingDelegate{
 class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
     var someDelegate:SelectFeelingDelegate?
-    let gap:CGFloat = 20
+    let gap:CGFloat = 10
     let height:CGFloat = 60
     var emotions = Emotion.getAll()
     
@@ -28,7 +28,9 @@ class SelectFeelingView: UICollectionView,UICollectionViewDataSource,UICollectio
     init(size:CGSize){
         let layout = UICollectionViewFlowLayout()
         
-        layout.itemSize = CGSize(width:size.width/2 - gap*1.5,height:size.width/2 - gap*1.5)
+        let height = (size.height - 3*gap)/3
+        let width = (size.width-3*gap)/2
+        layout.itemSize = CGSize(width:width,height:height)
         layout.minimumLineSpacing = gap
         cellSize = layout.itemSize
         

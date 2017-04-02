@@ -16,7 +16,7 @@ import UIKit
 import FirebaseDatabase
 import KMPlaceholderTextView
 
-class SubmitEmotionVC: UIViewController {
+class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     var backButton = UIButton()
     var topView = UIView()
@@ -30,6 +30,13 @@ class SubmitEmotionVC: UIViewController {
     var bottomButtonOffset:CGFloat = 10
     
     var emotion:Emotion!
+    
+    var photos:[UIImage] = []
+    
+    var numberOfPhotosButton = UIButton()
+    
+    var photoButton = UIButton()
+    var cameraButton = UIButton()
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
@@ -45,7 +52,13 @@ class SubmitEmotionVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(SubmitEmotionVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         setUpTopView()
         setUpTextView()
+        setUpPhotoStuff()
         setUpBottomButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textView.becomeFirstResponder()
     }
 
     //Set up the top bar. The view, title label, and the history/link button on the top right/left.
@@ -77,6 +90,18 @@ class SubmitEmotionVC: UIViewController {
         topView.addSubview(titleLabel)
     }
     
+    func photoAccepted(photo: UIImage) {
+        photos.append(photo)
+        resetPhotoNumberButton()
+    }
+    
+    func resetPhotoNumberButton(){
+         numberOfPhotosButton.setTitle("\(photos.count) photos", for: .normal)
+        if photos.count == 0{numberOfPhotosButton.isHidden = true}
+        else{numberOfPhotosButton.isHidden = false}
+        numberOfPhotosButton.sizeToFit()
+    }
+    
     //action when the submit button is clicked. Add the data to your own emotion data in firebase and dismiss the view controller.
     func submitEmotion(){
         FIRDatabase.database().reference().child("Emotions").child(userUID).childByAutoId().setValue([
@@ -85,6 +110,68 @@ class SubmitEmotionVC: UIViewController {
             "Time":FIRServerValue.timestamp()
             ])
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setUpPhotoStuff(){
+        photoButton.frame.size = CGSize(width: 45, height: 45)
+        photoButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        view.addSubview(photoButton)
+        photoButton.setImage(#imageLiteral(resourceName: "photoIcon2"), for: .normal)
+        photoButton.changeToColor(emotion.color)
+        photoButton.backgroundColor = UIColor.white
+        photoButton.clipsToBounds = true
+        photoButton.layer.cornerRadius = photoButton.frame.width/2
+        photoButton.frame.origin.x = view.frame.width - bottomButtonOffset - photoButton.frame.width
+        photoButton.addTarget(self, action: #selector(SubmitEmotionVC.photoButtonAction), for: .touchUpInside)
+        
+        cameraButton.frame.size = CGSize(width: 45, height: 45)
+        cameraButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        view.addSubview(cameraButton)
+        cameraButton.setImage(#imageLiteral(resourceName: "cameraIcon4.png"), for: .normal)
+        cameraButton.changeToColor(emotion.color)
+        cameraButton.backgroundColor = UIColor.white
+        cameraButton.clipsToBounds = true
+        cameraButton.layer.cornerRadius = photoButton.frame.width/2
+        cameraButton.frame.origin.x = photoButton.frame.origin.x - bottomButtonOffset - cameraButton.frame.width
+        cameraButton.addTarget(self, action: #selector(SubmitEmotionVC.showCameraVC), for: .touchUpInside)
+        
+        numberOfPhotosButton.titleLabel?.font = Font.PageSmallBold()
+        numberOfPhotosButton.setTitleColor(emotion.color, for: .normal)
+        view.addSubview(numberOfPhotosButton)
+        numberOfPhotosButton.setTitle("2 photos", for: .normal)
+        numberOfPhotosButton.isHidden = true
+        numberOfPhotosButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 12, bottom: 5, right: 12)
+        numberOfPhotosButton.sizeToFit()
+        numberOfPhotosButton.layer.cornerRadius = numberOfPhotosButton.frame.height/2
+        numberOfPhotosButton.layer.borderWidth = 2
+        numberOfPhotosButton.layer.borderColor = emotion.color.cgColor
+        numberOfPhotosButton.frame.origin.x = cameraButton.frame.origin.x - bottomButtonOffset - numberOfPhotosButton.frame.width - 5
+        
+    }
+    
+    func photoButtonAction() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
+        photos.append(image)
+        self.dismiss(animated: false, completion: nil)
+        resetPhotoNumberButton()
+    }
+
+    
+    func showCameraVC(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "camera") as! CameraVC
+        vc.modalTransitionStyle = .crossDissolve
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
     }
     
     //action when the post button is clicked. Add data to the newsfeed data in firebase. Then call submitEmotion() to add it to your own emotion list.
@@ -108,6 +195,7 @@ class SubmitEmotionVC: UIViewController {
     
     //action when back button is clicked. dismiss the view controller/
     func backAction(){
+        textView.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -121,11 +209,9 @@ class SubmitEmotionVC: UIViewController {
         textView.placeholder = "Why do you feel \(emotion.name.lowercased())?"
         textView.placeholderColor = globalGreyColor
         textView.placeholderFont = Font.PageBody()
-        textView.textColor = emotion.color
+        textView.textColor = UIColor.black
         textView.font = Font.PageHeaderSmall()
         textView.tintColor = emotion.color
-       
-        textView.becomeFirstResponder()
     }
     
     //set up the bottom buttons. frame, title, actions, formatting
@@ -158,10 +244,16 @@ class SubmitEmotionVC: UIViewController {
     //when the keyboard is shown, position the bottom buttons so that they are just above the keyboard. The resize the text view accordingly. 
     func keyboardWillShow(_ notification: Notification) {
         let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-        textView.frame.size.height = view.frame.height - keyboardSize!.height - textView.frame.origin.y - bottomButtonHeight
+       
         for button in [submitButton,postButton]{
-            button.frame.origin.y = textView.frame.maxY - bottomButtonOffset
+            button.frame.origin.y = view.frame.height - keyboardSize!.height - button.frame.height - bottomButtonOffset
         }
+        
+        photoButton.frame.origin.y = submitButton.frame.origin.y - photoButton.frame.height - bottomButtonOffset
+        cameraButton.center.y = photoButton.center.y
+        numberOfPhotosButton.center.y = photoButton.center.y
+        
+         textView.frame.size.height = photoButton.frame.origin.y - textView.frame.origin.y
         
         
         

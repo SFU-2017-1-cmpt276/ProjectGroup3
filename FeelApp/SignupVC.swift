@@ -64,13 +64,16 @@ class SignupVC: UIViewController {
         backButton.frame.origin.x = 0
         backButton.addTarget(self, action: #selector(SignupVC.backAction), for: .touchUpInside)
         
-        submitButton.frame.size = size
+        submitButton.frame.size = CGSize(width: 40, height: 40)
         submitButton.setImage(#imageLiteral(resourceName: "rightArrow2.png"), for: .normal)
-        submitButton.contentEdgeInsets = inset
+        submitButton.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
         topView.addSubview(submitButton)
-        submitButton.changeToColor(UIColor.white)
+        submitButton.changeToColor(nowColor)
+        submitButton.backgroundColor = UIColor.white
+        submitButton.clipsToBounds = true
+        submitButton.layer.cornerRadius = submitButton.frame.height/2
         submitButton.frame.origin.y = topView.frame.height - submitButton.frame.height
-        submitButton.frame.origin.x = topView.frame.width - submitButton.frame.width
+        submitButton.frame.origin.x = topView.frame.width - submitButton.frame.width - 10
         submitButton.addTarget(self, action: #selector(SignupVC.submitAction), for: .touchUpInside)
         
         titleLabel.font = Font.PageHeaderSmall()

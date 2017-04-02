@@ -191,6 +191,16 @@ class LoginVC: UIViewController {
                 
 
             }
+            else{
+                let alert = UIAlertController(title: nil, message: "There was an error. Please try again!", preferredStyle: .alert) // 7
+                let defaultAction = UIAlertAction(title: "Ok", style: .cancel) { (alerta: UIAlertAction!) -> Void in
+                    
+                     alert.dismiss(animated: true, completion: nil)
+                }
+  
+                alert.addAction(defaultAction) // 9
+                self.present(alert, animated: true, completion:nil)  //
+            }
         }
         
        
