@@ -17,7 +17,7 @@
 import UIKit
 import FirebaseDatabase
 
-class HistoryVC: UIViewController {
+class HistoryVC: UIViewController,HistoryViewDelegate {
 
     var backButton = UIButton()
     var topView = UIView()
@@ -48,6 +48,12 @@ class HistoryVC: UIViewController {
     
     func calendarBackButtonClicked() {
         dismiss(animated: false, completion: nil)
+    }
+    
+    func photoButtonClicked(emotion: Emotion) {
+        let vc = PhotoViewerVC2()
+        vc.emotion = emotion
+        present(vc, animated: true, completion: nil)
     }
     
     
@@ -126,6 +132,7 @@ class HistoryVC: UIViewController {
         historyView = HistoryView(size:CGSize(width:view.frame.width - 2*offset,height:view.frame.height - topView.frame.height - offset))
         historyView.frame.origin.y = topView.frame.height + offset
         historyView.center.x = view.frame.width/2
+        historyView.someDelegate = self
         view.addSubview(historyView)
     }
     
@@ -144,6 +151,11 @@ class HistoryVC: UIViewController {
                 emotion.text = singleEmotionDict["Text"] as? String ?? ""
                 emotion.id = id
                 emotion.time = singleEmotionDict["Time"] as? TimeInterval ?? TimeInterval()
+                let photoDict = singleEmotionDict["Photos"] as? [String:TimeInterval] ?? [:]
+                for (id,time) in photoDict{
+                    let info = (id,time)
+                    emotion.photoInfos.append(info)
+                }
                 self.historyView.emotions.append(emotion)
                 
             }

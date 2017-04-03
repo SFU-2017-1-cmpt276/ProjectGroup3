@@ -31,6 +31,10 @@ class PostCell: UITableViewCell {
     @IBOutlet var commentText: UILabel!
     @IBOutlet var commentView: UIView!
     
+    @IBOutlet var photoImage: UIImageView!
+    @IBOutlet var photoText: UILabel!
+    @IBOutlet var photoView: UIView!
+    
     let calendar = Calendar.current
     let formatter = DateFormatter()
     
@@ -44,12 +48,19 @@ class PostCell: UITableViewCell {
         
         likeView.backgroundColor = UIColor.clear
         commentView.backgroundColor = UIColor.clear
+        photoView.backgroundColor = UIColor.clear
+        
         likeImage.changeToColor(UIColor.white)
         commentImage.changeToColor(UIColor.white)
-        likeText.font = Font.PageSmall()
+        photoImage.changeToColor(UIColor.white)
+        
+        likeText.font = Font.PageSmallBold()
         likeText.textColor = UIColor.white
-        commentText.font = Font.PageSmall()
+        commentText.font = Font.PageSmallBold()
         commentText.textColor = UIColor.white
+        photoText.font = Font.PageSmallBold()
+        photoText.textColor = UIColor.white
+        
         timeLabel.font = Font.PageSmall()
         timeLabel.textColor = UIColor.white
         nameLabel.font = Font.PageBody()
@@ -74,8 +85,9 @@ class PostCell: UITableViewCell {
         nameLabel.text = post.sender.alias
         likeText.text = String(post.likes.count)
         commentText.text = String(post.comments.count)
+        photoText.text = String(post.emotion.photoInfos.count)
         emotionText.text = post.emotion.name
-        emotionText.font = UIFont(name:post.emotion.font.fontName,size: post.emotion.font.pointSize-3)
+        emotionText.font = UIFont(name:post.emotion.font.fontName,size: 23)
         emotionText.textColor = UIColor.white
         timeLabel.text = GlobalData.FirebaseTimeStampToString(post.emotion.time)
         //line.backgroundColor = UIColor.white
@@ -90,8 +102,8 @@ class PostCell: UITableViewCell {
             likeImage.changeToColor(UIColor.white)
         }
         else{
-            likeImage.image = #imageLiteral(resourceName: "heartIcon")
-            likeText.font = Font.PageSmall()
+            likeImage.image = #imageLiteral(resourceName: "heartIcon2")
+            likeText.font = Font.PageSmallBold()
             likeImage.changeToColor(UIColor.white)
         }
     }

@@ -37,7 +37,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ivl-iN-4Dk">
                                 <rect key="frame" x="10" y="233.5" width="83" height="33"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Y-8K-DNd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Y-8K-DNd">
                                         <rect key="frame" x="8" y="9" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="F2A-ZS-QL0"/>
@@ -61,10 +61,10 @@
                                     <constraint firstItem="Y6Y-8K-DNd" firstAttribute="top" secondItem="ivl-iN-4Dk" secondAttribute="top" constant="9" id="qSz-0p-Ogf"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZeM-fO-zzD">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZeM-fO-zzD">
                                 <rect key="frame" x="100" y="233.5" width="83" height="33"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commentIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="MUD-bQ-e7a">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="MUD-bQ-e7a">
                                         <rect key="frame" x="8" y="9" width="15" height="15"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="AkI-jl-Mnc"/>
@@ -95,13 +95,40 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="     Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbi-ba-85e">
-                                <rect key="frame" x="-7" y="0.0" width="454" height="21"/>
+                                <rect key="frame" x="-7" y="0.0" width="80" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDY-9x-arz">
-                                <rect key="frame" x="348" y="239" width="42" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="St2-cW-nHE">
+                                <rect key="frame" x="307" y="234" width="83" height="33"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="bal-Fo-bfs">
+                                        <rect key="frame" x="8" y="9" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="15" id="pfi-w8-E8Y"/>
+                                            <constraint firstAttribute="height" constant="15" id="xoo-sh-YrT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOg-df-B40">
+                                        <rect key="frame" x="31" y="6" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hOg-df-B40" secondAttribute="trailing" constant="10" id="A7O-KI-geK"/>
+                                    <constraint firstItem="hOg-df-B40" firstAttribute="centerY" secondItem="bal-Fo-bfs" secondAttribute="centerY" id="D2D-Ad-of3"/>
+                                    <constraint firstItem="hOg-df-B40" firstAttribute="leading" secondItem="bal-Fo-bfs" secondAttribute="trailing" constant="8" id="Dgf-rK-GUG"/>
+                                    <constraint firstItem="bal-Fo-bfs" firstAttribute="leading" secondItem="St2-cW-nHE" secondAttribute="leading" constant="8" id="DlQ-xh-j2V"/>
+                                    <constraint firstAttribute="bottom" secondItem="bal-Fo-bfs" secondAttribute="bottom" constant="9" id="lrG-dh-Yb4"/>
+                                    <constraint firstItem="bal-Fo-bfs" firstAttribute="top" secondItem="St2-cW-nHE" secondAttribute="top" constant="9" id="s9H-S9-nbl"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDY-9x-arz">
+                                <rect key="frame" x="141" y="-1" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -109,20 +136,22 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="THo-B5-MXU" firstAttribute="top" secondItem="Pbi-ba-85e" secondAttribute="bottom" constant="1" id="2br-9i-I2X"/>
+                            <constraint firstItem="THo-B5-MXU" firstAttribute="top" secondItem="Pbi-ba-85e" secondAttribute="bottom" constant="4" id="2br-9i-I2X"/>
+                            <constraint firstItem="St2-cW-nHE" firstAttribute="centerY" secondItem="ZeM-fO-zzD" secondAttribute="centerY" id="7CC-xf-hJN"/>
                             <constraint firstAttribute="trailing" secondItem="0UF-mP-4md" secondAttribute="trailing" constant="10" id="88f-WO-3Ze"/>
                             <constraint firstItem="Pbi-ba-85e" firstAttribute="top" secondItem="fOY-DP-BpQ" secondAttribute="top" constant="10" id="BcR-cW-FNY"/>
-                            <constraint firstItem="ZeM-fO-zzD" firstAttribute="leading" secondItem="ivl-iN-4Dk" secondAttribute="trailing" constant="7" id="Va2-hO-l6U"/>
+                            <constraint firstAttribute="trailing" secondItem="St2-cW-nHE" secondAttribute="trailing" constant="10" id="Se4-lt-NQM"/>
                             <constraint firstItem="ZeM-fO-zzD" firstAttribute="centerY" secondItem="ivl-iN-4Dk" secondAttribute="centerY" id="Xbs-TO-iSx"/>
                             <constraint firstAttribute="bottom" secondItem="ivl-iN-4Dk" secondAttribute="bottom" constant="5" id="Xml-3O-3gT"/>
-                            <constraint firstAttribute="trailing" secondItem="EDY-9x-arz" secondAttribute="trailing" constant="10" id="b3i-KD-MTR"/>
-                            <constraint firstItem="EDY-9x-arz" firstAttribute="centerY" secondItem="ZeM-fO-zzD" secondAttribute="centerY" id="gIa-8U-JIr"/>
-                            <constraint firstItem="ivl-iN-4Dk" firstAttribute="top" secondItem="0UF-mP-4md" secondAttribute="bottom" constant="2" id="jbe-Ha-Tcx"/>
+                            <constraint firstItem="ZeM-fO-zzD" firstAttribute="centerX" secondItem="fOY-DP-BpQ" secondAttribute="centerX" id="j5c-Lt-2IY"/>
+                            <constraint firstItem="ivl-iN-4Dk" firstAttribute="top" secondItem="0UF-mP-4md" secondAttribute="bottom" constant="7" id="jbe-Ha-Tcx"/>
                             <constraint firstItem="Pbi-ba-85e" firstAttribute="leading" secondItem="fOY-DP-BpQ" secondAttribute="leading" constant="10" id="lFg-O4-hpV"/>
-                            <constraint firstItem="0UF-mP-4md" firstAttribute="top" secondItem="THo-B5-MXU" secondAttribute="bottom" constant="3" id="moB-yB-IFU"/>
+                            <constraint firstItem="0UF-mP-4md" firstAttribute="top" secondItem="THo-B5-MXU" secondAttribute="bottom" constant="7" id="moB-yB-IFU"/>
                             <constraint firstItem="ivl-iN-4Dk" firstAttribute="leading" secondItem="THo-B5-MXU" secondAttribute="leading" id="u8C-6Y-ocj"/>
                             <constraint firstItem="THo-B5-MXU" firstAttribute="leading" secondItem="Pbi-ba-85e" secondAttribute="leading" id="vGn-Cv-8Mq"/>
                             <constraint firstItem="0UF-mP-4md" firstAttribute="leading" secondItem="THo-B5-MXU" secondAttribute="leading" id="vf7-7j-cLm"/>
+                            <constraint firstItem="EDY-9x-arz" firstAttribute="centerY" secondItem="Pbi-ba-85e" secondAttribute="centerY" id="wgK-ds-4xy"/>
+                            <constraint firstItem="EDY-9x-arz" firstAttribute="leading" secondItem="Pbi-ba-85e" secondAttribute="trailing" constant="20" id="x9U-QC-te6"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -150,13 +179,17 @@
                 <outlet property="mainText" destination="0UF-mP-4md" id="ami-al-7wi"/>
                 <outlet property="mainView" destination="fOY-DP-BpQ" id="Qda-Pu-3yF"/>
                 <outlet property="nameLabel" destination="Pbi-ba-85e" id="wxX-8f-T6m"/>
+                <outlet property="photoImage" destination="bal-Fo-bfs" id="fEw-8y-CER"/>
+                <outlet property="photoText" destination="hOg-df-B40" id="WeZ-Sd-I8z"/>
+                <outlet property="photoView" destination="St2-cW-nHE" id="6tc-ck-A8z"/>
                 <outlet property="timeLabel" destination="EDY-9x-arz" id="aRv-nT-b6e"/>
             </connections>
             <point key="canvasLocation" x="72" y="-67.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="commentIcon.png" width="626" height="626"/>
-        <image name="heartIcon.png" width="128" height="128"/>
+        <image name="heartIcon2" width="256" height="256"/>
+        <image name="messageIcon" width="256" height="256"/>
+        <image name="photoIcon2" width="512" height="512"/>
     </resources>
 </document>

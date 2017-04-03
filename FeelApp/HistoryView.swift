@@ -10,8 +10,12 @@
 
 import UIKit
 
+protocol HistoryViewDelegate{
+    func photoButtonClicked(emotion:Emotion)->Void
+}
 class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
+    var someDelegate:HistoryViewDelegate?
     var emotions:[Emotion] = []
     var expandedIndexes:[Int] = []
     
@@ -48,12 +52,23 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         return emotions.count
     }
     
+    func showPhotos(sender:UIButton){
+        
+        var someView = sender.superview!
+        while !(someView is HistoryCell){
+            someView = someView.superview!
+        }
+        let emotion = (someView as! HistoryCell).emotion!
+        someDelegate?.photoButtonClicked(emotion: emotion)
+    }
+    
     //collection view data source method. Set up the cell to be used.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HistoryCell
         if expandedIndexes.contains(indexPath.item){cell.expanded = true}
         else{cell.expanded = false}
-        cell.setUp(emotion: emotions[indexPath.item],width:frame.width,showTime:showTimeAlways)
+        cell.photoButton.addTarget(self, action: #selector(HistoryView.showPhotos(sender:)), for: .touchUpInside)
+        cell.setUp(emotion: emotions[indexPath.item],width:frame.width - 20,showTime:showTimeAlways)
         return cell
     }
     
@@ -94,8 +109,6 @@ class HistoryCell:UICollectionViewCell{
     var emotion:Emotion!
     let button = UIButton()
     let emotionLabel = UILabel()
-    let line = UIView()
-    let otherLine = UIView()
     let textLabel = UILabel()
     
     let topBottomOffset:CGFloat = 15
@@ -103,6 +116,8 @@ class HistoryCell:UICollectionViewCell{
     var expanded = false
     
     var showTime = false
+    
+    var photoButton = UIButton()
     
     
     override init(frame: CGRect) {
@@ -116,17 +131,17 @@ class HistoryCell:UICollectionViewCell{
     
     //when cell is first created. general formatting.
     func initialStuff(){
+        
+        addSubview(photoButton)
+        photoButton.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        photoButton.frame.size = CGSize(width: 40, height: 40)
+        photoButton.setImage(#imageLiteral(resourceName: "photoIcon2"), for: .normal)
+        photoButton.changeToColor(UIColor.white)
+        
         addSubview(button)
         button.contentEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         
         addSubview(emotionLabel)
-        line.frame.size.height = 0.8
-        line.backgroundColor = globalLightGrey
-        addSubview(line)
-        
-        otherLine.frame.size.width = 0.8
-        otherLine.backgroundColor = globalLightGrey
-       // addSubview(otherLine)
         
         textLabel.font = Font.PageBodyBold()
         addSubview(textLabel)
@@ -204,47 +219,30 @@ class HistoryCell:UICollectionViewCell{
         button.titleLabel?.textAlignment = .center
         button.frame.origin.x = topBottomOffset
         
+        photoButton.frame.origin.x = width - photoButton.frame.width - 10
+        
         emotionLabel.font = UIFont(name: emotion.font.fontName,size:25)
         emotionLabel.text = emotion.name
         emotionLabel.textColor = UIColor.white
         emotionLabel.sizeToFit()
-        
-        emotionLabel.frame.origin.x = button.frame.maxX + 30
-        
+        emotionLabel.frame.origin.x = button.frame.maxX + topBottomOffset
         emotionLabel.frame.origin.y = topBottomOffset
-        button.frame.origin.y = topBottomOffset
+
+        textLabel.isHidden = false
+        textLabel.frame.origin.x = emotionLabel.frame.origin.x
+        textLabel.preferredMaxLayoutWidth = photoButton.frame.origin.x - textLabel.frame.origin.y - 10
+        textLabel.frame.size.width = photoButton.frame.origin.x - textLabel.frame.origin.y - 10
+        textLabel.numberOfLines = 0
+        textLabel.text = emotion.text
+        textLabel.sizeToFit()
+        textLabel.frame.origin.y = emotionLabel.frame.maxY + 5
+        frame.size.height = textLabel.frame.maxY + topBottomOffset
         
-        
-        frame.size.height = max(emotionLabel.frame.maxY,button.frame.maxY) + topBottomOffset
-        line.frame.size.width = frame.width
-        line.frame.origin.y = frame.size.height - 1
-        
-        otherLine.frame.size.height = 25
-        otherLine.center.y = frame.height/2
-        otherLine.frame.origin.x = button.frame.maxX + 10
-        
-        emotionLabel.center.y = frame.height/2
         button.center.y = frame.height/2
+        photoButton.center.y = frame.height/2
         
-        
-        if expanded{
-            textLabel.isHidden = false
-            textLabel.frame.origin.x = button.frame.origin.x
-            textLabel.preferredMaxLayoutWidth = width - textLabel.frame.origin.y - 10
-            textLabel.frame.size.width = width - textLabel.frame.origin.y - 10
-            textLabel.numberOfLines = 0
-            textLabel.text = emotion.text
-            textLabel.sizeToFit()
-            textLabel.frame.origin.y = frame.size.height
-            frame.size.height = textLabel.frame.maxY + topBottomOffset
-            line.frame.origin.y = frame.size.height - 1
-        }
-        
-        else{
-            textLabel.isHidden = true
-        }
-        
-        
+        if emotion.photoInfos.count == 0{photoButton.isHidden = true}
+        else{photoButton.isHidden = false}
     }
     
 }

@@ -47,10 +47,12 @@ class LoginVC: UIViewController {
         
         
         
+        showNormalScreen()
         
-        
-        if FIRAuth.auth()?.currentUser != nil{
+        /*if FIRAuth.auth()?.currentUser != nil{
+            
             FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
+                
                 if !snapshot.exists(){
                     self.toSelectAlias()
                 }
@@ -60,9 +62,17 @@ class LoginVC: UIViewController {
                     self.toHomeVC()
                 }
                 
-            })
+            }){(error) in
+                self.showNormalScreen()
+            }
+            
         }
         else{
+            showNormalScreen()
+        }*/
+    }
+    
+    func showNormalScreen(){
         setUpTFs()
         setUpLoginButton()
         setUpSignupButton()
@@ -82,8 +92,7 @@ class LoginVC: UIViewController {
         //set the starting value for the username and password with an account thats already been created. Not for finished version but easy to log in.
         usernameTF.text = "ckl41@sfu.ca"
         passwordTF.text = "123456"
-        
-        }
+
     }
     
     //when the view is tapped and the keyboard is up, end editing for all text fields and disable the gesture recognzer

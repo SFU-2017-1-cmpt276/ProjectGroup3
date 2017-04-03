@@ -15,8 +15,9 @@
 import UIKit
 import FirebaseDatabase
 import KMPlaceholderTextView
+import FirebaseStorage
 
-class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,PhotoViewerVCDelegate {
 
     var backButton = UIButton()
     var topView = UIView()
@@ -24,6 +25,7 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
     
     var textView = KMPlaceholderTextView()
     
+    var postAlso = false
     var submitButton = UIButton()
     var postButton = UIButton()
     var bottomButtonHeight:CGFloat = 50
@@ -103,13 +105,71 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
     }
     
     //action when the submit button is clicked. Add the data to your own emotion data in firebase and dismiss the view controller.
-    func submitEmotion(){
-        FIRDatabase.database().reference().child("Emotions").child(userUID).childByAutoId().setValue([
+    func submitEmotion(sender:UIButton){
+        
+        let emotionID =  FIRDatabase.database().reference().childByAutoId().key
+        
+        
+        let dict = NSMutableDictionary()
+
+        dict.setValue(emotion.name,forKey:"Type")
+        dict.setValue(textView.text,forKey:"Text")
+        dict.setValue(FIRServerValue.timestamp(),forKey:"Time")
+        let photoDict = NSMutableDictionary()
+        var photoKeyArray:[String] = []
+        for photo in photos{
+            let photoKey = FIRDatabase.database().reference().childByAutoId().key
+            photoKeyArray.append(photoKey)
+            photoDict.setValue(FIRServerValue.timestamp(), forKey:  photoKey)
+        }
+        if photos.count != 0{
+        dict.setValue(photoDict, forKey: "Photos")
+        }
+        FIRDatabase.database().reference().child("Emotions").child(userUID).child(emotionID).setValue(dict)
+        
+        
+        for i in 0 ..< photos.count{
+            let storageRef = GlobalData.getPhotosStorageRef().child("/\(emotionID)").child("/\(photoKeyArray[i]).jpg")
+            
+            let data = UIImageJPEGRepresentation(photos[i], 0.3)!
+            storageRef.put(data)
+        }
+        
+        if sender == postButton{
+            if photos.count == 0{
+            post(postID: emotionID, photoDict: nil)
+            }
+            else{
+                post(postID: emotionID, photoDict: photoDict)
+            }
+        }
+        
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //action when the post button is clicked. Add data to the newsfeed data in firebase.
+    func post(postID:String,photoDict:NSMutableDictionary?){
+        
+        let dict = NSMutableDictionary()
+        dict.setValue([
             "Type":emotion.name,
             "Text":textView.text,
             "Time":FIRServerValue.timestamp()
-            ])
-        dismiss(animated: true, completion: nil)
+            ],forKey:"Emotion")
+        dict.setValue(userUID,forKey:"Sender ID")
+        dict.setValue(GlobalData.You.alias,forKey:"Sender Alias")
+        
+        if photoDict != nil{
+            dict.setValue(photoDict!, forKey: "Photos")
+        }
+        
+        FIRDatabase.database().reference().child("Posts").child(postID).setValue(dict)
+    }
+    
+    func getCurrentPhotos(photos: [UIImage]) {
+        self.photos = photos
+        resetPhotoNumberButton()
     }
     
     func setUpPhotoStuff(){
@@ -146,7 +206,15 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
         numberOfPhotosButton.layer.borderWidth = 2
         numberOfPhotosButton.layer.borderColor = emotion.color.cgColor
         numberOfPhotosButton.frame.origin.x = cameraButton.frame.origin.x - bottomButtonOffset - numberOfPhotosButton.frame.width - 5
+        numberOfPhotosButton.addTarget(self, action: #selector(SubmitEmotionVC.showPhotoViewerVC), for: .touchUpInside)
         
+    }
+
+    func showPhotoViewerVC(){
+        let vc = PhotoViewerVC()
+        vc.photos = photos
+        vc.delegate = self
+        present(vc, animated: true, completion: nil)
     }
     
     func photoButtonAction() {
@@ -174,24 +242,8 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
         present(vc, animated: true, completion: nil)
     }
     
-    //action when the post button is clicked. Add data to the newsfeed data in firebase. Then call submitEmotion() to add it to your own emotion list.
-    func postAndSubmit(){
-        let key = FIRDatabase.database().reference().child("Posts").childByAutoId().key
-        FIRDatabase.database().reference().child("Posts").child(key).setValue([
-            "Emotion":[
-                "Type":emotion.name,
-                "Text":textView.text,
-                "Time":FIRServerValue.timestamp()
-            ],
-            "Sender ID":userUID,
-            "Sender Alias":GlobalData.You.alias
-            
-            ])
-        
 
-        
-        submitEmotion()
-    }
+   
     
     //action when back button is clicked. dismiss the view controller/
     func backAction(){
@@ -229,8 +281,8 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
             button.layer.borderColor = emotion.color.cgColor
             button.setTitleColor(emotion.color, for: .normal)
         }
-        submitButton.addTarget(self, action: #selector(SubmitEmotionVC.submitEmotion), for: .touchUpInside)
-        postButton.addTarget(self, action: #selector(SubmitEmotionVC.postAndSubmit), for: .touchUpInside)
+        submitButton.addTarget(self, action: #selector(SubmitEmotionVC.submitEmotion(sender:)), for: .touchUpInside)
+        postButton.addTarget(self, action: #selector(SubmitEmotionVC.submitEmotion(sender:)), for: .touchUpInside)
 
         postButton.backgroundColor = emotion.color
         postButton.setTitleColor(UIColor.white, for: .normal)
