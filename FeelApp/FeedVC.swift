@@ -134,7 +134,14 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 let type = emotionDict["Type"] as? String ?? ""
                 post.emotion = Emotion.fromString(type)
                 post.emotion.text = emotionDict["Text"] as? String ?? ""
+                post.emotion.id = id
                 post.emotion.time = emotionDict["Time"] as? TimeInterval ?? TimeInterval()
+                let photoDict = postDict["Photos"] as? [String:TimeInterval] ?? [:]
+                for (id,time) in photoDict{
+                    let info = (id,time)
+                    post.emotion.photoInfos.append(info)
+                }
+
                 post.ID = id
                 post.sender.id = postDict["Sender ID"] as? String ?? ""
                 post.sender.alias = postDict["Sender Alias"] as? String ?? ""
@@ -217,6 +224,8 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .none
         let rec = UITapGestureRecognizer(target: self, action: #selector(FeedVC.likeViewClicked(sender:)))
         cell.likeView.addGestureRecognizer(rec)
+        let rec2 = UITapGestureRecognizer(target: self, action: #selector(FeedVC.photoViewClicked(sender:)))
+        cell.photoView.addGestureRecognizer(rec2)
         
         return cell
     }
@@ -293,6 +302,18 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let index = posts.index(where: {$0.ID == post.ID})!
         posts.remove(at: index)
         tableView.reloadData()
+    }
+    
+    func photoViewClicked(sender:UITapGestureRecognizer){
+        var view = sender.view!
+        while !(view is PostCell){
+            view = view.superview!
+        }
+        let post = (view as! PostCell).post!
+        
+        let vc = PhotoViewerVC2()
+        vc.emotion = post.emotion
+        present(vc, animated: true, completion: nil)
     }
     
     func likeViewClicked(sender:UITapGestureRecognizer){

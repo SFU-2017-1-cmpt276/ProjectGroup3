@@ -10,6 +10,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
 
 var userUID:String{
     return FIRAuth.auth()!.currentUser!.uid
@@ -47,4 +48,7 @@ class GlobalData{
         
     }
     
+    static func getPhotosStorageRef()->FIRStorageReference{
+        return FIRStorage.storage().reference(forURL: "gs://feelapp-385f5.appspot.com").child("Post Photos")
+    }
 }

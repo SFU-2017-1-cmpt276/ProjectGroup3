@@ -46,6 +46,7 @@ class Emotion{
     var font = Font.PageBody()
     var time = TimeInterval()
     var id = ""
+    var photoInfos:[(String,TimeInterval)] = []
     
     //dont use this init. alwasy use static ones
     init(name:String,color:UIColor,font:UIFont){
