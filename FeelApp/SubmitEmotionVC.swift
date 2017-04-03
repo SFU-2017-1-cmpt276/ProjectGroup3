@@ -25,7 +25,6 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
     
     var textView = KMPlaceholderTextView()
     
-    var postAlso = false
     var submitButton = UIButton()
     var postButton = UIButton()
     var bottomButtonHeight:CGFloat = 50
@@ -112,9 +111,26 @@ class SubmitEmotionVC: UIViewController,CameraVCDelegate,UIImagePickerController
         
         let dict = NSMutableDictionary()
 
-        dict.setValue(emotion.name,forKey:"Type")
         dict.setValue(textView.text,forKey:"Text")
         dict.setValue(FIRServerValue.timestamp(),forKey:"Time")
+        
+        if emotion.custom{
+            dict.setValue("Custom",forKey:"Type")
+            dict.setValue(emotion.name,forKey:"Name")
+            let red = CIColor(color: emotion.color).red
+            let green = CIColor(color: emotion.color).green
+            let blue = CIColor(color: emotion.color).blue
+            dict.setValue([
+                "Red":red,
+                "Green":green,
+                "Blue":blue
+                ], forKey: "Color")
+            
+        }
+        else{
+            dict.setValue(emotion.name,forKey:"Type")
+        }
+        
         let photoDict = NSMutableDictionary()
         var photoKeyArray:[String] = []
         for photo in photos{

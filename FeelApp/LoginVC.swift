@@ -44,10 +44,7 @@ class LoginVC: UIViewController {
         
         view.backgroundColor = color
         setUpLogo()
-        
-        
-        
-        showNormalScreen()
+    
         
         if FIRAuth.auth()?.currentUser != nil{
             

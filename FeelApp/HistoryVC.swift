@@ -25,6 +25,7 @@ class HistoryVC: UIViewController,HistoryViewDelegate {
     var submitButton = UIButton()
     var chartButton = UIButton()
     var calendarButton = UIButton()
+    var noEmotionsLabel = UILabel()
     
     let offset:CGFloat = 0
     
@@ -134,6 +135,14 @@ class HistoryVC: UIViewController,HistoryViewDelegate {
         historyView.center.x = view.frame.width/2
         historyView.someDelegate = self
         view.addSubview(historyView)
+        
+        noEmotionsLabel.text = "No emotions yet"
+        noEmotionsLabel.font = Font.NoPostsFont()
+        noEmotionsLabel.sizeToFit()
+        view.addSubview(noEmotionsLabel)
+        noEmotionsLabel.center = CGPoint(x:view.frame.width/2,y:view.frame.height/2)
+        noEmotionsLabel.isHidden = true
+        noEmotionsLabel.textColor = globalGreyColor
     }
     
     //get emotion data from firebase. add it to the emotions array of the history view. then reload the history view so that it displays all this data. 
@@ -147,7 +156,22 @@ class HistoryVC: UIViewController,HistoryViewDelegate {
         
                 let type = singleEmotionDict["Type"] as? String ?? ""
                 
-                let emotion = Emotion.fromString(type)
+                var emotion = Emotion()
+                if type.lowercased() == "custom"{
+                    let colorDict = singleEmotionDict["Color"] as? [String:CGFloat] ?? [:]
+                    let red = colorDict["Red"] ?? 0.5
+                    let green = colorDict["Green"] ?? 0.5
+                    let blue = colorDict["Blue"] ?? 0.5
+                    emotion.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+                    emotion.name = singleEmotionDict["Name"] as? String ?? ""
+                    emotion.custom = true
+                    print(singleEmotionDict)
+                    
+                }
+                else{
+                    emotion = Emotion.fromString(type)
+                }
+
                 emotion.text = singleEmotionDict["Text"] as? String ?? ""
                 emotion.id = id
                 emotion.time = singleEmotionDict["Time"] as? TimeInterval ?? TimeInterval()
@@ -161,6 +185,12 @@ class HistoryVC: UIViewController,HistoryViewDelegate {
             }
             self.historyView.emotions.sort(by: {$1.time < $0.time})
             self.historyView.reloadData()
+            if self.historyView.emotions.count == 0{
+                self.noEmotionsLabel.isHidden = false
+            }
+            else{
+                self.noEmotionsLabel.isHidden = true
+            }
             
         })
     }

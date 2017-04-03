@@ -16,6 +16,12 @@ class Font{
         return Font.PageHeaderSmallUnbold()
     }
     
+    static func CustomEmotionFont()-> UIFont{
+        
+        let fontString = "AvenirNext-DemiBold"
+        return UIFont(name: fontString, size: 35)!
+    }
+    
     static func PageHeaderSmall()-> UIFont{
         
         let fontString = "AvenirNext-DemiBold"

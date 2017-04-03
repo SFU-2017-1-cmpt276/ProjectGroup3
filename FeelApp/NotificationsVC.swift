@@ -73,7 +73,20 @@ class NotificationsVC: UIViewController {
                 
                 let emotionDict = postDict["Emotion"] as? [String:AnyObject] ?? [:]
                 let type = emotionDict["Type"] as? String ?? ""
-                post.emotion = Emotion.fromString(type)
+                var emotion = Emotion()
+                if type.lowercased() == "custom"{
+                    let colorDict = emotionDict["Color"] as? [String:CGFloat] ?? [:]
+                    let red = colorDict["Red"] ?? 0.5
+                    let green = colorDict["Green"] ?? 0.5
+                    let blue = colorDict["Blue"] ?? 0.5
+                    emotion.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+                    emotion.name = emotionDict["Name"] as? String ?? ""
+                    emotion.custom = true                    
+                }
+                else{
+                    emotion = Emotion.fromString(type)
+                }
+
                 post.emotion.text = emotionDict["Text"] as? String ?? ""
                 post.emotion.time = emotionDict["Time"] as? TimeInterval ?? TimeInterval()
                 post.ID = id

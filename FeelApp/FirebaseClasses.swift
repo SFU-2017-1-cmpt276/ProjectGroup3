@@ -29,16 +29,14 @@ class Post{
     var ID = ""
     var reports:[String] = []
     init(){}
-    
 }
-
 class Person{
     var alias = ""
     var id = ""
     init(){}
 }
 
-class Emotion{
+class Emotion:Hashable{
     
     var name = ""
     var text = ""
@@ -47,6 +45,7 @@ class Emotion{
     var time = TimeInterval()
     var id = ""
     var photoInfos:[(String,TimeInterval)] = []
+    var custom = false
     
     //dont use this init. alwasy use static ones
     init(name:String,color:UIColor,font:UIFont){
@@ -56,6 +55,11 @@ class Emotion{
     }
     
     init(){}
+    
+    var hashValue: Int {
+        // DJB hash function
+        return name.hashValue
+    }
     
     static func Happy()->Emotion{
         return Emotion(name: "Happy", color: UIColor.orange, font: UIFont(name: "Chalkduster", size: 35)!)
@@ -93,4 +97,7 @@ class Emotion{
         
         return [Emotion.Happy(),Emotion.Angry(),Emotion.Sad(),Emotion.Tired(),Emotion.Excited(),Emotion.Relaxed()]
     }
+}
+func ==(left: Emotion, right: Emotion) -> Bool {
+    return left.name == right.name
 }

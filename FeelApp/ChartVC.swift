@@ -44,7 +44,7 @@ class ChartVC: UIViewController {
     
     var allEmotions:[Emotion] = []
     //the name of each emotion and the number of times you have posted it. use for the pie chart
-    var emotionCounts:[String:Int] = [:]
+    var emotionCounts:[Emotion:Int] = [:]
     var totalCount = 0
     
     
@@ -78,6 +78,7 @@ class ChartVC: UIViewController {
         nothingThereLabel.text = "No data available"
         nothingThereLabel.font = Font.NoPostsFont()
         nothingThereLabel.textColor = globalGreyColor
+        nothingThereLabel.sizeToFit()
         view.addSubview(nothingThereLabel)
         nothingThereLabel.center.x = view.frame.width/2
         nothingThereLabel.center.y = view.frame.height/2
@@ -180,9 +181,9 @@ class ChartVC: UIViewController {
         var dataEntries: [PieChartDataEntry] = []
         
         //for each item in emotion counts (which has the data from the database), make it a data entry for the pie chart
-        for (type,count) in emotionCounts {
+        for (emotion,count) in emotionCounts {
             
-            let dataEntry = PieChartDataEntry(value: Double(count), label: type)
+            let dataEntry = PieChartDataEntry(value: Double(count), label: emotion.name)
             dataEntries.append(dataEntry)
         }
         
@@ -204,9 +205,9 @@ class ChartVC: UIViewController {
         //create the array of colors that will be used by the pie chart.
         var colors: [UIColor] = []
         
-         for (type,count) in emotionCounts {
+         for (emotion,count) in emotionCounts {
 
-            colors.append(Emotion.fromString(type).color)
+            colors.append(emotion.color)
         }
         
         pieChartDataSet.colors = colors
@@ -218,8 +219,6 @@ class ChartVC: UIViewController {
         pieChartView.legend.enabled = false
         pieChartDataSet.entryLabelFont = Font.PageBodyBold()
         pieChartDataSet.valueFont = Font.PageBodyBold()
-
-        
     }
     
     func processEmotions(week:Bool,month:Bool,all:Bool){
@@ -238,12 +237,12 @@ class ChartVC: UIViewController {
             
             if today.days(from: date) <= maxNumber{
                     
-                if self.emotionCounts[emotion.name] == nil{
-                    self.emotionCounts[emotion.name] = 1
+                if self.emotionCounts[emotion] == nil{
+                    self.emotionCounts[emotion] = 1
                     
                 }
                 else{
-                    self.emotionCounts[emotion.name]!+=1
+                    self.emotionCounts[emotion]!+=1
                 }
                 self.totalCount += 1
             }
@@ -255,8 +254,14 @@ class ChartVC: UIViewController {
         tableView.isScrollEnabled = false
         scrollView.contentSize.height = tableView.frame.maxY
         
-        if emotionCounts.count == 0{nothingThereLabel.isHidden = false}
-        else{nothingThereLabel.isHidden = true}
+        if emotionCounts.count == 0
+        {nothingThereLabel.isHidden = false
+            pieChartView.isHidden = true
+        }
+        else{
+            nothingThereLabel.isHidden = true
+            pieChartView.isHidden = false
+        }
     }
     
     //Get the data from firebase. Add it to the emotionCounts array. then call setUpChart()
@@ -270,12 +275,26 @@ class ChartVC: UIViewController {
             for (id,singleEmotionDict) in dict{
                 
                 let type = singleEmotionDict["Type"] as? String ?? ""
-                
-                let emotion = Emotion.fromString(type)
+                var emotion = Emotion()
+                if type.lowercased() == "custom"{
+                    let colorDict = singleEmotionDict["Color"] as? [String:CGFloat] ?? [:]
+                    let red = colorDict["Red"] ?? 0.5
+                    let green = colorDict["Green"] ?? 0.5
+                    let blue = colorDict["Blue"] ?? 0.5
+                    emotion.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+                    emotion.name = singleEmotionDict["Name"] as? String ?? ""
+                    emotion.custom = true
+                    print(singleEmotionDict)
+                    
+                }
+                else{
+                emotion = Emotion.fromString(type)
+                }
                 emotion.text = singleEmotionDict["Text"] as? String ?? ""
                 emotion.id = id
                 emotion.time = singleEmotionDict["Time"] as? TimeInterval ?? TimeInterval()
                 self.allEmotions.append(emotion)
+                
                 
             }
             self.setUpTableView()
@@ -325,11 +344,11 @@ extension ChartVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! LegendCell
         let array = emotionCounts.sorted{ $0.value > $1.value }
-        let emotionString = array[indexPath.item].key
-        let decimal = Float(emotionCounts[emotionString]!)/Float(totalCount) * 100
+        let emotion = array[indexPath.item].key
+        let decimal = Float(emotionCounts[emotion]!)/Float(totalCount) * 100
         
         
-        cell.setUp(emotion: Emotion.fromString(emotionString), total: String(describing: emotionCounts[emotionString]!), percent: "\(Int(decimal))%", width: view.frame.width, height: tableView.rowHeight)
+        cell.setUp(emotion:emotion, total: String(describing: emotionCounts[emotion]!), percent: "\(Int(decimal))%", width: view.frame.width, height: tableView.rowHeight)
         cell.selectionStyle = .none
         return cell
     }
@@ -373,6 +392,9 @@ class LegendCell:UITableViewCell{
         dot.isHidden = true
         totalLabel.text = total
         percentLabel.text = percent
+        if emotion.custom{
+            
+        }
         nameLabel.text = emotion.name
         nameLabel.textColor = emotion.color
         let font = UIFont(name: Font.PageBodyBold().fontName, size: Font.PageBodyBold().pointSize + 3)

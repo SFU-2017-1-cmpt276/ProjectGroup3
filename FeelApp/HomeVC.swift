@@ -12,9 +12,9 @@
 //all view files have a descriptor folled by "view"
 
 import UIKit
+import FirebaseDatabase
 
-
-class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
+class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate,CreateEmotionDelegate {
 
     var scrollView = UIScrollView()
     var pageControl = UIPageControl()
@@ -40,6 +40,7 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         setUpView()
         setUpTopView()
         setUpSelectFeelingView()
+        getCustomEmotions()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -53,6 +54,36 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         chartVC.getEmotions()
+    }
+    
+    func getCustomEmotions(){
+        FIRDatabase.database().reference().child("Custom Emotions").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
+            
+            let dict = snapshot.value! as? [String:AnyObject] ?? [:]
+            print(userUID)
+            print(dict)
+            
+            for(id,emotionDict) in dict{
+                let emotion = Emotion()
+                emotion.id = id
+                emotion.name = emotionDict["Name"] as? String ?? ""
+                let colorDict = emotionDict["Color"] as? [String:CGFloat] ?? [:]
+                let red = colorDict["Red"] ?? 0.5
+                let green = colorDict["Green"] ?? 0.5
+                let blue = colorDict["Blue"] ?? 0.5
+                emotion.color = UIColor(red: red, green: green, blue: blue, alpha: 1)
+                emotion.font = Font.CustomEmotionFont()
+                emotion.custom = true
+                self.selectFeelingView.emotions.append(emotion)
+            }
+            self.selectFeelingView.reloadData()
+            
+        })
+    }
+    
+    func emotionCreated(emotion: Emotion) {
+        selectFeelingView.emotions.append(emotion)
+        selectFeelingView.reloadData()
     }
     
     //set up the general view. In this case its just the feed button that apepasr on the bottom
@@ -164,7 +195,6 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
     //set up the SelectFeelingView. set its size and position.
     func setUpSelectFeelingView(){
         selectFeelingView = SelectFeelingView(size: CGSize(width:view.frame.width,height: feedButton.frame.origin.y - feedButtonOffset - topView.frame.height))
-        selectFeelingView.isScrollEnabled = false
         selectFeelingView.someDelegate = self
         scrollView.addSubview(selectFeelingView)
         selectFeelingView.frame.origin.y = topView.frame.height
@@ -175,6 +205,21 @@ class HomeVC: UIViewController,SelectFeelingDelegate,UIScrollViewDelegate {
         let vc = SubmitEmotionVC()
         vc.emotion = emotion
         present(vc, animated: true, completion: nil)
+    }
+    
+    func plusButtonClicked(){
+        let vc = CreateEmotionVC()
+        vc.delegate = self
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func deleteButtonClicked(emotion: Emotion) {
+        FIRDatabase.database().reference().child("Custom Emotions").child(userUID).child(emotion.id).setValue(nil)
+        if let index = selectFeelingView.emotions.index(of: emotion){
+            selectFeelingView.emotions.remove(at: index)
+            selectFeelingView.reloadData()
+        }
     }
 
 
