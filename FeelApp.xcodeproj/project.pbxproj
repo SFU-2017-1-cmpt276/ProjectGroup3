@@ -30,6 +30,9 @@
 		3D22F27C1E8C7774003E12E6 /* TypingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D22F27B1E8C7774003E12E6 /* TypingBar.swift */; };
 		3D22F27E1E8C7EF3003E12E6 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D22F27D1E8C7EF3003E12E6 /* CalendarVC.swift */; };
 		3D22F2801E8C941A003E12E6 /* leftArrow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D22F27F1E8C941A003E12E6 /* leftArrow2.png */; };
+		3D49F7991E8FA1AB00A1CB4D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D49F7981E8FA1AB00A1CB4D /* CameraVC.swift */; };
+		3D49F79F1E8FA58B00A1CB4D /* rotateCamera2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D49F79E1E8FA58B00A1CB4D /* rotateCamera2.png */; };
+		3D49F7A51E8FF7FA00A1CB4D /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D49F7A41E8FF7FA00A1CB4D /* ForgotPasswordVC.swift */; };
 		3D62D2E51E79FF0C00BE7A6C /* LinksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */; };
 		3D64552B1E8E2B5C00727BB0 /* notificationIcon in Resources */ = {isa = PBXBuildFile; fileRef = 3D64552A1E8E2B5C00727BB0 /* notificationIcon */; };
 		3D64552D1E8E2BB200727BB0 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D64552C1E8E2BB200727BB0 /* NotificationsVC.swift */; };
@@ -37,6 +40,8 @@
 		3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */; };
 		3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */; };
 		3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */; };
+		3DD801F71E90E2560023FE86 /* SelectAliasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD801F61E90E2560023FE86 /* SelectAliasVC.swift */; };
+		3DD801F91E90F88B0023FE86 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD801F81E90F88B0023FE86 /* CalendarView.swift */; };
 		3DDD8AD11E7A0DD300857211 /* ChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD01E7A0DD300857211 /* ChartVC.swift */; };
 		3DDD8AD41E7A23EB00857211 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD21E7A23EB00857211 /* PostCell.swift */; };
 		3DDD8AD51E7A23EB00857211 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD31E7A23EB00857211 /* PostCell.xib */; };
@@ -107,6 +112,9 @@
 		3D22F27B1E8C7774003E12E6 /* TypingBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingBar.swift; sourceTree = "<group>"; };
 		3D22F27D1E8C7EF3003E12E6 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
 		3D22F27F1E8C941A003E12E6 /* leftArrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leftArrow2.png; path = Assets.xcassets/rightArrow2.imageset/leftArrow2.png; sourceTree = "<group>"; };
+		3D49F7981E8FA1AB00A1CB4D /* CameraVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		3D49F79E1E8FA58B00A1CB4D /* rotateCamera2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotateCamera2.png; sourceTree = "<group>"; };
+		3D49F7A41E8FF7FA00A1CB4D /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinksVC.swift; sourceTree = "<group>"; };
 		3D64552A1E8E2B5C00727BB0 /* notificationIcon */ = {isa = PBXFileReference; lastKnownFileType = file; path = notificationIcon; sourceTree = "<group>"; };
 		3D64552C1E8E2BB200727BB0 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
@@ -114,6 +122,8 @@
 		3D9181FB1E68E4F90039C6A1 /* SubmitEmotionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitEmotionVC.swift; sourceTree = "<group>"; };
 		3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		3D9181FF1E68ECFB0039C6A1 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		3DD801F61E90E2560023FE86 /* SelectAliasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAliasVC.swift; sourceTree = "<group>"; };
+		3DD801F81E90F88B0023FE86 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		3DDD8AD01E7A0DD300857211 /* ChartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartVC.swift; sourceTree = "<group>"; };
 		3DDD8AD21E7A23EB00857211 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		3DDD8AD31E7A23EB00857211 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
@@ -182,6 +192,9 @@
 		3D1462551E67966600BB74AA /* FeelApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DD801F61E90E2560023FE86 /* SelectAliasVC.swift */,
+				3D49F7A41E8FF7FA00A1CB4D /* ForgotPasswordVC.swift */,
+				3D49F7981E8FA1AB00A1CB4D /* CameraVC.swift */,
 				3D22F27D1E8C7EF3003E12E6 /* CalendarVC.swift */,
 				3DDD8AD01E7A0DD300857211 /* ChartVC.swift */,
 				3DDD8AD61E7A25E700857211 /* FeedVC.swift */,
@@ -204,6 +217,7 @@
 				3D14625F1E67966600BB74AA /* LaunchScreen.storyboard */,
 				3D14629C1E67A36500BB74AA /* GoogleService-Info.plist */,
 				3D1462621E67966600BB74AA /* Info.plist */,
+				3D49F79E1E8FA58B00A1CB4D /* rotateCamera2.png */,
 			);
 			path = FeelApp;
 			sourceTree = "<group>";
@@ -242,6 +256,7 @@
 		3D8806381E6E2FBE008D106B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3DD801F81E90F88B0023FE86 /* CalendarView.swift */,
 				3D64552E1E8E316500727BB0 /* NotificationCell.swift */,
 				3D22F27B1E8C7774003E12E6 /* TypingBar.swift */,
 				3D22F2771E8C74EB003E12E6 /* CommentsView.swift */,
@@ -355,7 +370,7 @@
 				TargetAttributes = {
 					3D1462521E67966600BB74AA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9W5UPM8QT7;
+						DevelopmentTeam = EBZ53J55EK;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -404,6 +419,7 @@
 				B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */,
 				3D22F2741E8C7288003E12E6 /* heartIconFilled.png in Resources */,
 				3D22F2801E8C941A003E12E6 /* leftArrow2.png in Resources */,
+				3D49F79F1E8FA58B00A1CB4D /* rotateCamera2.png in Resources */,
 				3D64552B1E8E2B5C00727BB0 /* notificationIcon in Resources */,
 				3D14625C1E67966600BB74AA /* Main.storyboard in Resources */,
 				3D14629D1E67A36500BB74AA /* GoogleService-Info.plist in Resources */,
@@ -439,7 +455,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		5658AF5F5E81960D9AE89068 /* [CP] Embed Pods Frameworks */ = {
@@ -499,7 +515,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		94C029FD84E209671611EEE3 /* [CP] Copy Pods Resources */ = {
@@ -544,7 +560,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E1477CED6AE4A222D141CC06 /* [CP] Copy Pods Resources */ = {
@@ -577,17 +593,21 @@
 				3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */,
 				3D14628D1E67979200BB74AA /* FirebaseClasses.swift in Sources */,
 				3D9182001E68ECFB0039C6A1 /* HistoryView.swift in Sources */,
+				3D49F7A51E8FF7FA00A1CB4D /* ForgotPasswordVC.swift in Sources */,
 				3D14628F1E67996000BB74AA /* LoginVC.swift in Sources */,
 				3D1462931E679DA400BB74AA /* Draw.swift in Sources */,
 				3D22F2761E8C7314003E12E6 /* CommentsVC.swift in Sources */,
 				3D1462891E67971D00BB74AA /* GlobalData.swift in Sources */,
+				3D49F7991E8FA1AB00A1CB4D /* CameraVC.swift in Sources */,
 				3D62D2E51E79FF0C00BE7A6C /* LinksVC.swift in Sources */,
 				3D22F27C1E8C7774003E12E6 /* TypingBar.swift in Sources */,
 				3DDD8AD11E7A0DD300857211 /* ChartVC.swift in Sources */,
+				3DD801F71E90E2560023FE86 /* SelectAliasVC.swift in Sources */,
 				3D1462571E67966600BB74AA /* AppDelegate.swift in Sources */,
 				3D64552F1E8E316500727BB0 /* NotificationCell.swift in Sources */,
 				3D1462971E679F0600BB74AA /* SignupVC.swift in Sources */,
 				3D22F27A1E8C7597003E12E6 /* CommentCell.swift in Sources */,
+				3DD801F91E90F88B0023FE86 /* CalendarView.swift in Sources */,
 				3D14628B1E67976900BB74AA /* SelectFeelingView.swift in Sources */,
 				3D1462851E6796CC00BB74AA /* Font.swift in Sources */,
 				3D1462871E6796EF00BB74AA /* Extensions.swift in Sources */,
@@ -743,7 +763,7 @@
 			baseConfigurationReference = EE0EBBAD1EA7076CE7D9E3FA /* Pods-FeelApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9W5UPM8QT7;
+				DEVELOPMENT_TEAM = EBZ53J55EK;
 				INFOPLIST_FILE = FeelApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -759,7 +779,7 @@
 			baseConfigurationReference = 8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9W5UPM8QT7;
+				DEVELOPMENT_TEAM = EBZ53J55EK;
 				INFOPLIST_FILE = FeelApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
