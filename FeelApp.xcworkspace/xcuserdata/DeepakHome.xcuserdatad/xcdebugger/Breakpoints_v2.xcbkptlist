@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FeelApp/HistoryView.swift"
-            timestampString = "512878730.028322"
+            timestampString = "512886436.220264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "setUp(emotion:width:showTime:)"
             landmarkType = "7">
          </BreakpointContent>
