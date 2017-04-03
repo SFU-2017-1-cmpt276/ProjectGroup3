@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         FIRApp.configure()
+        FIRDatabase.database().persistenceEnabled = true
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
          let storyboard = UIStoryboard(name: "Main", bundle: nil)
