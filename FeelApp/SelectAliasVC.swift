@@ -6,16 +6,16 @@
 //Version 3: Improved UI. Added background colors and changed placeholder colors.
 //Version 4: fixed keyboard bug (keyboard wasnt closing once opened)
 
-//Coding standard: 
-    //all view controller files have a descriptor followed by "VC."
-    //all view files have a descriptor folled by "view"
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
 
 
 
 import UIKit
 import Firebase
 
-class SignupVC: UIViewController {
+class SelectAliasVC: UIViewController {
     
     
     var backButton = UIButton()
@@ -23,9 +23,8 @@ class SignupVC: UIViewController {
     var topView = UIView()
     var titleLabel = UILabel()
     
-    let usernameTF = UITextField()
-    let passwordTF = UITextField()
-    let password2TF = UITextField()
+    let aliasTF = UITextField()
+    var blurb = UILabel()
     
     let color = nowColor
     
@@ -33,17 +32,20 @@ class SignupVC: UIViewController {
         return true
     }
     
-    //set up the top bar and the text fields and the general view. set the username text field to be in editing mode when the VC first opens. 
+    //set up the top bar and the text fields and the general view. set the username text field to be in editing mode when the VC first opens.
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(CommentsVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
         view.backgroundColor = color
-
+        
         setUpTopView()
         setUpTFs()
         setUpSignUpButton()
+        setUpBlurb()
         
-        usernameTF.becomeFirstResponder()
+        aliasTF.becomeFirstResponder()
     }
     
     //Set up the top bar. The view, title label, and the history/link button on the top right/left.
@@ -62,26 +64,49 @@ class SignupVC: UIViewController {
         backButton.changeToColor(UIColor.white)
         backButton.frame.origin.y = topView.frame.height - backButton.frame.height
         backButton.frame.origin.x = 0
-        backButton.addTarget(self, action: #selector(SignupVC.backAction), for: .touchUpInside)
-
+        backButton.addTarget(self, action: #selector(SelectAliasVC.backAction), for: .touchUpInside)
+        backButton.isHidden = true
+        
         titleLabel.font = Font.PageHeaderSmall()
         titleLabel.text = "Sign Up"
         titleLabel.textColor = UIColor.white
         titleLabel.sizeToFit()
         titleLabel.center.x = topView.frame.width/2
         titleLabel.center.y = backButton.center.y
-        topView.addSubview(titleLabel)
+       // topView.addSubview(titleLabel)
+    }
+    
+    func setUpBlurb(){
+        let string = "Your account has been created! Please choose an alias. It will be your name in the social feed section of FeelApp"
+        blurb.frame.size.width = view.frame.width - 30
+        blurb.preferredMaxLayoutWidth = view.frame.width - 30
+        view.addSubview(blurb)
+        blurb.numberOfLines = 0
+        blurb.font = Font.PageBodyBold()
+        blurb.textColor = UIColor.white
+        blurb.text = string
+        blurb.sizeToFit()
+        blurb.center.x = view.frame.width/2
+        blurb.frame.origin.y = 20
+        
+    }
+    
+    func keyboardWillShow(_ notification: Notification) {
+        let keyboardSize = ((notification as NSNotification).userInfo![UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        
+        aliasTF.center.y = (view.frame.height - keyboardSize!.height)/2
+        signupButton.frame.origin.y = aliasTF.frame.maxY + 15
+        //blurb.frame.origin.y = aliasTF.frame.origin.y - blurb.frame.height - 30
     }
     
     //action when the submit button is pressed. If any text field is empty, dont do anything. If there is an error, dont do anything. Otherwise, create an account with the information provided, and transition to HomeVC
     
-    func showAlert(text:String,emailEditing:Bool){
+    func showAlert(text:String){
+        aliasTF.text = ""
         let alert = UIAlertController(title: text, message: "Please try again!", preferredStyle: .alert) // 7
         let defaultAction = UIAlertAction(title: "Ok", style: .cancel) { (alerta: UIAlertAction!) -> Void in
             
             alert.dismiss(animated: true, completion: nil)
-            if emailEditing{self.usernameTF.becomeFirstResponder()}
-            else{self.passwordTF.becomeFirstResponder()}
         }
         
         alert.addAction(defaultAction) // 9
@@ -89,55 +114,40 @@ class SignupVC: UIViewController {
     }
     func submitAction(){
         
-        if usernameTF.text == "" || passwordTF.text == "" || password2TF.text == ""{return}
-        
-        if password2TF.text! != passwordTF.text!{
-            self.showAlert(text: "Passwords dont match",emailEditing:false)
-            return
-        }
-        
-        FIRAuth.auth()?.createUser(withEmail: usernameTF.text!, password: passwordTF.text!) { (user, error) in
+        if aliasTF.text == ""{return}
+        FIRDatabase.database().reference().child("Users").observeSingleEvent(of: .value, with: {snapshot in
+            let dict = snapshot.value! as? [String:String] ?? [:]
             
-
-            if let error = error{
-
-                if error._code == FIRAuthErrorCode.errorCodeInvalidEmail.rawValue {
-                    self.showAlert(text: "Email is not valid",emailEditing:true)
-                    self.usernameTF.text = ""
+            var aliasWorks = true
+            for (_,alias) in dict{
+                if alias.lowercased() == self.aliasTF.text!.lowercased(){
+                    self.showAlert(text: "This alias has already been taken")
+                    aliasWorks = false
+                    break
                 }
-                if error._code == FIRAuthErrorCode.errorCodeEmailAlreadyInUse.rawValue {
-                    self.showAlert(text: "Email is already in use",emailEditing:true)
-                    self.usernameTF.text = ""
-                }
-                if error._code == FIRAuthErrorCode.errorCodeWeakPassword.rawValue {
-                    self.showAlert(text: "Password must be at least 6 characters",emailEditing:false)
-                    self.passwordTF.text = ""
-                    self.password2TF.text = ""
-                }
-
             }
-            if error == nil && user != nil{
-                
-                
-                
-                GlobalData.You.id = user!.uid
+            
+            if aliasWorks{
+                FIRDatabase.database().reference().child("Users").child(userUID).setValue(self.aliasTF.text!)
+                GlobalData.You.id = userUID
+                GlobalData.You.alias = self.aliasTF.text!
                 let vc = HomeVC()
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
             }
-        }
+        })
     }
-    
+
     //action called when back button is clicked. dismiss view controller.
     func backAction(){
         dismiss(animated: true, completion: nil)
     }
-
+    
     //set up the text fields. Their formatitng, position, placeholders, and other attributes
     //Round the top the the username text field and the bottom of the alias text field.
     func setUpTFs(){
         
-        for tf in [usernameTF,passwordTF,password2TF]{
+        for tf in [aliasTF]{
             tf.frame.size = CGSize(width: view.frame.width - 40, height: 60)
             view.addSubview(tf)
             tf.autocorrectionType = .no
@@ -150,25 +160,13 @@ class SignupVC: UIViewController {
             someView.frame = CGRect(x: 0, y: 0, width: 10, height: 60)
             tf.leftView = someView
             tf.leftViewMode = .always
+            tf.layer.cornerRadius = 6
+            tf.clipsToBounds = true
         }
-        usernameTF.roundedTopText()
-        password2TF.roundedBottomText()
         
-        usernameTF.attributedPlaceholder = NSMutableAttributedString(string: "EMAIL", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
-        passwordTF.attributedPlaceholder = NSMutableAttributedString(string: "PASSWORD", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
-        password2TF.attributedPlaceholder = NSMutableAttributedString(string: "CONFIRM PASSWORD", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
-
-        
-        passwordTF.isSecureTextEntry = true
-        password2TF.isSecureTextEntry = true
-        
-        usernameTF.frame.origin.y = topView.frame.maxY + 20
-        passwordTF.frame.origin.y = usernameTF.frame.maxY
-        password2TF.frame.origin.y = passwordTF.frame.maxY
-
-        Draw.createLineUnderView(usernameTF, color: globalLightGrey)
-        Draw.createLineUnderView(passwordTF, color: globalLightGrey)
-        Draw.createLineUnderView(password2TF, color: globalLightGrey)
+        aliasTF.attributedPlaceholder = NSMutableAttributedString(string: "ALIAS", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:globalGreyColor])
+        aliasTF.frame.origin.y = topView.frame.height + 30
+        Draw.createLineUnderView(aliasTF, color: globalLightGrey)
         
     }
     
@@ -182,11 +180,10 @@ class SignupVC: UIViewController {
         view.addSubview(signupButton)
         signupButton.backgroundColor = UIColor(white: 1, alpha: 0.2)
         signupButton.center.x = view.frame.width/2
-        signupButton.frame.origin.y = passwordTF.frame.maxY + 40
+        signupButton.frame.origin.y = aliasTF.frame.maxY + 40
         // signupButton.layer.borderWidth = 2
         signupButton.layer.borderColor = UIColor.white.cgColor
-        signupButton.addTarget(self, action: #selector(SignupVC.submitAction), for: .touchUpInside)
-        signupButton.frame.origin.y = password2TF.frame.maxY + 15
-
+        signupButton.addTarget(self, action: #selector(SelectAliasVC.submitAction), for: .touchUpInside)
+        signupButton.frame.origin.y = aliasTF.frame.maxY + 15
     }
 }

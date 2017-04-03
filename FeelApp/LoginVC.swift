@@ -51,10 +51,15 @@ class LoginVC: UIViewController {
         
         if FIRAuth.auth()?.currentUser != nil{
             FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
-                GlobalData.You.alias = snapshot.value! as? String ?? ""
-                let vc = HomeVC()
-                vc.modalTransitionStyle = .crossDissolve
-                self.present(vc, animated: true, completion: nil)
+                if !snapshot.exists(){
+                    self.toSelectAlias()
+                }
+                else{
+                    GlobalData.You.alias = snapshot.value! as? String ?? ""
+                    GlobalData.You.id = userUID
+                    self.toHomeVC()
+                }
+                
             })
         }
         else{
@@ -183,16 +188,21 @@ class LoginVC: UIViewController {
             
             if error == nil && user != nil{
                 FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
+                    if !snapshot.exists(){
+                        self.toSelectAlias()
+                    }
+                    else{
                     GlobalData.You.alias = snapshot.value! as? String ?? ""
-                    let vc = HomeVC()
-                    vc.modalTransitionStyle = .crossDissolve
-                    self.present(vc, animated: true, completion: nil)
+                        GlobalData.You.id = userUID
+                        self.toHomeVC()
+                    }
+                   
                 })
                 
 
             }
             else{
-                let alert = UIAlertController(title: nil, message: "There was an error. Please try again!", preferredStyle: .alert) // 7
+                let alert = UIAlertController(title: "Incorrect username or password", message: "Please try again!", preferredStyle: .alert) // 7
                 let defaultAction = UIAlertAction(title: "Ok", style: .cancel) { (alerta: UIAlertAction!) -> Void in
                     
                      alert.dismiss(animated: true, completion: nil)
@@ -219,7 +229,19 @@ class LoginVC: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
-    //set up forgot password button format. No action yet. 
+    func toSelectAlias(){
+        let vc = SelectAliasVC()
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func toHomeVC(){
+        let vc = HomeVC()
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    //set up forgot password button format. No action yet.
     func setUpForgotPassword(){
         forgotPassword.setTitle("Forgot password?", for: .normal)
         view.addSubview(forgotPassword)
