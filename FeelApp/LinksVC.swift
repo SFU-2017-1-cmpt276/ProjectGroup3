@@ -27,6 +27,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //titles of each item in the table
     var linkTitles = ["SFU Health & Conselling Center Homepage","SFU Health & Conselling services","SFU Health & Counselling Contacting Guide","SFU Health & Conselling Resources","SFU Healthy Campus Community","SFU Events & Programs Calendar","SFU Health & Conselling Volunteer","SFU Media Library"]
     var phoneTitles = ["Burnaby Campus","Vancouver Campus","Surrey Campus"]
+    var settingTitles = ["Change Password","Change Email","Logout"]
     
     override var preferredStatusBarStyle: UIStatusBarStyle{return UIStatusBarStyle.lightContent}
     
@@ -112,7 +113,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else if section == 1{
             return phoneTitles.count
         }
-        else{return 1}
+        else {return 3}
     }
     
     //tableivew data source method for formatting cell.
@@ -129,15 +130,17 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             //cell.textLabel?.textColor = UIColor.white
             cell.textLabel?.text = phoneTitles[indexPath.item]
         }
-        else{
-            cell.textLabel?.text = "Logout"
+        else if indexPath.section == 2 {
+            cell.textLabel?.text = settingTitles[indexPath.item]
+            //cell.textLabel?.text = "Account Settings"
+            
         }
         
         
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         
         cell.textLabel?.font = Font.PageBody()
-
+        
         
         //set the button the appears on the right on the cell. if its a link, the button is the right arrow. otherwise, its the phone icon
         let imageView = UIImageView()
@@ -147,23 +150,23 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         else if indexPath.section == 1{
             imageView.image = #imageLiteral(resourceName: "phone.png")
         }
-        else{
+        else if indexPath.section == 2{
             imageView.image = #imageLiteral(resourceName: "rightArrowIcon")
         }
         
         imageView.changeToColor(globalGreyColor)
         cell.accessoryView = imageView
         cell.accessoryView?.frame = CGRect(x:0, y:0, width:20, height:20)
-
+        
         return cell
         
     }
     
     //tableview delegate method for header height.
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
+        
         return headerHeight
-
+        
     }
     //tableview delegate method for the actual header view. Create a view with height of headerHeight. put a label in it with approriate text. format and position the label.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -172,7 +175,7 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let label = UILabel()
         if section == 0{label.text = "Information"}
         else if section == 1{label.text = "Call SFU Clinic"}
-        else{label.text = "Settings"}
+        else if section == 2{label.text = "Settings"}
         
         let smallFont = Font.PageBodyBold()
         label.font = smallFont
@@ -213,9 +216,26 @@ class LinksVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             
         }
-        else{
-            logout()
+        else if indexPath.section == 2{
+            switch indexPath.item{
+            case 0:passwordReset()
+            case 1:emailReset()
+            case 2:logout()
+            default:break
+            }
+            
         }
+    }
+    func emailReset(){
+        let vc = ChangeEmailVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func passwordReset(){
+        let vc = ChangePasswordVC()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
     }
     
     func logout(){
