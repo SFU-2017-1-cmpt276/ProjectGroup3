@@ -36,7 +36,7 @@ class ChangePasswordVC: UIViewController {
         setUpCurrentEmailTF()
         setUpButton()
         
-        emailTF.becomeFirstResponder()
+        currentEmailTF.becomeFirstResponder()
     }
     
     func keyboardWillShow(_ notification: Notification) {
@@ -135,6 +135,7 @@ class ChangePasswordVC: UIViewController {
         emailTF.attributedPlaceholder = NSMutableAttributedString(string: "NEW PASSWORD", attributes: [NSFontAttributeName:Font.PageBody()])
         emailTF.layer.borderWidth = 1
         emailTF.layer.borderColor = globalLightGrey.cgColor
+        emailTF.isSecureTextEntry = true
         
         
     }
@@ -172,6 +173,7 @@ class ChangePasswordVC: UIViewController {
         //currentPasswordTF.layer.cornerRadius = 5
         currentPasswordTF.clipsToBounds = true
         currentPasswordTF.font = Font.PageBodyBold()
+        currentPasswordTF.isSecureTextEntry = true
         currentPasswordTF.center.y = view.frame.height/2
         currentPasswordTF.center.x = view.frame.width/2
         currentPasswordTF.backgroundColor = UIColor.red

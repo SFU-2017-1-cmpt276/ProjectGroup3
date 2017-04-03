@@ -96,7 +96,7 @@ class PhotoViewerVC2: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         else{
             noPhotosLabel.isHidden = true
-            deleteButton.isHidden = false
+            deleteButton.isHidden = true
         }
         if photos.count == 1{bottomView.isHidden = true}
         else{
@@ -229,20 +229,20 @@ class PhotoViewerVC2: UIViewController,UICollectionViewDelegate,UICollectionView
         
         func setUpMainImage(){
             
-            mainImage.frame.size.width = frame.width * 2/3
-            mainImage.frame.size.height = mainImage.frame.size.width*2
             addSubview(mainImage)
+             mainImage.contentMode = .scaleAspectFit
         }
         
         
         func setUp(size:CGSize,image:UIImage){
+            
             
             mainImage.image = image
             
             mainImage.frame.size = CGSize(width: size.width-2, height: size.height-2)
             mainImage.center = CGPoint(x: frame.width/2, y: frame.height/2)
             backgroundColor = UIColor.black
-            mainImage.contentMode = .scaleAspectFit
+           
         }
     }
     

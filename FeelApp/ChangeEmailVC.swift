@@ -36,7 +36,7 @@ class ChangeEmailVC: UIViewController {
         setUpCurrentEmailTF()
         setUpButton()
         
-        emailTF.becomeFirstResponder()
+        currentEmailTF.becomeFirstResponder()
     }
     
     func keyboardWillShow(_ notification: Notification) {
@@ -176,6 +176,7 @@ class ChangeEmailVC: UIViewController {
         currentPasswordTF.center.x = view.frame.width/2
         currentPasswordTF.backgroundColor = UIColor.red
         currentPasswordTF.backgroundColor = UIColor(white: 1, alpha: 1)
+        currentPasswordTF.isSecureTextEntry = true
         let someView = UIView()
         someView.frame = CGRect(x: 0, y: 0, width: 10, height: 60)
         currentPasswordTF.leftView = someView

@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 
 
-class CalendarVC: UIViewController,CalendarViewDelegate {
+class CalendarVC: UIViewController,CalendarViewDelegate,HistoryViewDelegate {
 
     //some data stuff
        //topview
@@ -89,6 +89,12 @@ class CalendarVC: UIViewController,CalendarViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
     }
     
+    func photoButtonClicked(emotion: Emotion) {
+        let vc = PhotoViewerVC2()
+        vc.emotion = emotion
+        present(vc, animated: true, completion: nil)
+    }
+    
     func setUpCalendarView(){
         calendarView = CalendarView(width: view.frame.width,allEmotions:allEmotions)
         calendarView.delegate = self
@@ -100,6 +106,7 @@ class CalendarVC: UIViewController,CalendarViewDelegate {
     func setUpHistoryView(){
         let originY:CGFloat = calendarView.frame.maxY
         historyView = HistoryView(size:CGSize(width:view.frame.width,height:view.frame.height - originY),showTimeAlways:true)
+        historyView.someDelegate = self
         historyView.frame.origin.y =  originY
         historyView.center.x = view.frame.width/2
         scrollView.addSubview(historyView)

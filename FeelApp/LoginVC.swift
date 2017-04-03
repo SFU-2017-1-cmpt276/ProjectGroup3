@@ -49,7 +49,7 @@ class LoginVC: UIViewController {
         
         showNormalScreen()
         
-        /*if FIRAuth.auth()?.currentUser != nil{
+        if FIRAuth.auth()?.currentUser != nil{
             
             FIRDatabase.database().reference().child("Users").child(userUID).observeSingleEvent(of: .value, with: {snapshot in
                 
@@ -69,7 +69,7 @@ class LoginVC: UIViewController {
         }
         else{
             showNormalScreen()
-        }*/
+        }
     }
     
     func showNormalScreen(){

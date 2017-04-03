@@ -199,6 +199,7 @@ class HistoryCell:UICollectionViewCell{
     func setUp(emotion:Emotion,width:CGFloat,showTime:Bool = false){
         self.showTime = showTime
         self.emotion = emotion
+        frame.size.width = width
         backgroundColor = emotion.color
         
         button.titleLabel?.numberOfLines = 0
@@ -217,7 +218,7 @@ class HistoryCell:UICollectionViewCell{
         button.setTitleColor(UIColor.white, for: .normal)
         button.sizeToFit()
         button.titleLabel?.textAlignment = .center
-        button.frame.origin.x = topBottomOffset
+        button.frame.origin.x = 10
         
         photoButton.frame.origin.x = width - photoButton.frame.width - 10
         
@@ -225,13 +226,19 @@ class HistoryCell:UICollectionViewCell{
         emotionLabel.text = emotion.name
         emotionLabel.textColor = UIColor.white
         emotionLabel.sizeToFit()
-        emotionLabel.frame.origin.x = button.frame.maxX + topBottomOffset
+        emotionLabel.frame.origin.x = button.frame.maxX + 10
         emotionLabel.frame.origin.y = topBottomOffset
 
         textLabel.isHidden = false
         textLabel.frame.origin.x = emotionLabel.frame.origin.x
-        textLabel.preferredMaxLayoutWidth = photoButton.frame.origin.x - textLabel.frame.origin.y - 10
-        textLabel.frame.size.width = photoButton.frame.origin.x - textLabel.frame.origin.y - 10
+        if emotion.photoInfos.count == 0 {
+        textLabel.preferredMaxLayoutWidth = width - textLabel.frame.origin.x - 5
+        textLabel.frame.size.width = width - textLabel.frame.origin.x - 5
+        }
+        else{
+            textLabel.preferredMaxLayoutWidth = photoButton.frame.origin.x - textLabel.frame.origin.x - 5
+            textLabel.frame.size.width = photoButton.frame.origin.x - textLabel.frame.origin.x - 5
+        }
         textLabel.numberOfLines = 0
         textLabel.text = emotion.text
         textLabel.sizeToFit()
