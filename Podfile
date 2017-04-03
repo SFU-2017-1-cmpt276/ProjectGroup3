@@ -12,6 +12,7 @@ pod ‘Firebase/Database’
 pod ‘Firebase/Storage’
 pod 'KMPlaceholderTextView'
 pod ‘Charts’
+pod 'ColorSlider', '~> 3.0.1'
 
   target 'FeelAppTests' do
     inherit! :search_paths

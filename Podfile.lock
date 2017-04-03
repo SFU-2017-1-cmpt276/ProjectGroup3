@@ -2,6 +2,7 @@ PODS:
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
+  - ColorSlider (3.0.1)
   - Firebase (3.5.2):
     - Firebase/Core (= 3.5.2)
   - Firebase/Analytics (3.5.2):
@@ -47,6 +48,7 @@ PODS:
 
 DEPENDENCIES:
   - Charts
+  - ColorSlider (~> 3.0.1)
   - Firebase
   - Firebase/Auth
   - Firebase/Database
@@ -55,6 +57,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  ColorSlider: fe0a511351837848076c30417522ab175ab8fea9
   Firebase: 94e63112efcad75226c0356a8f3032397b8547c9
   FirebaseAnalytics: d968d4d5f6aeb795cd64144337bcd233e530efc6
   FirebaseAuth: 26fd291c3b552fc9658420b867520d5ae080421c
@@ -68,6 +71,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
 
-PODFILE CHECKSUM: 489e142925d49c4c2d88ffb16e7ba3d84e0404c5
+PODFILE CHECKSUM: 6fa9df2043a971cc75a93f789acfee9157c27798
 
 COCOAPODS: 1.0.1
