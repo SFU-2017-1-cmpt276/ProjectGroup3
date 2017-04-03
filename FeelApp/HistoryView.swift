@@ -15,11 +15,14 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
     var emotions:[Emotion] = []
     var expandedIndexes:[Int] = []
     
+    var showTimeAlways = false
+    
     //the initializer. Input a size. Sets this to be the size of the HistoryView. then calls setup()
-    init(size:CGSize){
+    init(size:CGSize,showTimeAlways:Bool = false){
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 10
         super.init(frame: CGRect(origin:CGPoint.zero,size: size), collectionViewLayout: layout)
+        self.showTimeAlways = showTimeAlways
         setUp()
     }
     
@@ -37,6 +40,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         alwaysBounceVertical = true
         showsVerticalScrollIndicator = false
         
+        
     }
     
     //collection view data source method. set the number of items to be the count of the emotions array
@@ -49,7 +53,7 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HistoryCell
         if expandedIndexes.contains(indexPath.item){cell.expanded = true}
         else{cell.expanded = false}
-        cell.setUp(emotion: emotions[indexPath.item],width:frame.width)
+        cell.setUp(emotion: emotions[indexPath.item],width:frame.width,showTime:showTimeAlways)
         return cell
     }
     
@@ -58,8 +62,8 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         let cell = HistoryCell(frame: CGRect())
         if expandedIndexes.contains(indexPath.item){cell.expanded = true}
         else{cell.expanded = false}
-        cell.setUp(emotion: emotions[indexPath.item],width:frame.width)
-        return CGSize(width:frame.width,height:cell.frame.height)
+        cell.setUp(emotion: emotions[indexPath.item],width:frame.width - 20,showTime:showTimeAlways)
+        return CGSize(width:frame.width - 20,height:cell.frame.height)
     }
     
     //collection view delegate method. WHen the cell is clicked, expand if currently contracted, and vice versa.
@@ -74,6 +78,10 @@ class HistoryView: UICollectionView,UICollectionViewDelegate,UICollectionViewDat
         }
         expandedIndexes.append(indexPath.item)
         reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 
 
@@ -90,9 +98,11 @@ class HistoryCell:UICollectionViewCell{
     let otherLine = UIView()
     let textLabel = UILabel()
     
-    let topBottomOffset:CGFloat = 20
+    let topBottomOffset:CGFloat = 15
     
     var expanded = false
+    
+    var showTime = false
     
     
     override init(frame: CGRect) {
@@ -116,11 +126,13 @@ class HistoryCell:UICollectionViewCell{
         
         otherLine.frame.size.width = 0.8
         otherLine.backgroundColor = globalLightGrey
-        addSubview(otherLine)
+       // addSubview(otherLine)
         
         textLabel.font = Font.PageBodyBold()
         addSubview(textLabel)
         textLabel.textColor = UIColor.white
+        clipsToBounds = true
+        layer.cornerRadius = 6
         
     }
     
@@ -139,7 +151,7 @@ class HistoryCell:UICollectionViewCell{
         
         
         
-        let string3 = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:Font.PageHeaderSmall(),NSForegroundColorAttributeName:UIColor.white])
+        let string3 = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:Font.PageBodyBold(),NSForegroundColorAttributeName:UIColor.white])
         let string4 = NSMutableAttributedString(string: "\n\(string2)", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:UIColor.white])
         string3.append(string4)
 
@@ -158,7 +170,7 @@ class HistoryCell:UICollectionViewCell{
         formatter.dateFormat = "MMM"
         let string2 = formatter.string(from: datePosted)
         
-        let string3 = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:Font.PageHeaderSmall(),NSForegroundColorAttributeName:UIColor.white])
+        let string3 = NSMutableAttributedString(string: string, attributes: [NSFontAttributeName:Font.PageBodyBold(),NSForegroundColorAttributeName:UIColor.white])
         let string4 = NSMutableAttributedString(string: "\n\(string2)", attributes: [NSFontAttributeName:Font.PageBody(),NSForegroundColorAttributeName:UIColor.white])
         
         string3.append(string4)
@@ -166,9 +178,11 @@ class HistoryCell:UICollectionViewCell{
         return string3
     }
     
+    
+    
     //use the inputted emotion object to set up the cell with specific characteristics. Size and rearrange the elements based on the inputted width of the cell. 
-    func setUp(emotion:Emotion,width:CGFloat){
-        
+    func setUp(emotion:Emotion,width:CGFloat,showTime:Bool = false){
+        self.showTime = showTime
         self.emotion = emotion
         backgroundColor = emotion.color
         
@@ -183,12 +197,14 @@ class HistoryCell:UICollectionViewCell{
             button.setAttributedTitle(createTimeString(), for: .normal)
         }
         
+        if showTime{button.setAttributedTitle(createTimeString(), for: .normal)}
+        
         button.setTitleColor(UIColor.white, for: .normal)
         button.sizeToFit()
         button.titleLabel?.textAlignment = .center
         button.frame.origin.x = topBottomOffset
         
-        emotionLabel.font = emotion.font
+        emotionLabel.font = UIFont(name: emotion.font.fontName,size:25)
         emotionLabel.text = emotion.name
         emotionLabel.textColor = UIColor.white
         emotionLabel.sizeToFit()

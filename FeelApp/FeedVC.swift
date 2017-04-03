@@ -18,7 +18,7 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     var ref:FIRDatabaseReference!
     
-    var tableView = UITableView()
+    var tableView = UITableView(frame: CGRect(), style: .grouped)
     var backButton = UIButton()
     var topView = UIView()
     var titleLabel = UILabel()
@@ -44,8 +44,8 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //create the table view. Set the delegate and the cell it will use. set its frame. format it.
     func setUpTableView(){
         let originY = topView.frame.maxY
+        automaticallyAdjustsScrollViewInsets = false
         tableView.frame = CGRect(x: 0, y: originY, width: view.frame.size.width - 20, height: view.frame.size.height - originY)
-        //tableView.frame.origin.y = getPosts().frame.maxY + 40
         tableView.tableFooterView = UIView()
         tableView.center.x = view.frame.width/2
         tableView.register(UINib(nibName:"PostCell",bundle:nil), forCellReuseIdentifier: "cell")
@@ -53,17 +53,22 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         view.addSubview(tableView)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.contentInset = UIEdgeInsetsMake(-25, 0, 0, 0)
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.separatorColor = globalLightGrey
         
+        tableView.backgroundColor = UIColor.white
+        
         tableView.bounces = true
         tableView.alwaysBounceVertical = true
         tableView.showsVerticalScrollIndicator = false
         
+        
     }
+    
     
     //Set up the top bar. The view, back button, and title label.
     func setUpTopView(){
@@ -116,11 +121,11 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //Get the data from firebase. Add it to the posts array. then reload the tableview
     func getPosts(){
-        posts = []
+        
         ref.child("Posts").observeSingleEvent(of: .value, with: {allSnap in
             let hello = userUID
             let dict = allSnap.value as? [String:AnyObject] ?? [:]
-            
+            self.posts = []
             for (id,postDict) in dict{
                 
                 let post = Post()
@@ -184,7 +189,11 @@ class FeedVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{return 0.1}
         return 10
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

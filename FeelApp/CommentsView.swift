@@ -132,9 +132,16 @@ extension CommentsView:UITableViewDataSource,UITableViewDelegate{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        let comment = comments[(indexPath as NSIndexPath).item]
+        
+        if comment.sender.id != userUID{return false}
+        return true
+    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-     
      let comment = comments[(indexPath as NSIndexPath).item]
+
      if comment.sender.id != userUID{return nil}
      
      

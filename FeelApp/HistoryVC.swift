@@ -17,7 +17,7 @@
 import UIKit
 import FirebaseDatabase
 
-class HistoryVC: UIViewController,CalendarVCDelegate {
+class HistoryVC: UIViewController {
 
     var backButton = UIButton()
     var topView = UIView()
@@ -104,7 +104,6 @@ class HistoryVC: UIViewController,CalendarVCDelegate {
     
     func toCalendar(){
         let vc = CalendarVC()
-        vc.delegate = self
         vc.allEmotions = historyView.emotions
         //vc.modalTransitionStyle = .crossDissolve
         
