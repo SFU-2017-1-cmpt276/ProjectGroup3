@@ -48,6 +48,8 @@
 		3DDD8AD41E7A23EB00857211 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD21E7A23EB00857211 /* PostCell.swift */; };
 		3DDD8AD51E7A23EB00857211 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD31E7A23EB00857211 /* PostCell.xib */; };
 		3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDD8AD61E7A25E700857211 /* FeedVC.swift */; };
+		3DE943FA1E91FCF2003DA189 /* ChangeEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE943F91E91FCF2003DA189 /* ChangeEmailVC.swift */; };
+		3DE943FC1E920123003DA189 /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE943FB1E920123003DA189 /* ChangePasswordVC.swift */; };
 		60120E3F8002C76F159EC1FC /* Pods_FeelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */; };
 		B1C77C32EECFFBAFD735A6E9 /* Pods_FeelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA0A547D3DF5ABA862402C26 /* Pods_FeelAppUITests.framework */; };
 		B58400701E7F66A1004A6A36 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = B584006F1E7F66A1004A6A36 /* AppIcon.appiconset */; };
@@ -132,6 +134,8 @@
 		3DDD8AD21E7A23EB00857211 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		3DDD8AD31E7A23EB00857211 /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		3DDD8AD61E7A25E700857211 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		3DE943F91E91FCF2003DA189 /* ChangeEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeEmailVC.swift; sourceTree = "<group>"; };
+		3DE943FB1E920123003DA189 /* ChangePasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		608D6E4FE49AF658AC00952F /* Pods_FeelApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeelApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EEE5FFC4FA02B5CC6149E76 /* Pods-FeelAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeelAppTests/Pods-FeelAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F3560753A4F43BAEDABCA6B /* Pods-FeelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeelApp/Pods-FeelApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				3DDD8AD01E7A0DD300857211 /* ChartVC.swift */,
 				3DDD8AD61E7A25E700857211 /* FeedVC.swift */,
 				3D14628E1E67996000BB74AA /* LoginVC.swift */,
+				3DE943FB1E920123003DA189 /* ChangePasswordVC.swift */,
+				3DE943F91E91FCF2003DA189 /* ChangeEmailVC.swift */,
 				3D62D2E41E79FF0C00BE7A6C /* LinksVC.swift */,
 				3D9181FD1E68EB400039C6A1 /* HistoryVC.swift */,
 				3D64552C1E8E2BB200727BB0 /* NotificationsVC.swift */,
@@ -594,8 +600,10 @@
 				3D1462591E67966600BB74AA /* HomeVC.swift in Sources */,
 				3D22F2781E8C74EB003E12E6 /* CommentsView.swift in Sources */,
 				3D22F27E1E8C7EF3003E12E6 /* CalendarVC.swift in Sources */,
+				3DE943FC1E920123003DA189 /* ChangePasswordVC.swift in Sources */,
 				3D9181FE1E68EB400039C6A1 /* HistoryVC.swift in Sources */,
 				3D9181FC1E68E4F90039C6A1 /* SubmitEmotionVC.swift in Sources */,
+				3DE943FA1E91FCF2003DA189 /* ChangeEmailVC.swift in Sources */,
 				3DD801FB1E91D4290023FE86 /* PhotoViewerVC.swift in Sources */,
 				3DDD8AD71E7A25E700857211 /* FeedVC.swift in Sources */,
 				3D14628D1E67979200BB74AA /* FirebaseClasses.swift in Sources */,
