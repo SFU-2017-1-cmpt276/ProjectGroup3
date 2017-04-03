@@ -121,7 +121,7 @@ class SignupVC: UIViewController {
                 
                 
                 GlobalData.You.id = user!.uid
-                let vc = HomeVC()
+                let vc = SelectAliasVC()
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true, completion: nil)
             }
