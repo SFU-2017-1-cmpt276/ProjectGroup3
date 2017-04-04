@@ -1,10 +1,16 @@
-//
-//  CalendarVC.swift
-//  FeelApp
-//
-//  Created by Deepak Venkatesh on 2017-03-29.
-//  Copyright © 2017 CMPT276. All rights reserved.
-//
+//FeelApp
+//This is the Calendar view controller. Allows users to view their emotional history based on the day and month selected on the calendar
+///Programmers: Deepak and Carson
+//Version 1: Created Calendar VC and setupHistoryView()
+//Version 2: Connected to database.
+//Version 3: Improved UI. Swapped views for CalendarVC and setupHistoryView()
+//Version 4: Fixed bug where the day in the month was shifted
+//Version 5: Fixed bug where selecting a day will select the same in in the current and previous month
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
+
 
 import UIKit
 import FirebaseDatabase
@@ -13,8 +19,6 @@ import FirebaseDatabase
 
 class CalendarVC: UIViewController,CalendarViewDelegate,HistoryViewDelegate {
 
-    //some data stuff
-       //topview
     var scrollView = UIScrollView()
     var backButton = UIButton()
     var topView = UIView()
@@ -81,6 +85,7 @@ class CalendarVC: UIViewController,CalendarViewDelegate,HistoryViewDelegate {
         
     }
     
+    // Allows the calendar view and history view to scroll
     func setUpScrollView(){
         view.addSubview(scrollView)
         scrollView.frame.size.width = view.frame.width
@@ -89,20 +94,22 @@ class CalendarVC: UIViewController,CalendarViewDelegate,HistoryViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
     }
     
+    // Opens photo if it was included in the emotion post
     func photoButtonClicked(emotion: Emotion) {
         let vc = PhotoViewerVC2()
         vc.emotion = emotion
         present(vc, animated: true, completion: nil)
     }
     
+    // Creates the area where the calendar is displayed
     func setUpCalendarView(){
         calendarView = CalendarView(width: view.frame.width,allEmotions:allEmotions)
         calendarView.delegate = self
         scrollView.addSubview(calendarView)
         calendarView.frame.origin.y = topView.frame.height
-       // Draw.createLineUnderView(calendarView, color: globalLightGrey,width:2)
     }
     
+    // Creates the area where the emotional history for that day is displayed
     func setUpHistoryView(){
         let originY:CGFloat = calendarView.frame.maxY
         historyView = HistoryView(size:CGSize(width:view.frame.width,height:view.frame.height - originY),showTimeAlways:true)
@@ -138,7 +145,7 @@ class CalendarVC: UIViewController,CalendarViewDelegate,HistoryViewDelegate {
         filterHistory(date: date)
     }
     
-    
+    // Find the data from user history to display when specific date is chosen
     func filterHistory(date:Date){
         let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)

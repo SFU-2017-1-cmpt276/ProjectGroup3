@@ -1,4 +1,15 @@
 
+//FeelApp
+//This is the Comments view controller. Allows users to comment on posts posted on the newsfeed
+///Programmers: Deepak and Carson
+//Version 1: Created Basic Change Password Layout
+//Version 2: Linked to firebase
+//Version 3: Fixed UI issue where emotion post was being cut off
+//Version 4: Improved UI visuals
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
 
 import UIKit
 import FirebaseDatabase

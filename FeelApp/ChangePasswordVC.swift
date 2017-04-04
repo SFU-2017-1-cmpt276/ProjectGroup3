@@ -1,4 +1,14 @@
 
+//FeelApp
+//This is the Change Password view controller. Allows users to change their password within the app
+///Programmers: Deepak and Carson
+//Version 1: Created Basic Change Password Layout
+//Version 2: Linked to firebase
+//Version 3: Implemented Firebase Fucntion to allow user to change password within app
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
 import UIKit
 import Firebase
 import FirebaseAuth

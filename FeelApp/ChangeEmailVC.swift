@@ -1,4 +1,15 @@
 
+//FeelApp
+//This is the Change Email view controller. Allows users to change their Email within the app
+///Programmers: Deepak and Carson
+//Version 1: Created Basic Change Email Layout
+//Version 2: Linked to firebase
+//Version 3: Implemented firebase fucntion to allow user to change Email within app
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
+
 import UIKit
 import Firebase
 import FirebaseAuth

@@ -1,10 +1,13 @@
-//
-//  CameraVC.swift
-//  KnockKnock
-//
-//  Created by Deepak Venkatesh on 2016-07-21.
-//  Copyright © 2016 ThirtyFour. All rights reserved.
-//
+//FeelApp
+//This is the Camera view controller. Allows users to take photos to add into emotion post
+///Programmers: Deepak and Carson
+//Version 1: Created Basic Camera Layout
+//Version 2: Added flash, reverse, and take picture icons
+//Version 3: Linked all icons to specific fucntion
+
+//Coding standard:
+//all view controller files have a descriptor followed by "VC."
+//all view files have a descriptor folled by "view"
 
 import UIKit
 import AVFoundation

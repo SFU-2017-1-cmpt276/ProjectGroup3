@@ -1,11 +1,11 @@
 
 //FeelApp
-//This is the Submit emotion view controller. For the user to submit an emotion, along with optional text
+//This is the Create emotion view controller. Allows users to create their own emotion. Allowing them to select color and text
 ///Programmers: Deepak and Carson
 //Version 1: Created UI with no actions
-//Version 2: Added submit action
+//Version 2: Linked to firebase
 //Version 3: Improved UI. Title bar font and color is depending on emotion.
-//Version 4: Made the squares into rounded rectangles (added corner radius)
+//Version 4: Made it possible to add unlimited number of custom emotions
 
 //Coding standard:
 //all view controller files have a descriptor followed by "VC."
@@ -32,7 +32,7 @@ class CreateEmotionVC: UIViewController {
     var bottomButtonHeight:CGFloat = 50
     var bottomButtonOffset:CGFloat = 10
     
-    var selectedColor = UIColor.black
+    var selectedColor = UIColor.red
 
     let colorSlider = ColorSlider()
     
@@ -144,7 +144,7 @@ class CreateEmotionVC: UIViewController {
             button.frame.size.height = bottomButtonHeight
             button.frame.size.width = view.frame.width - 2*bottomButtonOffset
             button.backgroundColor = UIColor.white
-            button.setTitle("Post", for: .normal)
+            button.setTitle("Create", for: .normal)
             button.titleLabel?.font = Font.PageHeaderSmall()
             button.layer.cornerRadius = bottomButtonHeight/2
             button.clipsToBounds = true
@@ -199,7 +199,8 @@ class CreateEmotionVC: UIViewController {
             }
             else{
                 let color = CIColor(color: self.colorSlider.color)
-                 FIRDatabase.database().reference().child("Custom Emotions").child(userUID).childByAutoId().setValue([
+                let key = FIRDatabase.database().reference().childByAutoId().key
+                 FIRDatabase.database().reference().child("Custom Emotions").child(userUID).child(key).setValue([
                     "Color":[
                         "Blue":color.blue,
                         "Red":color.red,
@@ -212,6 +213,7 @@ class CreateEmotionVC: UIViewController {
                 emotion.color = self.colorSlider.color
                 emotion.name = self.emotionTF.text!
                 emotion.custom = true
+                emotion.id = key
                 emotion.font = Font.CustomEmotionFont()
                 self.delegate?.emotionCreated(emotion: emotion)
                 self.dismiss(animated: true, completion: nil)
